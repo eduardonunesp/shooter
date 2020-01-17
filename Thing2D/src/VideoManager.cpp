@@ -12,6 +12,9 @@ namespace Thing2D {
 	}
 
 	void VideoManager::Render()	{
+		SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
+		SDL_RenderClear(renderer);
+		SDL_RenderPresent(renderer);
 	}
 
 	void VideoManager::Destroy() {
