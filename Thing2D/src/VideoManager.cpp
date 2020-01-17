@@ -1,4 +1,5 @@
 #include "VideoManager.h"
+#include <SDL_image.h>
 
 namespace Thing2D {
 	void VideoManager::Init() {
@@ -12,8 +13,6 @@ namespace Thing2D {
 	}
 
 	void VideoManager::Render()	{
-		SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
-		SDL_RenderClear(renderer);
 		SDL_RenderPresent(renderer);
 	}
 
@@ -21,6 +20,12 @@ namespace Thing2D {
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
 		SDL_Quit();
+	}
+
+	SDL_Texture* VideoManager::LoadTexture(const std::string& filePath)	{
+		SDL_Texture* newTexture = IMG_LoadTexture(renderer, filePath.c_str());
+		textures.push_back(newTexture);
+		return newTexture;
 	}
 }
 

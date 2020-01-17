@@ -5,3 +5,4 @@
 #include "src/Game.h"
 #include "src/State.h"
 #include "src/GameObject.h"
+#include "src/Logger.h"

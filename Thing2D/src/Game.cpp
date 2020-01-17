@@ -31,6 +31,7 @@ namespace Thing2D {
 		}
 		
 		currState = newState;
+		newState->SetVideoManager(videoManager);
 		newState->Init();
 	}
 
@@ -42,8 +43,9 @@ namespace Thing2D {
 				running = false;
 			}
 
-			if (!currState) {
-				throw "Current scene not set";
+			if (currState) {
+				currState->Update();
+				currState->Draw();
 			}
 
 			videoManager->Render();
