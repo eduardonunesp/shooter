@@ -6,7 +6,7 @@ class PlayState : public State {
 public:
 	void Init() {
 		LOG("ADDED");
-		gb = new GameObject(videoManager);
+		gb = new GameObject(videoManager, 10, 10, 16, 16);
 		gb->LoadTexture("./assets/bot.png");
 		gb->Move(20, 20);
 		Add(gb);

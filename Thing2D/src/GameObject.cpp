@@ -3,7 +3,14 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	GameObject::GameObject(VideoManager* videoManager) : videoManager(videoManager), x(0), y(0), texture(NULL) {
+	GameObject::GameObject(VideoManager* videoManager, int x, int y, int width, int height) 
+	: videoManager(videoManager), texture(NULL) {
+		this->x = x;
+		this->y = y;
+		dead = false;
+		life = 1;
+		this->width = width;
+		this->height = height;
 		rect.x = x;
 		rect.y = y;
 	}
@@ -17,13 +24,10 @@ namespace Thing2D {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 
-		int w, h;
-		SDL_QueryTexture(texture, NULL, NULL, &w, &h);
-
 		srcRect.x = 0;
 		srcRect.y = 0;
-		srcRect.w = destRect.w = w;
-		srcRect.h = destRect.h = h;
+		srcRect.w = destRect.w = width;
+		srcRect.h = destRect.h = height;
 		destRect.x = x;
 		destRect.y = y;
 
