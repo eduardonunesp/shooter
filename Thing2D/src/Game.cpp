@@ -1,16 +1,28 @@
 #include "Game.h"
-#include "EventManager.h"
+#include "InputManager.h"
 #include "VideoManager.h"
 #include "State.h"
 
 namespace Thing2D {
-	void Game::Initialize()	{
-		videoManager = new VideoManager();
-		eventManager = new EventManager();
+	const int FPS = 60;
+	const int DELAY_TIME = 1000 / FPS;
 
-		videoManager->Init();
-		eventManager->Init();
+	Game::Game(): videoManager(NULL), inputManager(NULL), currState(NULL) {
+		running = false;
+		frameTime = 0;
+		frameStart = 0;
+	}
+
+	void Game::Init(int screenWidth, int screenHeight, State* initialState) {
+		SDL_SetMainReady();
+		videoManager = new VideoManager();
+		inputManager = new InputManager();
+
+		videoManager->Init(screenWidth, screenHeight);
+		inputManager->Init();
 		running = true;
+
+		AddState(initialState);
 	}
 
 	void Game::AddState(State* state) {
@@ -32,14 +44,17 @@ namespace Thing2D {
 		
 		currState = newState;
 		newState->SetVideoManager(videoManager);
+		newState->SetInputManager(inputManager);
 		newState->Init();
 	}
 
 	void Game::Run() {
 		while (running) {
-			eventManager->Read();
+			frameStart = SDL_GetTicks();
 
-			if (eventManager->HasQuit()) {
+			inputManager->Read();
+
+			if (inputManager->HasQuit()) {
 				running = false;
 			}
 
@@ -49,11 +64,17 @@ namespace Thing2D {
 			}
 
 			videoManager->Render();
+
+			frameTime = SDL_GetTicks() - frameStart;
+
+			if (frameTime < DELAY_TIME) {
+				SDL_Delay((int)(DELAY_TIME - frameTime));
+			}
 		}
 	}
 
 	void Game::Destroy() {
-		eventManager->Destroy();
+		inputManager->Destroy();
 		videoManager->Destroy();
 	}
 }

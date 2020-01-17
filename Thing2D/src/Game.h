@@ -3,12 +3,14 @@
 
 namespace Thing2D {
 	class VideoManager;
-	class EventManager;
+	class InputManager;
 	class State;
 
 	class Game {
 	public:
-		void Initialize();
+		Game();
+
+		void Init(int screenWidth, int screenHeight, State *initialState);
 		void AddState(State *state);
 		void SetCurrentState(int stateIdx);
 		void Run();
@@ -16,9 +18,11 @@ namespace Thing2D {
 
 	private:
 		bool running;
+		int frameStart;
+		int frameTime;
 		State* currState;
 		std::vector<State*> states;
 		VideoManager* videoManager;
-		EventManager* eventManager;
+		InputManager* inputManager;
 	};
 }

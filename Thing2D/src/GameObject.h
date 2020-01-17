@@ -16,13 +16,14 @@ namespace Thing2D {
 		bool Overlaps(GameObject* target);
 		void LoadTexture(const std::string& filePath);
 		inline void Move(int newX, int newY) {
-			x = newX;
-			y = newY;
+			x += newX;
+			y += newY;
 		}
+
+		int x, y;
 
 	private:
 		VideoManager* videoManager;
-		int x, y;
 		SDL_Rect rect;
 		SDL_Texture* texture;
 	};

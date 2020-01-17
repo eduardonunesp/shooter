@@ -7,7 +7,7 @@
 namespace Thing2D {
 	class VideoManager {
 	public:
-		void Init();
+		void Init(int screenWidth, int screenHeight);
 		void Render();
 		void Destroy();
 		inline SDL_Renderer* GetRenderer() { return renderer; }
