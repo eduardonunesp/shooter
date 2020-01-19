@@ -5,6 +5,14 @@
 namespace Thing2D {
 	class InputManager {
 	public:
+		static InputManager* Instance() {
+			if (!instance) {
+				instance = new InputManager();
+			}
+
+			return instance;
+		}
+
 		bool Init();
 		void Read();
 		void Destroy();
@@ -12,8 +20,12 @@ namespace Thing2D {
 		bool KeyDown(SDL_Scancode keyCode);
 
 	private:
+		InputManager() {}
+		~InputManager() {}
+
 		const Uint8* keystates;
 		bool hasQuit;
+		static InputManager* instance;
 	};
 }
 

@@ -6,26 +6,26 @@ class PlayState : public State {
 public:
 	void Init() {
 		LOG("ADDED");
-		gb = new GameObject(videoManager, 10, 10, 16, 16);
+		gb = new GameObject(10, 10, 16, 16);
 		gb->LoadTexture("./assets/bot.png");
 		gb->Move(20, 20);
 		Add(gb);
 	}
 
 	void Update() {
-		if (inputManager->KeyDown(SDL_SCANCODE_RIGHT)) {
+		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_RIGHT)) {
 			gb->Move(10, 0);
 		}
 
-		if (inputManager->KeyDown(SDL_SCANCODE_LEFT)) {
+		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_LEFT)) {
 			gb->Move(-10, 0);
 		}
 
-		if (inputManager->KeyDown(SDL_SCANCODE_DOWN)) {
+		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_DOWN)) {
 			gb->Move(0, 10);
 		}
 
-		if (inputManager->KeyDown(SDL_SCANCODE_UP)) {
+		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_UP)) {
 			gb->Move(0, -10);
 		}
 

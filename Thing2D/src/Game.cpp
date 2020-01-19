@@ -15,8 +15,8 @@ namespace Thing2D {
 
 	void Game::Init(int screenWidth, int screenHeight, State* initialState) {
 		SDL_SetMainReady();
-		videoManager = new VideoManager();
-		inputManager = new InputManager();
+		videoManager = VideoManager::Instance();
+		inputManager = InputManager::Instance();
 
 		videoManager->Init(screenWidth, screenHeight);
 		inputManager->Init();
@@ -43,8 +43,6 @@ namespace Thing2D {
 		}
 		
 		currState = newState;
-		newState->SetVideoManager(videoManager);
-		newState->SetInputManager(inputManager);
 		newState->Init();
 	}
 

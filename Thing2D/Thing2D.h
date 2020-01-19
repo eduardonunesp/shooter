@@ -6,3 +6,4 @@
 #include "src/State.h"
 #include "src/GameObject.h"
 #include "src/Logger.h"
+#include "src/Vector.h"

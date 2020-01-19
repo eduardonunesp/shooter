@@ -4,11 +4,9 @@
 #include <string>
 
 namespace Thing2D {
-	class VideoManager;
-
 	class GameObject {
 	public:
-		explicit GameObject(VideoManager* videoManager, int x, int y, int width, int height);
+		explicit GameObject(int x, int y, int width, int height);
 
 		void Update();
 		void Draw();
@@ -34,7 +32,6 @@ namespace Thing2D {
 		int life;
 		int x, y;
 		int width, height;
-		VideoManager* videoManager;
 		SDL_Rect rect;
 		SDL_Texture* texture;
 	};

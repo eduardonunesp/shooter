@@ -2,6 +2,8 @@
 #include "Logger.h"
 
 namespace Thing2D {
+	InputManager* InputManager::instance = NULL;
+
 	bool InputManager::Init()	{
 		LOG("Initialize Input Manager");
 
@@ -34,10 +36,6 @@ namespace Thing2D {
 	}
 	
 	bool InputManager::KeyDown(SDL_Scancode keyCode) {
-		if (keystates != 0) {
-			return keystates[keyCode] == 1;
-		}
-
-		return false;
+		return keystates != 0 ? keystates[keyCode] : false;
 	}
 }

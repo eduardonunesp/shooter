@@ -3,6 +3,8 @@
 #include "Logger.h"
 
 namespace Thing2D {
+	VideoManager* VideoManager::instance = NULL;
+
 	void VideoManager::Init(int screenWidth, int screenHeight) {
 		LOG("Initialize VideoManager");
 		
@@ -30,8 +32,26 @@ namespace Thing2D {
 
 	SDL_Texture* VideoManager::LoadTexture(const std::string& filePath)	{
 		SDL_Texture* newTexture = IMG_LoadTexture(renderer, filePath.c_str());
-		textures.push_back(newTexture);
+
+		if (!newTexture) {
+			LOG("Failed to load texture " + filePath);
+			return NULL;
+		}
+
+		textureMap[filePath] = newTexture;
 		return newTexture;
+	}
+	
+	void VideoManager::ClearTextureMap() {
+		for (std::pair<std::string, SDL_Texture*> texture : textureMap) {
+			SDL_DestroyTexture(texture.second);
+		}
+
+		textureMap.clear();
+	}
+
+	void VideoManager::ClearFromTextureMap(const std::string id) {
+		textureMap.erase(id);
 	}
 }
 
