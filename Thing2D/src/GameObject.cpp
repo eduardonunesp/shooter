@@ -14,12 +14,12 @@ namespace Thing2D {
 		rect.y = y;
 	}
 
-	void GameObject::Update() {
+	void GameObject::update() {
 		rect.x = x;
 		rect.y = y;
 	}
 
-	void GameObject::Draw() {
+	void GameObject::draw() {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 
@@ -30,14 +30,14 @@ namespace Thing2D {
 		destRect.x = x;
 		destRect.y = y;
 
-		SDL_RenderCopy(VideoManager::Instance()->GetRenderer(), texture, &srcRect, &destRect);
+		SDL_RenderCopy(VideoManager::Instance()->get_renderer(), texture, &srcRect, &destRect);
 	}
 
-	void GameObject::Destroy() {
+	void GameObject::destroy() {
 
 	}
 
-	bool GameObject::Overlaps(GameObject* target) {
+	bool GameObject::overlaps(GameObject* target) {
 		if (!target) {
 			return false;
 		}
@@ -45,7 +45,7 @@ namespace Thing2D {
 		return false;
 	}
 
-	void GameObject::LoadTexture(const std::string& filePath) {
-		texture = VideoManager::Instance()->LoadTexture(filePath);
+	void GameObject::load_texture(const std::string& filePath) {
+		texture = VideoManager::Instance()->load_texture(filePath);
 	}
 }

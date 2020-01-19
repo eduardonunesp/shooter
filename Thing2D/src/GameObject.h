@@ -8,13 +8,13 @@ namespace Thing2D {
 	public:
 		explicit GameObject(int x, int y, int width, int height);
 
-		void Update();
-		void Draw();
-		void Destroy();
-		bool Overlaps(GameObject* target);
-		void LoadTexture(const std::string& filePath);
+		void update();
+		void draw();
+		void destroy();
+		bool overlaps(GameObject* target);
+		void load_texture(const std::string& filePath);
 		
-		inline void Move(int newX, int newY) {
+		inline void move(int newX, int newY) {
 			x += newX;
 			y += newY;
 		}

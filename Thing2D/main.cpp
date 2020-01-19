@@ -4,32 +4,32 @@ using namespace Thing2D;
 
 class PlayState : public State {
 public:
-	void Init() {
+	void init() {
 		LOG("ADDED");
 		gb = new GameObject(10, 10, 16, 16);
-		gb->LoadTexture("./assets/bot.png");
-		gb->Move(20, 20);
-		Add(gb);
+		gb->load_texture("./assets/bot.png");
+		gb->move(20, 20);
+		add(gb);
 	}
 
-	void Update() {
-		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_RIGHT)) {
-			gb->Move(10, 0);
+	void update() {
+		if (InputManager::Instance()->key_down(SDL_SCANCODE_RIGHT)) {
+			gb->move(10, 0);
 		}
 
-		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_LEFT)) {
-			gb->Move(-10, 0);
+		if (InputManager::Instance()->key_down(SDL_SCANCODE_LEFT)) {
+			gb->move(-10, 0);
 		}
 
-		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_DOWN)) {
-			gb->Move(0, 10);
+		if (InputManager::Instance()->key_down(SDL_SCANCODE_DOWN)) {
+			gb->move(0, 10);
 		}
 
-		if (InputManager::Instance()->KeyDown(SDL_SCANCODE_UP)) {
-			gb->Move(0, -10);
+		if (InputManager::Instance()->key_down(SDL_SCANCODE_UP)) {
+			gb->move(0, -10);
 		}
 
-		State::Update();
+		State::update();
 	}
 
 	GameObject* gb;
@@ -38,9 +38,9 @@ public:
 int main() {
 	PlayState playState;
 	Game *game = new Game();
-	game->Init(640, 480, &playState);
-	game->Run();
-	game->Destroy();
+	game->init(640, 480, &playState);
+	game->run();
+	game->destroy();
 
 	return 0;
 }

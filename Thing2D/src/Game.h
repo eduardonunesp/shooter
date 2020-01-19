@@ -10,11 +10,11 @@ namespace Thing2D {
 	public:
 		Game();
 
-		void Init(int screenWidth, int screenHeight, State *initialState);
-		void AddState(State *state);
-		void SetCurrentState(int stateIdx);
-		void Run();
-		void Destroy();
+		void init(int screenWidth, int screenHeight, State *initialState);
+		void add_state(State *state);
+		void set_current_state(int stateIdx);
+		void run();
+		void destroy();
 
 	private:
 		bool running;

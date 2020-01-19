@@ -13,55 +13,55 @@ namespace Thing2D {
 		frameStart = 0;
 	}
 
-	void Game::Init(int screenWidth, int screenHeight, State* initialState) {
+	void Game::init(int screenWidth, int screenHeight, State* initialState) {
 		SDL_SetMainReady();
 		videoManager = VideoManager::Instance();
 		inputManager = InputManager::Instance();
 
-		videoManager->Init(screenWidth, screenHeight);
-		inputManager->Init();
+		videoManager->init(screenWidth, screenHeight);
+		inputManager->init();
 		running = true;
 
-		AddState(initialState);
+		add_state(initialState);
 	}
 
-	void Game::AddState(State* state) {
+	void Game::add_state(State* state) {
 		states.push_back(state);
 
 		if (states.size() == 1) {
-			SetCurrentState(0);
+			set_current_state(0);
 		}
 	}
 
-	void Game::SetCurrentState(int stateIdx) {
+	void Game::set_current_state(int stateIdx) {
 		State* newState = states.at(stateIdx);
 
 		if (currState) {
 			State* oldState = currState;
-			oldState->Destroy();
+			oldState->destroy();
 			currState = NULL;
 		}
 		
 		currState = newState;
-		newState->Init();
+		newState->init();
 	}
 
-	void Game::Run() {
+	void Game::run() {
 		while (running) {
 			frameStart = SDL_GetTicks();
 
-			inputManager->Read();
+			inputManager->read();
 
-			if (inputManager->HasQuit()) {
+			if (inputManager->has_quit()) {
 				running = false;
 			}
 
 			if (currState) {
-				currState->Update();
-				currState->Draw();
+				currState->update();
+				currState->draw();
 			}
 
-			videoManager->Render();
+			videoManager->render();
 
 			frameTime = SDL_GetTicks() - frameStart;
 
@@ -71,8 +71,8 @@ namespace Thing2D {
 		}
 	}
 
-	void Game::Destroy() {
-		inputManager->Destroy();
-		videoManager->Destroy();
+	void Game::destroy() {
+		inputManager->destroy();
+		videoManager->destroy();
 	}
 }

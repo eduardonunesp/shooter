@@ -5,7 +5,7 @@
 namespace Thing2D {
 	VideoManager* VideoManager::instance = NULL;
 
-	void VideoManager::Init(int screenWidth, int screenHeight) {
+	void VideoManager::init(int screenWidth, int screenHeight) {
 		LOG("Initialize VideoManager");
 		
 		if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -19,39 +19,39 @@ namespace Thing2D {
 		LOG("VideoManager Ready");
 	}
 
-	void VideoManager::Render()	{
+	void VideoManager::render()	{
 		SDL_RenderPresent(renderer);
 		SDL_RenderClear(renderer);
 	}
 
-	void VideoManager::Destroy() {
+	void VideoManager::destroy() {
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
 		SDL_Quit();
 	}
 
-	SDL_Texture* VideoManager::LoadTexture(const std::string& filePath)	{
+	SDL_Texture* VideoManager::load_texture(const std::string& filePath) {
 		SDL_Texture* newTexture = IMG_LoadTexture(renderer, filePath.c_str());
 
 		if (!newTexture) {
-			LOG("Failed to load texture " + filePath);
+			LOG("Failed to load texture " + filePath + ":" + SDL_GetError());
 			return NULL;
 		}
 
-		textureMap[filePath] = newTexture;
+		texture_map[filePath] = newTexture;
 		return newTexture;
 	}
 	
-	void VideoManager::ClearTextureMap() {
-		for (std::pair<std::string, SDL_Texture*> texture : textureMap) {
+	void VideoManager::clear_texture_map() {
+		for (std::pair<std::string, SDL_Texture*> texture : texture_map) {
 			SDL_DestroyTexture(texture.second);
 		}
 
-		textureMap.clear();
+		texture_map.clear();
 	}
 
-	void VideoManager::ClearFromTextureMap(const std::string id) {
-		textureMap.erase(id);
+	void VideoManager::clear_from_texture_map(const std::string id) {
+		texture_map.erase(id);
 	}
 }
 

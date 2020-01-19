@@ -8,14 +8,14 @@ namespace Thing2D {
 
 	class State {
 	public:
-		virtual void Init();
-		virtual void Update();
+		virtual void init();
+		virtual void update();
 
-		void Add(GameObject* gameObject);
-		void Draw();
-		void Destroy();
+		void add(GameObject* game_object);
+		void draw();
+		void destroy();
 
 	private:
-		std::vector<GameObject*> gameObjects;
+		std::vector<GameObject*> game_objects;
 	};
 }

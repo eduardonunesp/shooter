@@ -13,18 +13,18 @@ namespace Thing2D {
 			return instance;
 		}
 
-		bool Init();
-		void Read();
-		void Destroy();
-		inline bool HasQuit() { return hasQuit; }
-		bool KeyDown(SDL_Scancode keyCode);
+		bool init();
+		void read();
+		void destroy();
+		inline bool has_quit() { return quit_pressed; }
+		bool key_down(SDL_Scancode keyCode);
 
 	private:
 		InputManager() {}
 		~InputManager() {}
 
 		const Uint8* keystates;
-		bool hasQuit;
+		bool quit_pressed;
 		static InputManager* instance;
 	};
 }
