@@ -31,6 +31,7 @@ namespace Thing2D {
 	}
 
 	SDL_Texture* VideoManager::load_texture(const std::string& filePath) {
+		LOG("Loading texture: " + filePath);
 		SDL_Texture* newTexture = IMG_LoadTexture(renderer, filePath.c_str());
 
 		if (!newTexture) {

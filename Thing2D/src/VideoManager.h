@@ -7,7 +7,7 @@
 namespace Thing2D {
 	class VideoManager {
 	public:
-		static VideoManager* Instance() {
+		static VideoManager* get_instance() {
 			if (!instance) {
 				instance = new VideoManager();
 			}

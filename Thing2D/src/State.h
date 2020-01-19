@@ -1,21 +1,11 @@
 #pragma once
-#include <vector>
+
+#include "Group.h"
 
 namespace Thing2D {
-	class GameObject;
-	class VideoManager;
-	class InputManager;
-
-	class State {
+	class State : public Group {
 	public:
-		virtual void init();
-		virtual void update();
-
-		void add(GameObject* game_object);
-		void draw();
-		void destroy();
-
-	private:
-		std::vector<GameObject*> game_objects;
+		State() : Group() {}
+		virtual ~State() {};
 	};
 }

@@ -20,7 +20,7 @@ namespace Thing2D {
         void setX(float x) { x = x; }
         void setY(float y) { y = y; }
 
-        int length() { return sqrt(x * x + y * y); }
+        int count() { return sqrt(x * x + y * y); }
 
         Vector2D operator+(const Vector2D& v2) const { return Vector2D(x + v2.x, y + v2.y); }
         friend Vector2D& operator+=(Vector2D& v1, const Vector2D& v2) {
@@ -63,7 +63,7 @@ namespace Thing2D {
 
 
         void normalize() {
-            int l = length();
+            int l = count();
             if (l > 0)
             {
                 (*this) *= 1 / l;

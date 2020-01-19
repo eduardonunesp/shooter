@@ -5,5 +5,7 @@
 #include "src/Game.h"
 #include "src/State.h"
 #include "src/GameObject.h"
+#include "src/Group.h"
 #include "src/Logger.h"
 #include "src/Vector.h"
+#include "src/Rect.h"

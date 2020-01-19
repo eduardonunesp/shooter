@@ -3,15 +3,18 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	GameObject::GameObject(int x, int y, int width, int height) : texture(NULL) {
+	GameObject::GameObject(const std::string& filePath, int x, int y, int width, int height) 
+	: texture(NULL) {
 		this->x = x;
 		this->y = y;
+		visible = true;
 		dead = false;
 		life = 1;
 		this->width = width;
 		this->height = height;
 		rect.x = x;
 		rect.y = y;
+		load_texture(filePath);
 	}
 
 	void GameObject::update() {
@@ -20,6 +23,10 @@ namespace Thing2D {
 	}
 
 	void GameObject::draw() {
+		if (!visible) {
+			return;
+		}
+
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 
@@ -30,7 +37,7 @@ namespace Thing2D {
 		destRect.x = x;
 		destRect.y = y;
 
-		SDL_RenderCopy(VideoManager::Instance()->get_renderer(), texture, &srcRect, &destRect);
+		SDL_RenderCopy(VideoManager::get_instance()->get_renderer(), texture, &srcRect, &destRect);
 	}
 
 	void GameObject::destroy() {
@@ -46,6 +53,6 @@ namespace Thing2D {
 	}
 
 	void GameObject::load_texture(const std::string& filePath) {
-		texture = VideoManager::Instance()->load_texture(filePath);
+		texture = VideoManager::get_instance()->load_texture(filePath);
 	}
 }

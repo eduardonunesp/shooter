@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "Logger.h"
+#include <string>
 
 namespace Thing2D {
 	InputManager* InputManager::instance = NULL;
@@ -14,18 +15,29 @@ namespace Thing2D {
 	}
 
 	void InputManager::read() {
+		for (std::pair<SDL_Scancode, bool> key : keys_up) {
+			keys_up[key.first] = false;
+		}
+
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
 			case SDL_QUIT:
 				quit_pressed = true;
 				break;
+
 			case SDL_KEYDOWN:
-				keystates = SDL_GetKeyboardState(0);
+				if (event.key.repeat > 0) { return; }
+				LOG("Key down " + std::to_string(event.key.keysym.scancode));
+				keys_down[event.key.keysym.scancode] = true;
+				keys_up[event.key.keysym.scancode] = false;
 				break;
 
 			case SDL_KEYUP:
-				keystates = SDL_GetKeyboardState(0);
+				if (event.key.repeat > 0) { return; }
+				LOG("Key up " + std::to_string(event.key.keysym.scancode));
+				keys_up[event.key.keysym.scancode] = true;
+				keys_down[event.key.keysym.scancode] = false;
 				break;
 			}
 		}
@@ -35,7 +47,11 @@ namespace Thing2D {
 		SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
 	}
 	
-	bool InputManager::key_down(SDL_Scancode keyCode) {
-		return keystates != 0 ? keystates[keyCode] : false;
+	bool InputManager::is_key_down(SDL_Scancode key_code) {
+		return keys_down[key_code];
+	}
+
+	bool InputManager::is_key_up(SDL_Scancode key_code) {
+		return keys_up[key_code];
 	}
 }
