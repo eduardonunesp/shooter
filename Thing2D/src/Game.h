@@ -2,8 +2,6 @@
 #include <vector>
 
 namespace Thing2D {
-	class VideoManager;
-	class InputManager;
 	class State;
 
 	class Game {
@@ -18,11 +16,7 @@ namespace Thing2D {
 
 	private:
 		bool running;
-		int frameStart;
-		int frameTime;
 		State* currState;
 		std::vector<State*> states;
-		VideoManager* videoManager;
-		InputManager* inputManager;
 	};
 }

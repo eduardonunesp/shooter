@@ -52,7 +52,7 @@ namespace Thing2D {
 	int Group::count_visible() {
 		int count = 0;
 		for (GameObject* game_object : game_objects) {
-			if (game_object->is_visible()) {
+			if (game_object->visible) {
 				count++;
 			}
 		}
@@ -62,7 +62,7 @@ namespace Thing2D {
 	int Group::count_dead() {
 		int count = 0;
 		for (GameObject* game_object : game_objects) {
-			if (game_object->is_dead()) {
+			if (game_object->dead) {
 				count++;
 			}
 		}

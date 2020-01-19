@@ -16,7 +16,10 @@ namespace Thing2D {
 			throw "Couldn't create window and renderer";
 		}
 
-		LOG("VideoManager Ready");
+		int w, h;
+		SDL_GetWindowSize(window, &w, &h);
+
+		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
 	void VideoManager::render()	{

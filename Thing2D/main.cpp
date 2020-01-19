@@ -14,7 +14,7 @@ public:
 	void die() {
 		if (count_visible() > 0) {
 			GameObject* cursor = get("cursor_" + std::to_string(count_visible()));
-			cursor->set_visible(false);
+			cursor->visible = false;
 		}
 	}
 };
@@ -32,20 +32,27 @@ public:
 	}
 
 	void update() {
+		int x = 0;
+		int y = 0;
+
 		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_RIGHT)) {
-			gb->move(10, 0);
+			x = speed * TimerManager::get_instance()->deltaTime;
 		}
 
 		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_LEFT)) {
-			gb->move(-10, 0);
+			x = -speed * TimerManager::get_instance()->deltaTime;
 		}
 
 		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_DOWN)) {
-			gb->move(0, 10);
+			y = speed * TimerManager::get_instance()->deltaTime;
 		}
 
 		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_UP)) {
-			gb->move(0, -10);
+			y = -speed * TimerManager::get_instance()->deltaTime;
+		}
+
+		if (gb->x >= 0 && gb->x <= 640) {
+			gb->x += x;
 		}
 
 		if (InputManager::get_instance()->is_key_up(SDL_SCANCODE_SPACE)) {
@@ -55,6 +62,7 @@ public:
 		State::update();
 	}
 
+	int speed = 10;
 	LifeBar* lifeBar;
 	GameObject* gb;
 };

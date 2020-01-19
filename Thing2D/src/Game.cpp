@@ -1,27 +1,22 @@
 #include "Game.h"
 #include "InputManager.h"
 #include "VideoManager.h"
+#include "TimerManager.h"
 #include "State.h"
 
 namespace Thing2D {
 	const int FPS = 60;
 	const int DELAY_TIME = 1000 / FPS;
 
-	Game::Game(): videoManager(NULL), inputManager(NULL), currState(NULL) {
+	Game::Game(): currState(NULL) {
 		running = false;
-		frameTime = 0;
-		frameStart = 0;
 	}
 
 	void Game::init(int screenWidth, int screenHeight, State* initialState) {
 		SDL_SetMainReady();
-		videoManager = VideoManager::get_instance();
-		inputManager = InputManager::get_instance();
-
-		videoManager->init(screenWidth, screenHeight);
-		inputManager->init();
+		VideoManager::get_instance()->init(screenWidth, screenHeight);
+		InputManager::get_instance()->init();
 		running = true;
-
 		add_state(initialState);
 	}
 
@@ -47,12 +42,16 @@ namespace Thing2D {
 	}
 
 	void Game::run() {
+		Uint32 frameStart = 0;
+		Uint32 frameTime = 0;
+
 		while (running) {
 			frameStart = SDL_GetTicks();
 
-			inputManager->read();
+			TimerManager::get_instance()->deltaTime = frameTime;
+			InputManager::get_instance()->read();
 
-			if (inputManager->has_quit()) {
+			if (InputManager::get_instance()->has_quit()) {
 				running = false;
 			}
 
@@ -61,7 +60,7 @@ namespace Thing2D {
 				currState->draw();
 			}
 
-			videoManager->render();
+			VideoManager::get_instance()->render();
 
 			frameTime = SDL_GetTicks() - frameStart;
 
@@ -72,7 +71,7 @@ namespace Thing2D {
 	}
 
 	void Game::destroy() {
-		inputManager->destroy();
-		videoManager->destroy();
+		InputManager::get_instance()->destroy();
+		VideoManager::get_instance()->destroy();
 	}
 }

@@ -14,13 +14,6 @@ namespace Thing2D {
 		bool overlaps(GameObject* target);
 		void load_texture(const std::string& filePath);
 		
-		inline void set_visible(bool value) { visible = value; }
-		inline void set_life(int value) { life = value; }
-		inline void set_dead(bool value) { dead = value; }
-
-		inline bool is_visible() { return visible; }
-		inline bool is_dead() { return dead; }
-		
 		inline void move(int newX, int newY) {
 			x += newX;
 			y += newY;
@@ -34,12 +27,13 @@ namespace Thing2D {
 			}
 		}
 
-	protected:
 		bool visible;
 		bool dead;
 		int life;
 		int x, y;
 		int width, height;
+	
+	protected:
 		SDL_Rect rect;
 		SDL_Texture* texture;
 	};
