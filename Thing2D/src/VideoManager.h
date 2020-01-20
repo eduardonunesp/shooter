@@ -16,6 +16,7 @@ namespace Thing2D {
 		}
 
 		void init(int screenWidth, int screenHeight);
+		void clear();
 		void render();
 		void destroy();
 		inline SDL_Renderer* get_renderer() { return renderer; }

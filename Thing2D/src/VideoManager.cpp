@@ -12,7 +12,9 @@ namespace Thing2D {
 			throw "Couldn't initialize SDL";
 		}
 
-		if (SDL_CreateWindowAndRenderer(screenWidth, screenHeight, SDL_WINDOW_RESIZABLE, &window, &renderer)) {
+		int flags = SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_OPENGL;
+
+		if (SDL_CreateWindowAndRenderer(screenWidth, screenHeight, flags, &window, &renderer)) {
 			throw "Couldn't create window and renderer";
 		}
 
@@ -22,9 +24,12 @@ namespace Thing2D {
 		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
+	void VideoManager::clear() {
+		SDL_RenderClear(renderer);
+	}
+
 	void VideoManager::render()	{
 		SDL_RenderPresent(renderer);
-		SDL_RenderClear(renderer);
 	}
 
 	void VideoManager::destroy() {

@@ -11,7 +11,7 @@ namespace Thing2D {
 
 	void Group::update() {
 		for (GameObject* game_object : game_objects) {
-			game_object->move(x, y);
+			//game_object->move(position);
 			game_object->update();
 		}
 	}
@@ -20,7 +20,7 @@ namespace Thing2D {
 		LOG("Adding game object:" + id);
 
 		if (game_object) {
-			game_object->move(x, y);
+			game_object->move(position);
 			game_objects.push_back(game_object);
 			game_object_map[id] = game_object;
 		}

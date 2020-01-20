@@ -3,23 +3,19 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	GameObject::GameObject(const std::string& filePath, int x, int y, int width, int height) 
-	: texture(NULL) {
-		this->x = x;
-		this->y = y;
+	GameObject::GameObject(const std::string& filePath, int x, int y, int width, int height) :
+		texture(NULL), position(x, y), velocity(0, 0), acceleartion(0, 0),
+		width(width), height(height) {
 		visible = true;
 		dead = false;
 		life = 1;
-		this->width = width;
-		this->height = height;
 		rect.x = x;
 		rect.y = y;
 		load_texture(filePath);
 	}
 
 	void GameObject::update() {
-		rect.x = x;
-		rect.y = y;
+		position += velocity;
 	}
 
 	void GameObject::draw() {
@@ -34,8 +30,8 @@ namespace Thing2D {
 		srcRect.y = 0;
 		srcRect.w = destRect.w = width;
 		srcRect.h = destRect.h = height;
-		destRect.x = x;
-		destRect.y = y;
+		destRect.x = (int) position.x;
+		destRect.y = (int) position.y;
 
 		SDL_RenderCopy(VideoManager::get_instance()->get_renderer(), texture, &srcRect, &destRect);
 	}

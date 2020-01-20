@@ -55,6 +55,8 @@ namespace Thing2D {
 				running = false;
 			}
 
+			VideoManager::get_instance()->clear();
+
 			if (currState) {
 				currState->update();
 				currState->draw();

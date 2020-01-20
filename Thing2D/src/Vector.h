@@ -5,33 +5,33 @@
 #include <math.h>
 
 namespace Thing2D {
-    class Vector2D {
+    class Vector {
     public:
-        Vector2D() {
+        Vector() {
             x = 0;
             y = 0;
         }
 
-        Vector2D(float x, float y) : x(x), y(y) {}
+        Vector(float x, float y) : x(x), y(y) {}
 
-        const float getX() { return x; }
-        const float getY() { return y; }
+        const float get_x() { return x; }
+        const float get_y() { return y; }
 
-        void setX(float x) { x = x; }
-        void setY(float y) { y = y; }
+        void set_x(float _x) { x = _x; }
+        void set_y(float _y) { y = _y; }
 
         int count() { return sqrt(x * x + y * y); }
 
-        Vector2D operator+(const Vector2D& v2) const { return Vector2D(x + v2.x, y + v2.y); }
-        friend Vector2D& operator+=(Vector2D& v1, const Vector2D& v2) {
+        Vector operator+(const Vector& v2) const { return Vector(x + v2.x, y + v2.y); }
+        friend Vector& operator+=(Vector& v1, const Vector& v2) {
             v1.x += v2.x;
             v1.y += v2.y;
 
             return v1;
         }
 
-        Vector2D operator-(const Vector2D& v2) const { return Vector2D(x - v2.x, y - v2.y); }
-        friend Vector2D& operator-=(Vector2D& v1, const Vector2D& v2) {
+        Vector operator-(const Vector& v2) const { return Vector(x - v2.x, y - v2.y); }
+        friend Vector& operator-=(Vector& v1, const Vector& v2) {
             v1.x -= v2.x;
             v1.y -= v2.y;
 
@@ -39,22 +39,22 @@ namespace Thing2D {
         }
 
 
-        Vector2D operator*(float scalar) {
-            return Vector2D(x * scalar, y * scalar);
+        Vector operator*(float scalar) {
+            return Vector(x * scalar, y * scalar);
         }
 
-        Vector2D& operator*=(float scalar) {
+        Vector& operator*=(float scalar) {
             x *= scalar;
             y *= scalar;
 
             return *this;
         }
 
-        Vector2D operator/(float scalar) {
-            return Vector2D(x / scalar, y / scalar);
+        Vector operator/(float scalar) {
+            return Vector(x / scalar, y / scalar);
         }
 
-        Vector2D& operator/=(float scalar) {
+        Vector& operator/=(float scalar) {
             x /= scalar;
             y /= scalar;
 

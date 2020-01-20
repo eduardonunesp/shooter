@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "Vector.h"
 
 namespace Thing2D {
 	class GameObject;
@@ -10,8 +11,8 @@ namespace Thing2D {
 
 	class Group {
 	public:
-		Group(int x, int y): x(x), y(y) {}
-		Group(): x(0), y(0) {}
+		Group(int x, int y): position(x, y) {}
+		Group() : position(0, 0) {}
 		virtual ~Group() {};
 
 		virtual void init();
@@ -32,8 +33,7 @@ namespace Thing2D {
 		void destroy();
 
 	protected:
-		int x;
-		int y;
+		Vector position;
 
 	private:
 		static int id_counter;

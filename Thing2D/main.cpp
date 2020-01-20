@@ -22,7 +22,6 @@ public:
 class PlayState : public State {
 public:
 	void init() {
-		InputManager::get_instance()->can_repeat(SDL_SCANCODE_SPACE, false);
 		gb = new GameObject("./assets/bot.png", 10, 10, 16, 16);
 		gb->move(20, 20);
 
@@ -32,27 +31,23 @@ public:
 	}
 
 	void update() {
-		int x = 0;
-		int y = 0;
+		gb->velocity.set_x(0);
+		gb->velocity.set_y(0);
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_RIGHT)) {
-			x = speed * TimerManager::get_instance()->deltaTime;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_RIGHT) && gb->position.x < 620) {
+			gb->velocity.x = speed;
 		}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_LEFT)) {
-			x = -speed * TimerManager::get_instance()->deltaTime;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_LEFT) && gb->position.x > 0) {
+			gb->velocity.x = -speed;
 		}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_DOWN)) {
-			y = speed * TimerManager::get_instance()->deltaTime;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_DOWN) && gb->position.y < 460) {
+			gb->velocity.y = speed;
 		}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_UP)) {
-			y = -speed * TimerManager::get_instance()->deltaTime;
-		}
-
-		if (gb->x >= 0 && gb->x <= 640) {
-			gb->x += x;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_UP) && gb->position.y > 0) {
+			gb->velocity.y = -speed;
 		}
 
 		if (InputManager::get_instance()->is_key_up(SDL_SCANCODE_SPACE)) {
