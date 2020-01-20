@@ -10,7 +10,7 @@ namespace Thing2D {
 
 	class GameObject {
 	public:
-		explicit GameObject(const std::string& texture_id, float x, float y, int width, int height);
+		GameObject(const std::string& texture_id, float x, float y, int width, int height);
 		~GameObject();
 
 		virtual void update();
@@ -50,6 +50,8 @@ namespace Thing2D {
 
 	protected:
 		int width, height;
+		int curr_row = 0;
+		int curr_col = 0;
 		std::string texture_id;
 	};
 }

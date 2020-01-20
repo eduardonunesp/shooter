@@ -15,7 +15,7 @@ namespace Thing2D {
 		void play(const std::string& animation_name);
 
 		virtual void update();
-		virtual void draw();
+		void draw();
 		virtual void destroy();
 
 	private:

@@ -46,22 +46,13 @@ namespace Thing2D {
 
 	void Sprite::update() {
 		if (curr_animation) {
-			int curr_anim_speed = curr_animation->anim_speed;
-			int curr_anim_frame_size = curr_animation->frames.size();
-			curr_animation->curr_anim_frame = int(((SDL_GetTicks() / (1000 / curr_anim_speed)) % curr_anim_frame_size));
+			curr_animation->curr_anim_frame = int(((SDL_GetTicks() / (1000 / curr_animation->anim_speed)) % curr_animation->frames.size()));
 		}
 
 		GameObject::update();
 	}
 
 	void Sprite::draw()	{
-		if (!visible) {
-			return;
-		}
-
-		int curr_row = 0;
-		int curr_col = 0;
-
 		if (curr_animation) {
 			Animation* animation = curr_animation;
 			AnimFrame* anim_frame = anim_frames[animation->curr_anim_frame];
@@ -69,7 +60,7 @@ namespace Thing2D {
 			curr_col = anim_frame->col;
 		}
 
-		VideoManager::get_instance()->draw(texture_id, (int)position.x, (int)position.y, width, height, curr_row, curr_col, angle, alpha, SDL_FLIP_NONE);
+		GameObject::draw();
 	}
 
 	void Sprite::destroy() {
