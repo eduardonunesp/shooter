@@ -11,6 +11,7 @@ namespace Thing2D {
 
 		virtual void init();
 		void add_state(State *state);
+		inline State* get_current_state(int idx) { return states[idx]; }
 		void set_current_state(int stateIdx);
 		void run();
 		void destroy();

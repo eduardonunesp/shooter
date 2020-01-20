@@ -32,6 +32,7 @@ namespace Thing2D {
 		struct Animation {
 			Animation() :
 				loop(false),
+				ended(false),
 				sum(0),
 				anim_speed(1),
 				curr_anim_frame(0) {}
@@ -39,6 +40,7 @@ namespace Thing2D {
 			void set_current_frame(int frame);
 
 			bool loop;
+			bool ended;
 			int sum;
 			int anim_speed;
 			int curr_anim_frame;
@@ -47,8 +49,10 @@ namespace Thing2D {
 
 		void calculate_frames(int rows, int cols);
 
-		Animation *curr_animation;
 		std::vector<AnimFrame*> anim_frames;
 		std::map<std::string, Animation*> animations;
+
+	protected:
+		Animation* curr_animation;
 	};
 }

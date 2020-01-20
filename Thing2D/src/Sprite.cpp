@@ -87,13 +87,19 @@ namespace Thing2D {
 			return;
 		}
 
+		if (ended) {
+			return;
+		}
+
 		if (!loop) {
 			sum++;
 
 			if (sum >= frames.size()) {
-				return;
+				ended = true;
 			}
 		}
+
+		LOG(frame);
 
 		curr_anim_frame = frame;
 	}

@@ -13,6 +13,10 @@ namespace Thing2D {
 	}
 
 	void GameObject::update() {
+		if (dead) {
+			return;
+		}
+
 		velocity += acceleartion;
 		position += velocity;
 		rect.x = position.x;

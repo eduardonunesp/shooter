@@ -39,6 +39,7 @@ namespace Thing2D {
 		bool visible;
 		bool dead;
 		bool flipped;
+
 		int life;
 		int alpha;
 		double angle;
