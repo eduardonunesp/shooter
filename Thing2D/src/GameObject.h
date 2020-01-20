@@ -3,19 +3,19 @@
 #include <SDL.h>
 #include <string>
 #include "Vector.h"
+#include "Rect.h"
 
 namespace Thing2D {
 	class Vector;
 
 	class GameObject {
 	public:
-		explicit GameObject(const std::string& filePath, float x, float y, int width, int height);
+		explicit GameObject(const std::string& texture_id, float x, float y, int width, int height);
 
 		void update();
 		void draw();
 		void destroy();
 		bool overlaps(GameObject* target);
-		void load_texture(const std::string& filePath);
 		
 		inline void move(const Vector &new_position) {
 			position += new_position;
@@ -37,14 +37,14 @@ namespace Thing2D {
 		bool visible;
 		bool dead;
 		int life;
-		int width, height;
 
 		Vector position;
 		Vector velocity;
 		Vector acceleartion;
-	
+		Rect rect;
+
 	protected:
-		SDL_Rect rect;
-		SDL_Texture* texture;
+		int width, height;
+		std::string texture_id;
 	};
 }

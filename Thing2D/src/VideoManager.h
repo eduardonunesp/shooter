@@ -16,6 +16,8 @@ namespace Thing2D {
 		}
 
 		void init(int screen_width, int screen_height);
+		void draw(const std::string& texture_id, int x, int y, int width, int height, SDL_RendererFlip flip);
+		void drawFrame(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip);
 		void clear();
 		void render();
 		void destroy();

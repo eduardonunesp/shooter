@@ -24,6 +24,34 @@ namespace Thing2D {
 		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
+	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, SDL_RendererFlip flip) {
+		SDL_Rect srcRect;
+		SDL_Rect destRect;
+
+		srcRect.x = 0;
+		srcRect.y = 0;
+		srcRect.w = destRect.w = width;
+		srcRect.h = destRect.h = height;
+		destRect.x = x;
+		destRect.y = y;
+
+		SDL_RenderCopyEx(renderer, texture_map[texture_id], &srcRect, &destRect, 0, 0, flip);
+	}
+
+	void VideoManager::drawFrame(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip) {
+		SDL_Rect srcRect;
+		SDL_Rect destRect;
+		srcRect.x = width * current_frame;
+		srcRect.y = height * current_row;
+		srcRect.w = destRect.w = width;
+		srcRect.h = destRect.h = height;
+		destRect.x = x;
+		destRect.y = y;
+
+		SDL_SetTextureAlphaMod(texture_map[texture_id], alpha);
+		SDL_RenderCopyEx(renderer, texture_map[texture_id], &srcRect, &destRect, angle, 0, flip);
+	}
+
 	void VideoManager::clear() {
 		SDL_RenderClear(renderer);
 	}

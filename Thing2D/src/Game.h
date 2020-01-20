@@ -9,7 +9,7 @@ namespace Thing2D {
 		Game(int screen_width, int screen_height, State* initial_state);
 		virtual ~Game();
 
-		void init();
+		virtual void init();
 		void add_state(State *state);
 		void set_current_state(int stateIdx);
 		void run();

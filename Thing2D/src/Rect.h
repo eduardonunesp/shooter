@@ -5,13 +5,16 @@
 namespace Thing2D {
 	class Rect {
 	public:
-		int x, y;
-		int w, h;
+		Rect(float x, float y, int h, int w) :
+			x(x), y(y), h(h), w(w) {}
+
+		float x, y;
+		int h, w;
 
 		inline SDL_Rect to_sdl_rect() {
 			SDL_Rect rect;
-			rect.x = x;
-			rect.y = y;
+			rect.x = (int) x;
+			rect.y = (int) y;
 			rect.h = h;
 			rect.w = w;
 			return rect;
