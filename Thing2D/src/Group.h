@@ -11,7 +11,7 @@ namespace Thing2D {
 
 	class Group {
 	public:
-		Group(int x, int y): position(x, y) {}
+		Group(float x, float y): position(x, y) {}
 		Group() : position(0, 0) {}
 		virtual ~Group() {};
 

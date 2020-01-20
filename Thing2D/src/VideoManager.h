@@ -15,7 +15,7 @@ namespace Thing2D {
 			return instance;
 		}
 
-		void init(int screenWidth, int screenHeight);
+		void init(int screen_width, int screen_height);
 		void clear();
 		void render();
 		void destroy();

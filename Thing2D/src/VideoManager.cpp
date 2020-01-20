@@ -5,7 +5,7 @@
 namespace Thing2D {
 	VideoManager* VideoManager::instance = NULL;
 
-	void VideoManager::init(int screenWidth, int screenHeight) {
+	void VideoManager::init(int screen_width, int screen_height) {
 		LOG("Initialize VideoManager");
 		
 		if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -14,7 +14,7 @@ namespace Thing2D {
 
 		int flags = SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_OPENGL;
 
-		if (SDL_CreateWindowAndRenderer(screenWidth, screenHeight, flags, &window, &renderer)) {
+		if (SDL_CreateWindowAndRenderer(screen_width, screen_height, flags, &window, &renderer)) {
 			throw "Couldn't create window and renderer";
 		}
 

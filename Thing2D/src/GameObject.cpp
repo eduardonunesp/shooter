@@ -3,18 +3,19 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	GameObject::GameObject(const std::string& filePath, int x, int y, int width, int height) :
+	GameObject::GameObject(const std::string& filePath, float x, float y, int width, int height) :
 		texture(NULL), position(x, y), velocity(0, 0), acceleartion(0, 0),
 		width(width), height(height) {
 		visible = true;
 		dead = false;
 		life = 1;
-		rect.x = x;
-		rect.y = y;
+		rect.x = (int) x;
+		rect.y = (int) y;
 		load_texture(filePath);
 	}
 
 	void GameObject::update() {
+		velocity += acceleartion;
 		position += velocity;
 	}
 

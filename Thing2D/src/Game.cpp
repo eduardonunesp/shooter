@@ -8,16 +8,23 @@ namespace Thing2D {
 	const int FPS = 60;
 	const int DELAY_TIME = 1000 / FPS;
 
-	Game::Game(): currState(NULL) {
-		running = false;
+	Game::Game(int screen_width, int screen_height, State* initial_state) :
+		screen_width(screen_width), 
+		screen_height(screen_height), 
+		initial_state(initial_state), 
+		current_state(NULL),
+		running(false) {}
+
+	Game::~Game() {
+		destroy();
 	}
 
-	void Game::init(int screenWidth, int screenHeight, State* initialState) {
+	void Game::init() {
 		SDL_SetMainReady();
-		VideoManager::get_instance()->init(screenWidth, screenHeight);
+		VideoManager::get_instance()->init(screen_width, screen_height);
 		InputManager::get_instance()->init();
 		running = true;
-		add_state(initialState);
+		add_state(initial_state);
 	}
 
 	void Game::add_state(State* state) {
@@ -31,13 +38,13 @@ namespace Thing2D {
 	void Game::set_current_state(int stateIdx) {
 		State* newState = states.at(stateIdx);
 
-		if (currState) {
-			State* oldState = currState;
+		if (current_state) {
+			State* oldState = current_state;
 			oldState->destroy();
-			currState = NULL;
+			current_state = NULL;
 		}
 		
-		currState = newState;
+		current_state = newState;
 		newState->init();
 	}
 
@@ -57,9 +64,9 @@ namespace Thing2D {
 
 			VideoManager::get_instance()->clear();
 
-			if (currState) {
-				currState->update();
-				currState->draw();
+			if (current_state) {
+				current_state->update();
+				current_state->draw();
 			}
 
 			VideoManager::get_instance()->render();

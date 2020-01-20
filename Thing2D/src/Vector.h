@@ -12,15 +12,15 @@ namespace Thing2D {
             y = 0;
         }
 
+        static Vector zero() { return Vector(0, 0); }
+        static Vector up() { return Vector(0, -1); }
+        static Vector down() { return Vector(0, 1); }
+        static Vector right() { return Vector(1, 0); }
+        static Vector left() { return Vector(-1, 0); }
+
         Vector(float x, float y) : x(x), y(y) {}
 
-        const float get_x() { return x; }
-        const float get_y() { return y; }
-
-        void set_x(float _x) { x = _x; }
-        void set_y(float _y) { y = _y; }
-
-        int count() { return sqrt(x * x + y * y); }
+        int count() { return (int) sqrt(x * x + y * y); }
 
         Vector operator+(const Vector& v2) const { return Vector(x + v2.x, y + v2.y); }
         friend Vector& operator+=(Vector& v1, const Vector& v2) {
@@ -64,9 +64,8 @@ namespace Thing2D {
 
         void normalize() {
             int l = count();
-            if (l > 0)
-            {
-                (*this) *= 1 / l;
+            if (l > 0) {
+                (*this) *= 1.0f / l;
             }
         }
 

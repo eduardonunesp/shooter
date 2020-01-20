@@ -9,7 +9,7 @@ namespace Thing2D {
 
 	class GameObject {
 	public:
-		explicit GameObject(const std::string& filePath, int x, int y, int width, int height);
+		explicit GameObject(const std::string& filePath, float x, float y, int width, int height);
 
 		void update();
 		void draw();

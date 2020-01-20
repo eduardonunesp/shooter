@@ -14,7 +14,7 @@ namespace Thing2D {
 		int deltaTime;
 
 	private:
-		TimerManager() {}
+		TimerManager(): deltaTime(0) {}
 		~TimerManager() {}
 
 		static TimerManager* instance;
