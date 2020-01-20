@@ -12,9 +12,9 @@ namespace Thing2D {
 	public:
 		explicit GameObject(const std::string& texture_id, float x, float y, int width, int height);
 
-		void update();
-		void draw();
-		void destroy();
+		virtual void update();
+		virtual void draw();
+		virtual void destroy();
 		bool overlaps(GameObject* target);
 		
 		inline void move(const Vector &new_position) {
@@ -37,6 +37,8 @@ namespace Thing2D {
 		bool visible;
 		bool dead;
 		int life;
+		int alpha;
+		double angle;
 
 		Vector position;
 		Vector velocity;

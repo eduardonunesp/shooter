@@ -5,7 +5,7 @@
 namespace Thing2D {
 	GameObject::GameObject(const std::string& texture_id, float x, float y, int width, int height) :
 		texture_id(texture_id), position(x, y), velocity(0, 0), acceleartion(0, 0),
-		width(width), height(height), rect(x, y, width, height) {
+		width(width), height(height), rect(x, y, width, height), alpha(255), angle(0) {
 		visible = true;
 		dead = false;
 		life = 1;
@@ -23,7 +23,7 @@ namespace Thing2D {
 			return;
 		}
 
-		VideoManager::get_instance()->draw(texture_id, (int)position.x, (int)position.y, width, height, SDL_FLIP_NONE);
+		VideoManager::get_instance()->draw(texture_id, (int)position.x, (int)position.y, width, height, 0, 0, angle, alpha, SDL_FLIP_NONE);
 	}
 
 	void GameObject::destroy() {

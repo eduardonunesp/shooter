@@ -16,15 +16,14 @@ namespace Thing2D {
 		}
 
 		void init(int screen_width, int screen_height);
-		void draw(const std::string& texture_id, int x, int y, int width, int height, SDL_RendererFlip flip);
-		void drawFrame(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip);
+		void draw(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip);
 		void clear();
 		void render();
 		void destroy();
 		inline SDL_Renderer* get_renderer() { return renderer; }
-		SDL_Texture* load_texture(const std::string& filePath);
+		SDL_Texture* load_texture(const std::string& file_path, const::std::string& texture_id);
 		void clear_texture_map();
-		void clear_from_texture_map(const std::string textureId);
+		void clear_from_texture_map(const std::string texture_id);
 
 	private:
 		VideoManager() : window(NULL), renderer(NULL) {}

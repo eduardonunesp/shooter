@@ -24,24 +24,10 @@ namespace Thing2D {
 		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
-	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, SDL_RendererFlip flip) {
+	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_col, double angle, int alpha, SDL_RendererFlip flip) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
-
-		srcRect.x = 0;
-		srcRect.y = 0;
-		srcRect.w = destRect.w = width;
-		srcRect.h = destRect.h = height;
-		destRect.x = x;
-		destRect.y = y;
-
-		SDL_RenderCopyEx(renderer, texture_map[texture_id], &srcRect, &destRect, 0, 0, flip);
-	}
-
-	void VideoManager::drawFrame(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip) {
-		SDL_Rect srcRect;
-		SDL_Rect destRect;
-		srcRect.x = width * current_frame;
+		srcRect.x = width * current_col;
 		srcRect.y = height * current_row;
 		srcRect.w = destRect.w = width;
 		srcRect.h = destRect.h = height;
@@ -66,16 +52,17 @@ namespace Thing2D {
 		SDL_Quit();
 	}
 
-	SDL_Texture* VideoManager::load_texture(const std::string& filePath) {
-		LOG("Loading texture: " + filePath);
-		SDL_Texture* newTexture = IMG_LoadTexture(renderer, filePath.c_str());
+	SDL_Texture* VideoManager::load_texture(const std::string& file_path, const std::string& texture_id) {
+		LOG("Loading texture: " + file_path);
+		SDL_Texture* newTexture = IMG_LoadTexture(renderer, file_path.c_str());
 
 		if (!newTexture) {
-			LOG("Failed to load texture " + filePath + ":" + SDL_GetError());
+			LOG("Failed to load texture " + file_path + ":" + SDL_GetError());
 			return NULL;
 		}
 
-		texture_map[filePath] = newTexture;
+		LOG("Texture: " + texture_id + ":" + file_path);
+		texture_map[texture_id] = newTexture;
 		return newTexture;
 	}
 	
@@ -87,8 +74,8 @@ namespace Thing2D {
 		texture_map.clear();
 	}
 
-	void VideoManager::clear_from_texture_map(const std::string id) {
-		texture_map.erase(id);
+	void VideoManager::clear_from_texture_map(const std::string texture_id) {
+		texture_map.erase(texture_id);
 	}
 }
 

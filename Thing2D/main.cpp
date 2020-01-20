@@ -6,7 +6,7 @@ class LifeBar : public Group {
 public:
 	LifeBar(): Group(5, 5) {
 		for (int i = 0; i < 3; i++) {
-			GameObject* cursor = new GameObject("./assets/cursor.png", (float)i*15, 0, 10, 10);
+			GameObject* cursor = new GameObject("cursor", (float)i*15, 0, 10, 10);
 			add("cursor_" + std::to_string(i+1), cursor);
 		}
 	}
@@ -22,12 +22,16 @@ public:
 class PlayState : public State {
 public:
 	void init() {
-		gb = new GameObject("./assets/bot.png", 10, 10, 16, 16);
+		gb = new Sprite("bot", 10, 10, 16, 16);
 		gb->move(20, 20);
+		add(gb);
 
 		lifeBar = new LifeBar();
-		add(gb);
 		add(lifeBar);
+
+		bullet = new Sprite("bot_bullet", 100, 100, 4, 4, 1, 5);
+		bullet->add_animations("bullet", 2, 2, 0, 1);
+		add(bullet);
 	}
 
 	void update() {
@@ -58,9 +62,10 @@ public:
 
 	float speed = 10;
 	LifeBar* lifeBar;
-	GameObject* gb;
+	Sprite* gb;
+	Sprite* bullet;
 
-	PlayState() : gb(NULL), lifeBar(NULL) {}
+	PlayState() : gb(NULL), lifeBar(NULL), bullet(NULL) {}
 };
 
 class MyGame : public Game {
@@ -71,8 +76,9 @@ public:
 
 	void init() {
 		Game::init();
-		VideoManager::get_instance()->load_texture("./assets/bot.png");
-		VideoManager::get_instance()->load_texture("./assets/cursor.png");
+		VideoManager::get_instance()->load_texture("./assets/bot.png", "bot");
+		VideoManager::get_instance()->load_texture("./assets/cursor.png", "cursor");
+		VideoManager::get_instance()->load_texture("./assets/bot_bullet.png", "bot_bullet");
 	}
 
 private:

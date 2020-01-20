@@ -10,3 +10,4 @@
 #include "src/Logger.h"
 #include "src/Vector.h"
 #include "src/Rect.h"
+#include "src/Sprite.h"
