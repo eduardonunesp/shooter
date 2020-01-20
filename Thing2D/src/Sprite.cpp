@@ -37,6 +37,10 @@ namespace Thing2D {
 		curr_animation = new_animation;
 	}
 
+	void Sprite::add_animations(const std::string& name, int speed) {
+		add_animations(name, speed == 0 ? 1 : speed, false, 1, 0);
+	}
+
 	void Sprite::play(const std::string& animation_name) {
 		Animation* animation = animations[animation_name];
 		if (animation) {

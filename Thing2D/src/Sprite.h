@@ -12,6 +12,7 @@ namespace Thing2D {
 		virtual ~Sprite();
 
 		void add_animations(const std::string& name, int speed, bool loop, int frames, ...);
+		void add_animations(const std::string& name, int speed);
 		void play(const std::string& animation_name);
 
 		virtual void update();

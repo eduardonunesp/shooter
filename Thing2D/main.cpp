@@ -19,6 +19,27 @@ public:
 	}
 };
 
+class Bullet : public Sprite {
+public:
+	Bullet(float speed, Vector direction, float x, float y) : Sprite("bot_bullet", x, y, 4, 4, 1, 5) {
+		add_animations("shot", 0);
+		add_animations("explode", 2, false, 5, 0, 1, 2, 3, 4);
+		play("shot");
+		velocity = direction * speed;
+	}
+
+	void update() {
+		if (position.x >= 640 && visible) {
+			velocity = Vector::zero();
+			play("explode");
+			visible = false;
+			LOG("EXPLO");
+		}
+
+		Sprite::update();
+	}
+};
+
 class PlayState : public State {
 public:
 	void init() {
@@ -29,12 +50,8 @@ public:
 		lifeBar = new LifeBar();
 		add(lifeBar);
 
-		bullet = new Sprite("bot_bullet", 100, 100, 4, 4, 1, 5);
-		bullet->add_animations("bullet", 2, true, 5, 0, 1, 2, 3, 4);
-		add(bullet);
-
 		spaceman = new Sprite("spaceman", 200, 200, 8, 8, 4, 4);
-		spaceman->add_animations("run", 2, true, 3, 1, 2, 3);
+		spaceman->add_animations("run", 12, true, 3, 1, 2, 3, 0);
 		spaceman->add_animations("idle", 1, false, 1, 0);
 		spaceman->play("idle");
 		add(spaceman);
@@ -42,31 +59,37 @@ public:
 
 	void update() {
 		gb->velocity = Vector::zero();
+		spaceman->velocity = Vector::zero();
+		spaceman->play("idle");
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_RIGHT) && gb->position.x < 620) {
-			gb->velocity = Vector::right() * speed;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_RIGHT) && spaceman->position.x < 620) {
+			spaceman->velocity = Vector::right() * speed;
+			spaceman->play("run");
+			spaceman->flipped = false;
 		}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_LEFT) && gb->position.x > 0) {
-			gb->velocity = Vector::left() * speed;
+		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_LEFT) && spaceman->position.x > 0) {
+			spaceman->velocity = Vector::left() * speed;
+			spaceman->play("run");
+			spaceman->flipped = true;
 		}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_DOWN) && gb->position.y < 460) {
-			gb->velocity = Vector::down() * speed;
-		}
+		//if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_DOWN) && gb->position.y < 460) {
+		//	gb->velocity = Vector::down() * speed;
+		//}
 
-		if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_UP) && gb->position.y > 0) {
-			gb->velocity = Vector::up() * speed;
-		}
+		//if (InputManager::get_instance()->is_key_down(SDL_SCANCODE_UP) && gb->position.y > 0) {
+		//	gb->velocity = Vector::up() * speed;
+		//}
 
 		if (InputManager::get_instance()->is_key_up(SDL_SCANCODE_SPACE)) {
-			lifeBar->die();
+			add(new Bullet(10.0f, Vector::right(), spaceman->position.x, spaceman->position.y));
 		}
 
 		State::update();
 	}
 
-	float speed = 10;
+	float speed = 2;
 	LifeBar* lifeBar;
 	Sprite* gb;
 	Sprite* bullet;
