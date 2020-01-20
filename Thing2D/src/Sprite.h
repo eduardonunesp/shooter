@@ -11,7 +11,7 @@ namespace Thing2D {
 		Sprite(const std::string& texture_id, float x, float y, int width, int height, int rows, int cols);
 		virtual ~Sprite();
 
-		void add_animations(const std::string& name, int speed, int frames, ...);
+		void add_animations(const std::string& name, int speed, bool loop, int frames, ...);
 		void play(const std::string& animation_name);
 
 		virtual void update();
@@ -30,9 +30,13 @@ namespace Thing2D {
 
 		struct Animation {
 			Animation() :
+				loop(false),
+				sum(0),
 				anim_speed(1),
 				curr_anim_frame(0) {}
 
+			bool loop;
+			int sum;
 			int anim_speed;
 			int curr_anim_frame;
 			std::vector<int> frames;

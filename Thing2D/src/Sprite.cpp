@@ -18,16 +18,18 @@ namespace Thing2D {
 		destroy();
 	}
 
-	void Sprite::add_animations(const std::string& name, int speed, int frames, ...) {
+	void Sprite::add_animations(const std::string& name, int speed, bool loop, int frames, ...) {
 		Animation* new_animation = new Animation();
 		new_animation->anim_speed = speed;
+		new_animation->loop = loop;
 
 		va_list marker;
 		va_start(marker, frames);
 
 		for (int i = 0; i < frames; i++) {
-			LOG("Add animation with frame: " + std::to_string(i));
-			new_animation->frames.push_back(va_arg(marker, int));
+			int f = va_arg(marker, int);
+			LOG("Add animation " + name + " with frame: " + std::to_string(f));
+			new_animation->frames.push_back(f);
 		}
 
 		va_end(marker);

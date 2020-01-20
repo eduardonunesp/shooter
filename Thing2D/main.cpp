@@ -30,8 +30,14 @@ public:
 		add(lifeBar);
 
 		bullet = new Sprite("bot_bullet", 100, 100, 4, 4, 1, 5);
-		bullet->add_animations("bullet", 2, 2, 0, 1);
+		bullet->add_animations("bullet", 2, true, 5, 0, 1, 2, 3, 4);
 		add(bullet);
+
+		spaceman = new Sprite("spaceman", 200, 200, 8, 8, 4, 4);
+		spaceman->add_animations("run", 2, true, 3, 1, 2, 3);
+		spaceman->add_animations("idle", 1, false, 1, 0);
+		spaceman->play("idle");
+		add(spaceman);
 	}
 
 	void update() {
@@ -64,6 +70,7 @@ public:
 	LifeBar* lifeBar;
 	Sprite* gb;
 	Sprite* bullet;
+	Sprite* spaceman;
 
 	PlayState() : gb(NULL), lifeBar(NULL), bullet(NULL) {}
 };
@@ -76,9 +83,14 @@ public:
 
 	void init() {
 		Game::init();
-		VideoManager::get_instance()->load_texture("./assets/bot.png", "bot");
-		VideoManager::get_instance()->load_texture("./assets/cursor.png", "cursor");
-		VideoManager::get_instance()->load_texture("./assets/bot_bullet.png", "bot_bullet");
+		load_texture("./assets/bot.png", "bot");
+		load_texture("./assets/cursor.png", "cursor");
+		load_texture("./assets/bot_bullet.png", "bot_bullet");
+		load_texture("./assets/spaceman.png", "spaceman");
+	}
+
+	void load_texture(const std::string& path, const std::string& texture_id) {
+		VideoManager::get_instance()->load_texture(path, texture_id);
 	}
 
 private:
