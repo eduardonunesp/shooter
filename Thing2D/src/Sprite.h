@@ -36,6 +36,8 @@ namespace Thing2D {
 				anim_speed(1),
 				curr_anim_frame(0) {}
 
+			void set_current_frame(int frame);
+
 			bool loop;
 			int sum;
 			int anim_speed;

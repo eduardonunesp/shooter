@@ -50,7 +50,7 @@ namespace Thing2D {
 
 	void Sprite::update() {
 		if (curr_animation) {
-			curr_animation->curr_anim_frame = int(((SDL_GetTicks() / (1000 / curr_animation->anim_speed)) % curr_animation->frames.size()));
+			curr_animation->set_current_frame(int(((SDL_GetTicks() / (1000 / curr_animation->anim_speed)) % curr_animation->frames.size())));
 		}
 
 		GameObject::update();
@@ -80,5 +80,21 @@ namespace Thing2D {
 				anim_frames.push_back(new AnimFrame(x, y));
 			}
 		}
+	}
+
+	void Sprite::Animation::set_current_frame(int frame) {
+		if (curr_anim_frame == frame) {
+			return;
+		}
+
+		if (!loop) {
+			sum++;
+
+			if (sum >= frames.size()) {
+				return;
+			}
+		}
+
+		curr_anim_frame = frame;
 	}
 }
