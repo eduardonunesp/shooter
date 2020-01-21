@@ -17,8 +17,19 @@ namespace Thing2D {
 	void Group::add(const std::string& game_object_id, GameObject* game_object) {
 		if (game_object) {
 			LOG("Adding game object: " + game_object_id);
-			game_object->video_manager = video_manager;
-			game_object->input_manager = input_manager;
+			
+			if (video_manager) {
+				game_object->video_manager = video_manager;
+			}
+			
+			if (input_manager) {
+				game_object->input_manager = input_manager;
+			}
+
+			if (game) {
+				game_object->game = game;
+			}
+
 			game_object->move(position);
 			game_objects.push_back(game_object);
 			game_objects_map[game_object_id] = game_object;

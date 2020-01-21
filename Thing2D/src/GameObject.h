@@ -9,6 +9,7 @@ namespace Thing2D {
 	class Vector;
 	class VideoManager;
 	class InputManager;
+	class Game;
 
 	class GameObject {
 	public:
@@ -51,5 +52,6 @@ namespace Thing2D {
 
 		VideoManager* video_manager;
 		InputManager* input_manager;
+		Game* game;
 	};
 }

@@ -8,6 +8,7 @@ namespace Thing2D {
 	class GameObject;
 	class VideoManager;
 	class InputManager;
+	class Game;
 
 	class Group {
 	public:
@@ -46,6 +47,7 @@ namespace Thing2D {
 		Vector position;
 		VideoManager* video_manager;
 		InputManager* input_manager;
+		Game* game;
 
 	private:
 		static int id_counter;

@@ -2,55 +2,67 @@
 
 using namespace Thing2D;
 
-class Spaceman : public Sprite {
+class Animate : public Sprite {
 public:
-	Spaceman() : Sprite("spaceman", 200, 200, 8, 8, 4, 4), speed(1.0f) {
-		add_animations("run", 12, true, 4, 1, 2, 3, 0);
-		add_animations("idle", 0);
+	typedef enum {
+		RUNNING_RIGHT,
+		RUNNING_LEFT
+	} AnimateStates;
+
+	Animate() : Sprite("animate", 200, 200, 130, 82, 1, 6), speed(5.0f), curr_state(RUNNING_RIGHT) {
+		add_animations("run", 12, true, 6, 0, 1, 2, 3, 4, 5);
 	}
 
 	void update() override {
-		velocity = Vector::zero();
-		play("idle");
-
-		if (input_manager->is_key_down(SDL_SCANCODE_RIGHT)) {
-			play("run");
+		switch (curr_state) {
+		case RUNNING_RIGHT:
 			velocity = Vector::right() * speed;
 			flipped = false;
-		}
 
-		if (input_manager->is_key_down(SDL_SCANCODE_LEFT)) {
-			play("run");
+			if (position.x + width >= game->get_screen_width()) {
+				curr_state = RUNNING_LEFT;
+			}
+
+			break;
+		case RUNNING_LEFT:
 			velocity = Vector::left() * speed;
 			flipped = true;
+
+			if (position.x <= 0) {
+				curr_state = RUNNING_RIGHT;
+			}
+
+			break;
 		}
 
 		Sprite::update();
 	}
 protected:
 	float speed;
+	AnimateStates curr_state;
+	
 };
 
 class PlayState : public State {
 public:
-	PlayState() : spaceman(NULL) {}
+	PlayState() : animate(NULL) {}
 
 	void init() override {
-		spaceman = new Spaceman();
-		add(spaceman);
+		animate = new Animate();
+		add(animate);
 	}
 
 protected:
-	Spaceman* spaceman;
+	Animate* animate;
 };
 
-class MyGame : public Game {
+class Sandbox : public Game {
 public:
-	MyGame() : Game(640, 480) {}
+	Sandbox() : Game(640, 480) {}
 
 	void init() override {
 		Game::init();
-		video_manager->load_texture("./assets/spaceman.png", "spaceman");
+		video_manager->load_texture("./assets/animate.png", "animate");
 		add_state("play_state", new PlayState(), true);
 	}
 
@@ -59,10 +71,10 @@ private:
 };
 
 int main() {
-	MyGame* game = new MyGame();
-	game->init();
-	game->run();
-	delete game;
+	Sandbox* sandbox = new Sandbox();
+	sandbox->init();
+	sandbox->run();
+	delete sandbox;
 
 	return 0;
 }

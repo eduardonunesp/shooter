@@ -23,6 +23,10 @@ namespace Thing2D {
 		auto get_current_state(const std::string& state_id);
 		void set_current_state(const std::string& state_id);
 
+		// Window properties
+		inline int get_screen_width() { return screen_width; }
+		inline int get_screen_height() { return screen_height; }
+
 	protected:
 		int screen_width;
 		int screen_height;

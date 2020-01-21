@@ -59,6 +59,7 @@ namespace Thing2D {
 			}
 
 			current_state = new_state;
+			current_state->game = this;
 			current_state->video_manager = video_manager;
 			current_state->input_manager = input_manager;
 
