@@ -3,11 +3,19 @@
 #include "Group.h"
 
 namespace Thing2D {
+	class VideoManager;
+	class InputManager;
+
 	class State : public Group {
 	public:
-		State() : Group() {}
-		virtual ~State() {};
+		State() : 
+			Group(), 
+			video_manager(NULL), 
+			input_manager(NULL) {}
 
-		virtual const std::string& state_id() = 0;
+	protected:
+		friend class Game;
+		VideoManager* video_manager;
+		InputManager* input_manager;
 	};
 }

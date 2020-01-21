@@ -11,7 +11,7 @@ namespace Thing2D {
 	class GameObject {
 	public:
 		GameObject(const std::string& texture_id, float x, float y, int width, int height);
-		~GameObject();
+		virtual ~GameObject();
 
 		virtual void update();
 		virtual void draw();
@@ -19,28 +19,20 @@ namespace Thing2D {
 
 		bool overlaps(GameObject* target);
 		
-		inline void move(const Vector &new_position) {
-			position += new_position;
-		}
+		void move(const Vector& new_position);
+		void move(int x, int y);
+		void hurt(int damage);
 
-		inline void move(int x, int y) {
-			position.x += x;
-			position.y += y;
-		}
-		
-		inline void hurt(int damage) {
-			life -= damage;
+		inline bool is_visible() { return visible; }
+		inline bool is_dead() { return dead; }
+		inline bool is_flipped() { return flipped; }
 
-			if (life <= 0) {
-				dead = true;
-			}
-		}
-
+	protected:
 		bool visible;
 		bool dead;
 		bool flipped;
-
 		int life;
+
 		int alpha;
 		double angle;
 
@@ -49,7 +41,6 @@ namespace Thing2D {
 		Vector acceleartion;
 		Rect rect;
 
-	protected:
 		int width, height;
 		int curr_row = 0;
 		int curr_col = 0;

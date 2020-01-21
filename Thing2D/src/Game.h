@@ -4,13 +4,13 @@
 #include <map>
 
 namespace Thing2D {
-	class State;
 	class VideoManager;
 	class InputManager;
+	class State;
 
 	class Game {
 	public:
-		Game(int screen_width, int screen_height, State* initial_state);
+		Game(int screen_width, int screen_height);
 		virtual ~Game();
 
 		// Lifecycle
@@ -19,7 +19,7 @@ namespace Thing2D {
 		virtual void destroy();
 
 		// State management
-		void add_state(State *state, bool is_the_current_state);
+		void add_state(const std::string& state_id, State *state, bool is_the_current_state = false);
 		auto get_current_state(const std::string& state_id);
 		void set_current_state(const std::string& state_id);
 
@@ -32,7 +32,6 @@ namespace Thing2D {
 
 	private:
 		bool running;
-		State* initial_state;
 		State* current_state;
 		std::map<std::string, State*> states;
 	};

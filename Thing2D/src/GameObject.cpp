@@ -40,4 +40,21 @@ namespace Thing2D {
 
 		return false;
 	}
+	
+	void GameObject::move(const Vector& new_position) {
+		position += new_position;
+	}
+	
+	void GameObject::move(int x, int y) {
+		position.x += x;
+		position.y += y;
+	}
+	
+	void GameObject::hurt(int damage) {
+		life -= damage;
+
+		if (life <= 0) {
+			dead = true;
+		}
+	}
 }

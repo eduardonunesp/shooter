@@ -2,19 +2,20 @@
 #include "InputManager.h"
 #include "VideoManager.h"
 #include "State.h"
+#include "Logger.h"
 
 namespace Thing2D {
 	const int FPS = 60;
 	const int DELAY_TIME = 1000 / FPS;
 
-	Game::Game(int screen_width, int screen_height, State* initial_state) :
+	Game::Game(int screen_width, int screen_height) :
 		screen_width(screen_width),
 		screen_height(screen_height),
 		video_manager(NULL),
 		input_manager(NULL),
-		initial_state(initial_state),
 		current_state(NULL),
-		running(false) {}
+		running(false) {
+	}
 
 	Game::~Game() {
 		destroy();
@@ -30,15 +31,15 @@ namespace Thing2D {
 		input_manager->init();
 
 		running = true;
-		add_state(initial_state, true);
 	}
 
-	void Game::add_state(State* state, bool is_the_current_state) {
+	void Game::add_state(const std::string& state_id, State* state, bool is_the_current_state) {
 		if (state) {
-			states[state->state_id()] = state;
+			LOG("State id: " + state_id);
+			states[state_id] = state;
 
 			if (is_the_current_state) {
-				set_current_state(state->state_id());
+				set_current_state(state_id);
 			}
 		}
 	}
@@ -58,6 +59,8 @@ namespace Thing2D {
 			}
 
 			current_state = new_state;
+			current_state->video_manager = video_manager;
+			current_state->input_manager = input_manager;
 			new_state->init();
 		}
 	}

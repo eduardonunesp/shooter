@@ -13,17 +13,20 @@ namespace Thing2D {
 	public:
 		Group(float x, float y): position(x, y) {}
 		Group() : position(0, 0) {}
-		virtual ~Group() {};
+		virtual ~Group() {
+			destroy();
+		};
 
-		virtual void init();
+		virtual void init() {};
 		virtual void update();
+		
+		virtual void add(const std::string& id, GameObject* game_object);
+		virtual void add(GameObject* game_object);
+		virtual void add(Group* other_group);
 
-		void add(const std::string& id, GameObject* game_object);
-		void add(GameObject* game_object);
-		void add(Group* other_group);
-		void remove(GameObject* game_object);
-		void remove(const std::string& id);
-		inline GameObject *get(const std::string& id) {	return game_object_map[id]; }
+		void remove(GameObject* game_object_to_remove);
+		void remove(const std::string& game_object_id);
+		inline GameObject *get(const std::string& id) {	return game_objects_map[id]; }
 		void draw();
 		
 		int count() { return game_objects.size(); }
@@ -37,7 +40,7 @@ namespace Thing2D {
 
 	private:
 		static int id_counter;
-		std::map<std::string, GameObject*> game_object_map;
+		std::map<std::string, GameObject*> game_objects_map;
 		std::vector<GameObject*> game_objects;
 	};
 }
