@@ -52,9 +52,25 @@ public:
 		add(animate);
 
 		audio_manager->play_music("mode");
+		playing = true;
+	}
+
+	void update() override {
+		if (input_manager->is_key_up(SDL_SCANCODE_ESCAPE)) {
+			if (playing) {
+				audio_manager->stop_music("mode");
+			} else {
+				audio_manager->resume_music("mode");
+			}
+
+			playing = !playing;
+		}
+
+		State::update();
 	}
 
 protected:
+	bool playing;
 	Animate* animate;
 };
 

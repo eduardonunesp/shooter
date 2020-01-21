@@ -12,6 +12,8 @@ namespace Thing2D {
 		void init() {}
 		void load_music(const std::string& file_path, bool loop, int volume, const std::string& music_id);
 		void play_music(const std::string& music_id);
+		void stop_music(const std::string& music_id);
+		void resume_music(const std::string& music_id);
 
 	private:
 		struct Sound {

@@ -9,8 +9,9 @@ namespace Thing2D {
 	
 	void AudioManager::Music::play() {
 		if (!Mix_PlayingMusic()) {
-			LOG("PLAY: ");
-			Mix_PlayMusic(mix_music, (int)loop);
+			if (Mix_PlayMusic(mix_music, loop ? -1 : 1) == -1) {
+				ERR("Play Music: " << Mix_GetError());
+			}
 		}
 	}
 	
@@ -38,17 +39,18 @@ namespace Thing2D {
 			throw "Failed to init Mixer";
 		}
 		
-		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
+		if (Mix_OpenAudio(22050, AUDIO_S16, 2, (4096 / 2) < 0)) {
 			throw "Failed to init OpenAudio";
 		}
 
 		Mix_VolumeMusic(volume);
-		auto music = Mix_LoadMUS(file_path.c_str());
+		auto mix_music = Mix_LoadMUS(file_path.c_str());
 
-		if (music) {
+		if (mix_music) {
 			auto music = new Music();
 			music->loop = loop;
 			music->volume = volume;
+			music->mix_music = mix_music;
 			musics[music_id] = music;
 		} else {
 			ERR("Music not loaded " << music_id << " (" << SDL_GetError() << ")");
@@ -59,6 +61,20 @@ namespace Thing2D {
 		auto music = musics[music_id];
 		if (music) {
 			music->play();
+		}
+	}
+	
+	void AudioManager::stop_music(const std::string& music_id) {
+		auto music = musics[music_id];
+		if (music) {
+			music->stop();
+		}
+	}
+	
+	void AudioManager::resume_music(const std::string& music_id) {
+		auto music = musics[music_id];
+		if (music) {
+			music->resume();
 		}
 	}
 }
