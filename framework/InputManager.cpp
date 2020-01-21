@@ -6,9 +6,11 @@ namespace Thing2D {
 	bool InputManager::init()	{
 		LOG("Initialize Input Manager");
 
-		int iResult = SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-		if (iResult < 0)
+		if (SDL_InitSubSystem(SDL_INIT_JOYSTICK) < 0) {
+			ERR("Failed to init joystick sub system");
 			return false;
+		}
+
 		return true;
 	}
 
@@ -42,6 +44,7 @@ namespace Thing2D {
 	}
 
 	void InputManager::destroy() {
+		LOG("Destroying input resources");
 		SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
 	}
 	

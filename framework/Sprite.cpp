@@ -15,10 +15,13 @@ namespace Thing2D {
 	}
 
 	Sprite::~Sprite() {
+		LOG("Destroying sprite resource");
 		destroy();
 	}
 
-	void Sprite::add_animations(const std::string& name, int speed, bool loop, int frames, ...) {
+	void Sprite::add_animations(const std::string& animation_id, int speed, bool loop, int frames, ...) {
+		LOG("Adding animation :" << animation_id << " speed: " << speed << " loop: " << loop);
+
 		Animation* new_animation = new Animation();
 		new_animation->anim_speed = speed;
 		new_animation->loop = loop;
@@ -28,21 +31,21 @@ namespace Thing2D {
 
 		for (int i = 0; i < frames; i++) {
 			int f = va_arg(marker, int);
-			LOG("Add animation " + name + " with frame: " + std::to_string(f));
+			LOG("Add animation " + animation_id + " with frame: " + std::to_string(f));
 			new_animation->frames.push_back(f);
 		}
 
 		va_end(marker);
-		animations[name] = new_animation;
+		animations[animation_id] = new_animation;
 		curr_animation = new_animation;
 	}
 
-	void Sprite::add_animations(const std::string& name, int speed) {
-		add_animations(name, speed == 0 ? 1 : speed, false, 1, 0);
+	void Sprite::add_idle_animation(const std::string& animation_id) {
+		add_animations(animation_id, 1, false, 1, 0);
 	}
 
-	void Sprite::play(const std::string& animation_name) {
-		Animation* animation = animations[animation_name];
+	void Sprite::play(const std::string& animation_id) {
+		Animation* animation = animations[animation_id];
 		if (animation) {
 			curr_animation = animation;
 		}
@@ -74,9 +77,9 @@ namespace Thing2D {
 	}
 
 	void Sprite::calculate_frames(int rows, int cols) {
+		LOG("Parse sprite frames " << rows << ":" << cols);
 		for (int x = 0; x < rows; x++) {
 			for (int y = 0; y < cols; y++) {
-				LOG("Parse sprite frame " << x << ":" << y);
 				anim_frames.push_back(new AnimFrame(x, y));
 			}
 		}

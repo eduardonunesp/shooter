@@ -34,6 +34,10 @@ namespace Thing2D {
 		});
 	}
 
+	void AudioManager::init() {
+		LOG("Initialize Audio Manager");
+	}
+
 	void AudioManager::load_music(const std::string& file_path, bool loop, int volume, const std::string& music_id) {
 		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) < 0) {
 			throw "Failed to init Mixer";

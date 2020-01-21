@@ -11,11 +11,12 @@ namespace Thing2D {
 
 	Game::Game(int screen_width, int screen_height) :
 		screen_width(screen_width), screen_height(screen_height),
-		video_manager(nullptr), input_manager(nullptr),
+		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
 		current_state(nullptr),
 		running(false) {}
 
 	Game::~Game() {
+		LOG("Destroying game resources");
 		destroy();
 	}
 
@@ -34,6 +35,8 @@ namespace Thing2D {
 		audio_manager->init();
 
 		running = true;
+
+		LOG("Game initialized");
 	}
 
 	void Game::add_state(const std::string& state_id, State* state, bool is_the_current_state) {
@@ -77,6 +80,8 @@ namespace Thing2D {
 	void Game::run() {
 		Uint32 frame_start = 0;
 		Uint32 frame_time = 0;
+
+		LOG("Running the main loop " << running);
 
 		while (running) {
 			frame_start = SDL_GetTicks();

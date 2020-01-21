@@ -1,10 +1,11 @@
 #include "VideoManager.h"
+#include <algorithm>
 #include <SDL_image.h>
 #include "Logger.h"
 
 namespace Thing2D {
 	void VideoManager::init(int screen_width, int screen_height) {
-		LOG("Initialize VideoManager");
+		LOG("Initialize Video Manager");
 		
 		if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
 			throw "Couldn't initialize SDL";
@@ -66,10 +67,10 @@ namespace Thing2D {
 	}
 	
 	void VideoManager::clear_texture_map() {
-		for (std::pair<std::string, SDL_Texture*> texture : texture_map) {
+		LOG("Clearing all texture map");
+		std::for_each(texture_map.begin(), texture_map.end(), [](auto texture) {
 			SDL_DestroyTexture(texture.second);
-		}
-
+		});
 		texture_map.clear();
 	}
 

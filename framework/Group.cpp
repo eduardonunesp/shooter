@@ -48,12 +48,14 @@ namespace Thing2D {
 	}
 
 	void Group::add(Group* other_group)	{
+		LOG("Adding from another group");
 		std::for_each(other_group->game_objects.begin(), other_group->game_objects.end(), [&](auto game_object) {
 			add(game_object);
 		});
 	}
 
 	void Group::remove(GameObject* game_object_to_remove)	{
+		LOG("Removing game object: " << game_object_to_remove);
 		game_objects.erase(std::remove_if(game_objects.begin(), game_objects.end(), [&](auto game_object) {
 			return game_object == game_object_to_remove;
 		}), game_objects.end());
@@ -92,6 +94,7 @@ namespace Thing2D {
 	}
 
 	void Group::destroy() {
+		LOG("Destroy resources on group");
 		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
 			game_object->destroy();
 		});

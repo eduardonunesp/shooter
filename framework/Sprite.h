@@ -11,12 +11,12 @@ namespace Thing2D {
 		Sprite(const std::string& texture_id, float x, float y, int width, int height, int rows, int cols);
 		virtual ~Sprite();
 
-		void add_animations(const std::string& name, int speed, bool loop, int frames, ...);
-		void add_animations(const std::string& name, int speed);
-		void play(const std::string& animation_name);
+		void add_animations(const std::string& animation_id, int speed, bool loop, int frames, ...);
+		void add_idle_animation(const std::string& animation_id);
+		void play(const std::string& animation_id);
 
 		virtual void update();
-		void draw();
+		virtual void draw();
 		virtual void destroy();
 
 	private:
