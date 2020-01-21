@@ -99,8 +99,6 @@ namespace Thing2D {
 			}
 		}
 
-		LOG(frame);
-
 		curr_anim_frame = frame;
 	}
 }

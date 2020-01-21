@@ -9,10 +9,8 @@ namespace Thing2D {
 	const int DELAY_TIME = 1000 / FPS;
 
 	Game::Game(int screen_width, int screen_height) :
-		screen_width(screen_width),
-		screen_height(screen_height),
-		video_manager(NULL),
-		input_manager(NULL),
+		screen_width(screen_width), screen_height(screen_height),
+		video_manager(NULL), input_manager(NULL),
 		current_state(NULL),
 		running(false) {}
 
@@ -21,6 +19,8 @@ namespace Thing2D {
 	}
 
 	void Game::init() {
+		LOG("Init Game");
+		
 		SDL_SetMainReady();
 		
 		video_manager = new VideoManager();
@@ -34,7 +34,8 @@ namespace Thing2D {
 
 	void Game::add_state(const std::string& state_id, State* state, bool is_the_current_state) {
 		if (state) {
-			LOG("State id: " + state_id);
+			LOG("Adding state id: " + state_id);
+
 			states[state_id] = state;
 
 			if (is_the_current_state) {
@@ -60,6 +61,9 @@ namespace Thing2D {
 			current_state = new_state;
 			current_state->video_manager = video_manager;
 			current_state->input_manager = input_manager;
+
+			LOG("Set current state: " + state_id);
+
 			new_state->init();
 		}
 	}
@@ -95,6 +99,7 @@ namespace Thing2D {
 	}
 
 	void Game::destroy() {
+		LOG("Destroying Game");
 		input_manager->destroy();
 		video_manager->destroy();
 	}

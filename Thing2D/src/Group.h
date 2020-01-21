@@ -27,6 +27,7 @@ namespace Thing2D {
 
 		virtual void init() {};
 		virtual void update();
+		virtual void destroy();
 
 		virtual void add(const std::string& game_object_id, GameObject* game_object);
 		virtual void add(GameObject* game_object);
@@ -34,14 +35,12 @@ namespace Thing2D {
 
 		void remove(GameObject* game_object_to_remove);
 		void remove(const std::string& game_object_id);
-		inline GameObject* get(const std::string& id) { return game_objects_map[id]; }
+		inline auto get(const std::string& id) { return game_objects_map[id]; }
 		void draw();
 
 		int count() { return game_objects.size(); }
 		int count_visible();
 		int count_dead();
-
-		void destroy();
 
 	protected:
 		Vector position;

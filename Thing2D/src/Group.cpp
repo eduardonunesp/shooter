@@ -2,6 +2,8 @@
 #include "Group.h"
 #include "GameObject.h"
 #include "Logger.h"
+#include "VideoManager.h"
+#include "InputManager.h"
 
 namespace Thing2D {
 	int Group::id_counter = 0;
@@ -15,6 +17,8 @@ namespace Thing2D {
 	void Group::add(const std::string& game_object_id, GameObject* game_object) {
 		if (game_object) {
 			LOG("Adding game object: " + game_object_id);
+			game_object->video_manager = video_manager;
+			game_object->input_manager = input_manager;
 			game_object->move(position);
 			game_objects.push_back(game_object);
 			game_objects_map[game_object_id] = game_object;

@@ -30,7 +30,7 @@ namespace Thing2D {
 		inline bool is_flipped() { return flipped; }
 
 	protected:
-		friend class State;
+		friend class Group;
 
 		bool visible;
 		bool dead;

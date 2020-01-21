@@ -45,6 +45,7 @@ namespace Thing2D {
 	}
 
 	void VideoManager::destroy() {
+		LOG("Destroying VideoManager");
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
 		SDL_Quit();
@@ -73,6 +74,7 @@ namespace Thing2D {
 	}
 
 	void VideoManager::clear_from_texture_map(const std::string texture_id) {
+		LOG("Remove texture: " + texture_id);
 		texture_map.erase(texture_id);
 	}
 }
