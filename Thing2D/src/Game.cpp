@@ -14,8 +14,7 @@ namespace Thing2D {
 		video_manager(NULL),
 		input_manager(NULL),
 		current_state(NULL),
-		running(false) {
-	}
+		running(false) {}
 
 	Game::~Game() {
 		destroy();

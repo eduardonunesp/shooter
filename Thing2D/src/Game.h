@@ -19,7 +19,7 @@ namespace Thing2D {
 		virtual void destroy();
 
 		// State management
-		void add_state(const std::string& state_id, State *state, bool is_the_current_state = false);
+		void add_state(const std::string& state_id, State* state, bool is_the_current_state = false);
 		auto get_current_state(const std::string& state_id);
 		void set_current_state(const std::string& state_id);
 

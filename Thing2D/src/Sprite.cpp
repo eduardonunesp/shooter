@@ -9,7 +9,7 @@ namespace Thing2D {
 		calculate_frames(0, 0);
 	}
 
-	Sprite::Sprite(const std::string& texture_id, float x, float y, int width, int height, int rows, int cols):
+	Sprite::Sprite(const std::string& texture_id, float x, float y, int width, int height, int rows, int cols) :
 		GameObject(texture_id, x, y, width, height), curr_animation(NULL) {
 		calculate_frames(rows, cols);
 	}
@@ -56,7 +56,7 @@ namespace Thing2D {
 		GameObject::update();
 	}
 
-	void Sprite::draw()	{
+	void Sprite::draw() {
 		if (curr_animation) {
 			Animation* animation = curr_animation;
 			AnimFrame* anim_frame = anim_frames[animation->curr_anim_frame];
@@ -73,7 +73,7 @@ namespace Thing2D {
 		}
 	}
 
-	void Sprite::calculate_frames(int rows, int cols)	{
+	void Sprite::calculate_frames(int rows, int cols) {
 		for (int x = 0; x < rows; x++) {
 			for (int y = 0; y < cols; y++) {
 				LOG("Parse sprite frame " << x << ":" << y);

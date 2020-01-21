@@ -7,6 +7,8 @@
 
 namespace Thing2D {
 	class Vector;
+	class VideoManager;
+	class InputManager;
 
 	class GameObject {
 	public:
@@ -18,7 +20,7 @@ namespace Thing2D {
 		virtual void destroy();
 
 		bool overlaps(GameObject* target);
-		
+
 		void move(const Vector& new_position);
 		void move(int x, int y);
 		void hurt(int damage);
@@ -28,6 +30,8 @@ namespace Thing2D {
 		inline bool is_flipped() { return flipped; }
 
 	protected:
+		friend class State;
+
 		bool visible;
 		bool dead;
 		bool flipped;
@@ -42,8 +46,10 @@ namespace Thing2D {
 		Rect rect;
 
 		int width, height;
-		int curr_row = 0;
-		int curr_col = 0;
+		int curr_row, curr_col;
 		std::string texture_id;
+
+		VideoManager* video_manager;
+		InputManager* input_manager;
 	};
 }

@@ -3,19 +3,13 @@
 #include "Group.h"
 
 namespace Thing2D {
-	class VideoManager;
-	class InputManager;
+	class GameObject;
 
 	class State : public Group {
 	public:
-		State() : 
-			Group(), 
-			video_manager(NULL), 
-			input_manager(NULL) {}
+		State() : Group() {}
 
 	protected:
 		friend class Game;
-		VideoManager* video_manager;
-		InputManager* input_manager;
 	};
 }

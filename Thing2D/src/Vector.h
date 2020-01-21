@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <iostream>
 #include <math.h>
 
@@ -20,7 +19,7 @@ namespace Thing2D {
 
 		Vector(float x, float y) : x(x), y(y) {}
 
-		int count() { return (int) sqrt(x * x + y * y); }
+		int count() { return (int)sqrt(x * x + y * y); }
 
 		Vector operator+(const Vector& v2) const { return Vector(x + v2.x, y + v2.y); }
 		friend Vector& operator+=(Vector& v1, const Vector& v2) {
@@ -37,7 +36,6 @@ namespace Thing2D {
 
 			return v1;
 		}
-
 
 		Vector operator*(float scalar) {
 			return Vector(x * scalar, y * scalar);
@@ -60,7 +58,6 @@ namespace Thing2D {
 
 			return *this;
 		}
-
 
 		void normalize() {
 			int l = count();

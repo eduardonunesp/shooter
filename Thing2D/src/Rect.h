@@ -13,8 +13,8 @@ namespace Thing2D {
 
 		inline SDL_Rect to_sdl_rect() {
 			SDL_Rect rect;
-			rect.x = (int) x;
-			rect.y = (int) y;
+			rect.x = (int)x;
+			rect.y = (int)y;
 			rect.h = h;
 			rect.w = w;
 			return rect;
@@ -22,7 +22,7 @@ namespace Thing2D {
 
 		const static int buffer = 4;
 
-		bool overlaps(Rect *other_rect) {
+		bool overlaps(Rect* other_rect) {
 			int aHBuf = this->h / buffer;
 			int aWBuf = this->w / buffer;
 
@@ -33,7 +33,7 @@ namespace Thing2D {
 			if (this->y + aHBuf >= (other_rect->y + other_rect->h) - bHBuf) { return false; }
 			if ((this->x + this->w) - aWBuf <= other_rect->x + bWBuf) { return false; }
 			if (this->x + aWBuf >= (other_rect->x + other_rect->w) - bWBuf) { return false; }
-			
+
 			return true;
 		}
 	};

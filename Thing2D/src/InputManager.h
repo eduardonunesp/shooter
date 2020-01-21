@@ -23,4 +23,3 @@ namespace Thing2D {
 		static InputManager* instance;
 	};
 }
-
