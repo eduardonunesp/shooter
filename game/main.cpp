@@ -1,4 +1,6 @@
-#include "Thing2D.h"
+#define main SDL_main
+#include <windows.h>
+#include <Thing2D.h>
 
 using namespace Thing2D;
 
@@ -89,7 +91,13 @@ private:
 	PlayState play_state;
 };
 
-int main() {
+int main(int argc, char* args[]) {
+	AllocConsole();
+	freopen("conin$", "r", stdin);
+	freopen("conout$", "w", stdout);
+	freopen("conout$", "w", stderr);
+	printf("Debugging Window:\n");
+
 	Sandbox* sandbox = new Sandbox();
 	sandbox->init();
 	sandbox->run();

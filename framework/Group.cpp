@@ -75,6 +75,16 @@ namespace Thing2D {
 		});
 	}
 
+	std::vector<GameObject*> Group::all_by_tag(const std::string& tag) {
+		std::vector<GameObject*> objects_found;
+		std::for_each(game_objects.begin(), game_objects.end(), [&](auto game_object) {
+			if (game_object->tag == tag) {
+				objects_found.push_back(game_object);
+			}
+		});
+		return objects_found;
+	}
+
 	void Group::draw() {
 		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
 			return game_object->draw();

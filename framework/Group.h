@@ -43,6 +43,7 @@ namespace Thing2D {
 		int count() { return game_objects.size(); }
 		int count_visible();
 		int count_dead();
+		std::vector<GameObject*> all_by_tag(const std::string& tag);
 
 	protected:
 		Vector position;

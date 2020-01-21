@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <string>
+#include <vector>
 #include "Vector.h"
 #include "Rect.h"
 
@@ -33,6 +34,8 @@ namespace Thing2D {
 
 	protected:
 		friend class Group;
+
+		std::string tag;
 
 		bool visible;
 		bool dead;
