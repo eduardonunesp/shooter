@@ -28,7 +28,7 @@ namespace Thing2D {
 			return;
 		}
 
-		VideoManager::get_instance()->draw(texture_id, (int)position.x, (int)position.y, width, height, curr_row, curr_col, angle, alpha, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+//		VideoManager::get_instance()->draw(texture_id, (int)position.x, (int)position.y, width, height, curr_row, curr_col, angle, alpha, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 	}
 
 	void GameObject::destroy() {}

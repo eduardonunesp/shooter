@@ -6,13 +6,8 @@
 namespace Thing2D {
 	class InputManager {
 	public:
-		static InputManager* get_instance() {
-			if (!instance) {
-				instance = new InputManager();
-			}
-
-			return instance;
-		}
+		InputManager() : quit_pressed(false) {}
+		~InputManager() {}
 
 		bool init();
 		void read();
@@ -22,9 +17,6 @@ namespace Thing2D {
 		bool is_key_up(SDL_Scancode key_code);
 
 	private:
-		InputManager(): quit_pressed(false) {}
-		~InputManager() {}
-
 		std::map<SDL_Scancode, bool> keys_up;
 		std::map<SDL_Scancode, bool> keys_down;
 		bool quit_pressed;

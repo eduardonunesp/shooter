@@ -29,6 +29,8 @@ public:
 		add(spaceman);
 	}
 
+	const std::string& state_id() override { return "play_state"; }
+
 	void update() {
 		State::update();
 	}
@@ -40,21 +42,15 @@ public:
 
 class MyGame : public Game {
 public:
-	MyGame() : Game(640, 480, 0) {
-		add_state(&playState);
-	}
+	MyGame() : Game(640, 480, &play_state) {}
 
 	void init() {
 		Game::init();
-		load_texture("./assets/spaceman.png", "spaceman");
-	}
-
-	void load_texture(const std::string& path, const std::string& texture_id) {
-		VideoManager::get_instance()->load_texture(path, texture_id);
+		video_manager->load_texture("./assets/spaceman.png", "spaceman");
 	}
 
 private:
-	PlayState playState;
+	PlayState play_state;
 };
 
 int main() {

@@ -144,7 +144,6 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Group.cpp" />
-    <ClCompile Include="src\TimerManager.cpp" />
     <ClCompile Include="src\VideoManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +155,6 @@
     <ClInclude Include="src\Rect.h" />
     <ClInclude Include="src\Group.h" />
     <ClInclude Include="src\State.h" />
-    <ClInclude Include="src\TimerManager.h" />
     <ClInclude Include="src\Vector.h" />
     <ClInclude Include="src\VideoManager.h" />
     <ClInclude Include="Thing2D.h" />

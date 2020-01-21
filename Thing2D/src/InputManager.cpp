@@ -3,8 +3,6 @@
 #include <string>
 
 namespace Thing2D {
-	InputManager* InputManager::instance = NULL;
-
 	bool InputManager::init()	{
 		LOG("Initialize Input Manager");
 

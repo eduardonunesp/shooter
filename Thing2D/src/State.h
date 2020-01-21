@@ -7,5 +7,7 @@ namespace Thing2D {
 	public:
 		State() : Group() {}
 		virtual ~State() {};
+
+		virtual const std::string& state_id() = 0;
 	};
 }

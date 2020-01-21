@@ -7,13 +7,8 @@
 namespace Thing2D {
 	class VideoManager {
 	public:
-		static VideoManager* get_instance() {
-			if (!instance) {
-				instance = new VideoManager();
-			}
-
-			return instance;
-		}
+		VideoManager() : window(NULL), renderer(NULL) {}
+		~VideoManager() { destroy(); }
 
 		void init(int screen_width, int screen_height);
 		void draw(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip);
@@ -26,9 +21,6 @@ namespace Thing2D {
 		void clear_from_texture_map(const std::string texture_id);
 
 	private:
-		VideoManager() : window(NULL), renderer(NULL) {}
-		~VideoManager() { destroy(); }
-
 		SDL_Window* window;
 		SDL_Renderer* renderer;
 		std::map<std::string, SDL_Texture*> texture_map;

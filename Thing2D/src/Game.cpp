@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "InputManager.h"
 #include "VideoManager.h"
-#include "TimerManager.h"
 #include "State.h"
 
 namespace Thing2D {
@@ -9,9 +8,11 @@ namespace Thing2D {
 	const int DELAY_TIME = 1000 / FPS;
 
 	Game::Game(int screen_width, int screen_height, State* initial_state) :
-		screen_width(screen_width), 
-		screen_height(screen_height), 
-		initial_state(initial_state), 
+		screen_width(screen_width),
+		screen_height(screen_height),
+		video_manager(NULL),
+		input_manager(NULL),
+		initial_state(initial_state),
 		current_state(NULL),
 		running(false) {}
 
@@ -21,66 +22,78 @@ namespace Thing2D {
 
 	void Game::init() {
 		SDL_SetMainReady();
-		VideoManager::get_instance()->init(screen_width, screen_height);
-		InputManager::get_instance()->init();
-		running = true;
-		add_state(initial_state);
-	}
-
-	void Game::add_state(State* state) {
-		states.push_back(state);
-
-		if (states.size() == 1) {
-			set_current_state(0);
-		}
-	}
-
-	void Game::set_current_state(int stateIdx) {
-		State* newState = states.at(stateIdx);
-
-		if (current_state) {
-			State* oldState = current_state;
-			oldState->destroy();
-			current_state = NULL;
-		}
 		
-		current_state = newState;
-		newState->init();
+		video_manager = new VideoManager();
+		video_manager->init(screen_width, screen_height);
+
+		input_manager = new InputManager();
+		input_manager->init();
+
+		running = true;
+		add_state(initial_state, true);
+	}
+
+	void Game::add_state(State* state, bool is_the_current_state) {
+		if (state) {
+			states[state->state_id()] = state;
+
+			if (is_the_current_state) {
+				set_current_state(state->state_id());
+			}
+		}
+	}
+
+	auto Game::get_current_state(const std::string& state_id) {
+		return states[state_id];
+	}
+
+	void Game::set_current_state(const std::string& state_id) {
+		State* new_state = states[state_id];
+
+		if (new_state) {
+			if (current_state) {
+				State* old_state = current_state;
+				old_state->destroy();
+				current_state = NULL;
+			}
+
+			current_state = new_state;
+			new_state->init();
+		}
 	}
 
 	void Game::run() {
-		Uint32 frameStart = 0;
-		Uint32 frameTime = 0;
+		Uint32 frame_start = 0;
+		Uint32 frame_time = 0;
 
 		while (running) {
-			frameStart = SDL_GetTicks();
+			frame_start = SDL_GetTicks();
 
-			TimerManager::get_instance()->deltaTime = frameTime;
-			InputManager::get_instance()->read();
+			input_manager->read();
 
-			if (InputManager::get_instance()->has_quit()) {
+			if (input_manager->has_quit()) {
 				running = false;
 			}
 
-			VideoManager::get_instance()->clear();
+			video_manager->clear();
 
 			if (current_state) {
 				current_state->update();
 				current_state->draw();
 			}
 
-			VideoManager::get_instance()->render();
+			video_manager->render();
 
-			frameTime = SDL_GetTicks() - frameStart;
+			frame_time = SDL_GetTicks() - frame_start;
 
-			if (frameTime < DELAY_TIME) {
-				SDL_Delay((int)(DELAY_TIME - frameTime));
+			if (frame_time < DELAY_TIME) {
+				SDL_Delay((int)(DELAY_TIME - frame_time));
 			}
 		}
 	}
 
 	void Game::destroy() {
-		InputManager::get_instance()->destroy();
-		VideoManager::get_instance()->destroy();
+		input_manager->destroy();
+		video_manager->destroy();
 	}
 }

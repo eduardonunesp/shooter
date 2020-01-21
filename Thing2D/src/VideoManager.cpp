@@ -3,8 +3,6 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	VideoManager* VideoManager::instance = NULL;
-
 	void VideoManager::init(int screen_width, int screen_height) {
 		LOG("Initialize VideoManager");
 		
