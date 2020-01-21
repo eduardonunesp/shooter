@@ -57,7 +57,7 @@ namespace Thing2D {
 
 		if (!newTexture) {
 			LOG("Failed to load texture " + file_path + ":" + SDL_GetError());
-			return NULL;
+			return nullptr;
 		}
 
 		LOG("Texture: " + texture_id + ":" + file_path);

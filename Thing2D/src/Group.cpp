@@ -4,6 +4,7 @@
 #include "Logger.h"
 #include "VideoManager.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 
 namespace Thing2D {
 	int Group::id_counter = 0;
@@ -24,6 +25,10 @@ namespace Thing2D {
 			
 			if (input_manager) {
 				game_object->input_manager = input_manager;
+			}
+
+			if (audio_manager) {
+				game_object->audio_manager = audio_manager;
 			}
 
 			if (game) {

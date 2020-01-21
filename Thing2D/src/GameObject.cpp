@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include "VideoManager.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 #include "Logger.h"
 
 namespace Thing2D {
@@ -11,8 +12,10 @@ namespace Thing2D {
 		width(width), height(height),
 		curr_row(0), curr_col(0),
 		texture_id(texture_id),
-		video_manager(NULL),
-		input_manager(NULL) {}
+		video_manager(nullptr),
+		input_manager(nullptr),
+		audio_manager(nullptr),
+		game(nullptr) {}
 
 	GameObject::~GameObject() {
 		destroy();

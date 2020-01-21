@@ -4,7 +4,10 @@
 
 #ifdef _DEBUG
 #define LOG(msg) \
-	std::cout << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
+	std::cout << "INFO:" << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
+
+#define ERR(msg) \
+	std::cout << "ERR:" << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
 #else
 #define LOG(msg)
 #endif

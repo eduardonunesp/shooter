@@ -4,32 +4,32 @@ using namespace Thing2D;
 
 class Animate : public Sprite {
 public:
-	typedef enum {
+	enum class AnimateStates {
 		RUNNING_RIGHT,
 		RUNNING_LEFT
-	} AnimateStates;
+	};
 
-	Animate() : Sprite("animate", 200, 200, 130, 82, 1, 6), speed(5.0f), curr_state(RUNNING_RIGHT) {
+	Animate() : Sprite("animate", 200, 200, 130, 82, 1, 6), speed(5.0f), curr_state(AnimateStates::RUNNING_RIGHT) {
 		add_animations("run", 12, true, 6, 0, 1, 2, 3, 4, 5);
 	}
 
 	void update() override {
 		switch (curr_state) {
-		case RUNNING_RIGHT:
+		case AnimateStates::RUNNING_RIGHT:
 			velocity = Vector::right() * speed;
 			flipped = false;
 
 			if (position.x + width >= game->get_screen_width()) {
-				curr_state = RUNNING_LEFT;
+				curr_state = AnimateStates::RUNNING_LEFT;
 			}
 
 			break;
-		case RUNNING_LEFT:
+		case AnimateStates::RUNNING_LEFT:
 			velocity = Vector::left() * speed;
 			flipped = true;
 
 			if (position.x <= 0) {
-				curr_state = RUNNING_RIGHT;
+				curr_state = AnimateStates::RUNNING_RIGHT;
 			}
 
 			break;
@@ -50,6 +50,8 @@ public:
 	void init() override {
 		animate = new Animate();
 		add(animate);
+
+		audio_manager->play_music("mode");
 	}
 
 protected:
@@ -63,6 +65,7 @@ public:
 	void init() override {
 		Game::init();
 		video_manager->load_texture("./assets/animate.png", "animate");
+		audio_manager->load_music("./assets/mode.mp3", true, 60, "mode");
 		add_state("play_state", new PlayState(), true);
 	}
 

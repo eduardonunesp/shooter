@@ -6,6 +6,7 @@
 namespace Thing2D {
 	class VideoManager;
 	class InputManager;
+	class AudioManager;
 	class State;
 
 	class Game {
@@ -33,6 +34,7 @@ namespace Thing2D {
 
 		VideoManager* video_manager;
 		InputManager* input_manager;
+		AudioManager* audio_manager;
 
 	private:
 		bool running;

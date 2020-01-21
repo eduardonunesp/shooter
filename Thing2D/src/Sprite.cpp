@@ -5,12 +5,12 @@
 
 namespace Thing2D {
 	Sprite::Sprite(const std::string& texture_id, float x, float y, int width, int height) :
-		GameObject(texture_id, x, y, width, height), curr_animation(NULL) {
+		GameObject(texture_id, x, y, width, height), curr_animation(nullptr) {
 		calculate_frames(0, 0);
 	}
 
 	Sprite::Sprite(const std::string& texture_id, float x, float y, int width, int height, int rows, int cols) :
-		GameObject(texture_id, x, y, width, height), curr_animation(NULL) {
+		GameObject(texture_id, x, y, width, height), curr_animation(nullptr) {
 		calculate_frames(rows, cols);
 	}
 

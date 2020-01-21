@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <ostream>
 #include <math.h>
 
 namespace Thing2D {

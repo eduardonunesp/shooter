@@ -8,19 +8,20 @@ namespace Thing2D {
 	class GameObject;
 	class VideoManager;
 	class InputManager;
+	class AudioManager;
 	class Game;
 
 	class Group {
 	public:
 		Group(float x, float y) :
 			position(x, y),
-			video_manager(NULL),
-			input_manager(NULL) {}
+			video_manager(nullptr),
+			input_manager(nullptr) {}
 
 		Group() :
 			position(0, 0),
-			video_manager(NULL),
-			input_manager(NULL) {}
+			video_manager(nullptr),
+			input_manager(nullptr) {}
 
 		virtual ~Group() {
 			destroy();
@@ -47,6 +48,7 @@ namespace Thing2D {
 		Vector position;
 		VideoManager* video_manager;
 		InputManager* input_manager;
+		AudioManager* audio_manager;
 		Game* game;
 
 	private:

@@ -41,7 +41,7 @@ namespace Thing2D {
 
 			bool loop;
 			bool ended;
-			int sum;
+			unsigned int sum;
 			int anim_speed;
 			int curr_anim_frame;
 			std::vector<int> frames;

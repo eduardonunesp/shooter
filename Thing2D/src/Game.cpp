@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "InputManager.h"
 #include "VideoManager.h"
+#include "AudioManager.h"
 #include "State.h"
 #include "Logger.h"
 
@@ -10,8 +11,8 @@ namespace Thing2D {
 
 	Game::Game(int screen_width, int screen_height) :
 		screen_width(screen_width), screen_height(screen_height),
-		video_manager(NULL), input_manager(NULL),
-		current_state(NULL),
+		video_manager(nullptr), input_manager(nullptr),
+		current_state(nullptr),
 		running(false) {}
 
 	Game::~Game() {
@@ -28,6 +29,9 @@ namespace Thing2D {
 
 		input_manager = new InputManager();
 		input_manager->init();
+
+		audio_manager = new AudioManager();
+		audio_manager->init();
 
 		running = true;
 	}
@@ -55,13 +59,14 @@ namespace Thing2D {
 			if (current_state) {
 				State* old_state = current_state;
 				old_state->destroy();
-				current_state = NULL;
+				current_state = nullptr;
 			}
 
 			current_state = new_state;
 			current_state->game = this;
 			current_state->video_manager = video_manager;
 			current_state->input_manager = input_manager;
+			current_state->audio_manager = audio_manager;
 
 			LOG("Set current state: " + state_id);
 

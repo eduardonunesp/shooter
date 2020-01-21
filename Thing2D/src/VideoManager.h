@@ -7,7 +7,7 @@
 namespace Thing2D {
 	class VideoManager {
 	public:
-		VideoManager() : window(NULL), renderer(NULL) {}
+		VideoManager() : window(nullptr), renderer(nullptr) {}
 		~VideoManager() { destroy(); }
 
 		void init(int screen_width, int screen_height);
