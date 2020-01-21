@@ -107,9 +107,10 @@
     <ClCompile Include="framework\InputManager.cpp" />
     <ClCompile Include="framework\Sprite.cpp" />
     <ClCompile Include="framework\VideoManager.cpp" />
-    <ClCompile Include="game\SpaceShooter.cpp" />
     <ClCompile Include="game\main.cpp" />
+    <ClCompile Include="game\Player.cpp" />
     <ClCompile Include="game\PlayState.cpp" />
+    <ClCompile Include="game\SpaceShooter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\AudioManager.h" />
@@ -124,8 +125,9 @@
     <ClInclude Include="framework\Thing2D.h" />
     <ClInclude Include="framework\Vector.h" />
     <ClInclude Include="framework\VideoManager.h" />
-    <ClInclude Include="game\SpaceShooter.h" />
+    <ClInclude Include="game\Player.h" />
     <ClInclude Include="game\PlayState.h" />
+    <ClInclude Include="game\SpaceShooter.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -8,7 +8,7 @@ class PlayState;
 
 class SpaceShooter : public Game {
 public:
-	SpaceShooter() : Game(640, 480) {}
+	SpaceShooter();
 	void init() override;
 
 private:

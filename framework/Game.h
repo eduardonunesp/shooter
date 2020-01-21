@@ -27,6 +27,10 @@ namespace Thing2D {
 		// Window properties
 		inline int get_screen_width() { return screen_width; }
 		inline int get_screen_height() { return screen_height; }
+		
+		inline void halt() {
+			running = false;
+		}
 
 	protected:
 		int screen_width;

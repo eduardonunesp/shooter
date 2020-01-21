@@ -47,7 +47,7 @@ namespace Thing2D {
 
 		Vector position;
 		Vector velocity;
-		Vector acceleartion;
+		Vector acceleration;
 		Rect rect;
 
 		int width, height;

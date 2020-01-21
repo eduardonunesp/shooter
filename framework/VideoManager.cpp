@@ -11,7 +11,7 @@ namespace Thing2D {
 			throw "Couldn't initialize SDL";
 		}
 
-		int flags = SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_OPENGL;
+		int flags = SDL_WINDOW_ALLOW_HIGHDPI;
 
 		if (SDL_CreateWindowAndRenderer(screen_width, screen_height, flags, &window, &renderer)) {
 			throw "Couldn't create window and renderer";

@@ -8,7 +8,7 @@ namespace Thing2D {
 	GameObject::GameObject(const std::string& texture_id, float x, float y, int width, int height) :
 		visible(true), dead(false), flipped(false), life(1),
 		alpha(255), angle(0),
-		position(x, y), velocity(0, 0), acceleartion(0, 0), rect(x, y, width, height),
+		position(x, y), velocity(0, 0), acceleration(0, 0), rect(x, y, width, height),
 		width(width), height(height),
 		curr_row(0), curr_col(0),
 		texture_id(texture_id),
@@ -26,8 +26,9 @@ namespace Thing2D {
 			return;
 		}
 
-		velocity += acceleartion;
+		velocity += acceleration;
 		position += velocity;
+
 		rect.x = position.x;
 		rect.y = position.y;
 	}
