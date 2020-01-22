@@ -40,7 +40,7 @@ namespace Thing2D {
 		inline auto get(const std::string& id) { return game_objects_map[id]; }
 		void draw();
 
-		int count() { return game_objects.size(); }
+		unsigned int count() { return game_objects.size(); }
 		int count_visible();
 		int count_dead();
 		std::vector<GameObject*> all_by_tag(const std::string& tag);

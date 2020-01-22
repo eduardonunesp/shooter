@@ -5,15 +5,18 @@
 #include "SpaceShooter.h"
 
 using namespace Thing2D;
+using namespace SpaceShooter;
 
 int main(int argc, char* args[]) {
-	AllocConsole();
-	freopen("conin$", "r", stdin);
-	freopen("conout$", "w", stdout);
-	freopen("conout$", "w", stderr);
-	printf("Debugging Window:\n");
+#ifdef _DEBUG
+		AllocConsole();
+		freopen("conin$", "r", stdin);
+		freopen("conout$", "w", stdout);
+		freopen("conout$", "w", stderr);
+		printf("Debugging Window:\n");
+#endif
 
-	SpaceShooter* space_shooter = new SpaceShooter();
+	SpaceShooterGame* space_shooter = new SpaceShooterGame();
 	space_shooter->init();
 	space_shooter->run();
 	delete space_shooter;

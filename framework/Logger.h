@@ -10,4 +10,5 @@
 	std::cout << "ERR:" << __FILE__ << "(" << __LINE__ << "): " << msg << std::endl
 #else
 #define LOG(msg)
+#define ERR(msg)
 #endif

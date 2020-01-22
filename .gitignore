@@ -1,4 +1,7 @@
 Debug
 src/Debug
 .vs
+x64
+src/x64
+Release
 packages

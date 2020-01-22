@@ -4,12 +4,14 @@
 
 using namespace Thing2D;
 
-class Player : public Sprite {
-public:
-	Player();
+namespace SpaceShooter {
+	class Player : public Sprite {
+	public:
+		Player();
 
-	void update() override;
+		void update() override;
 
-private:
-	float speed;
-};
+	private:
+		float speed;
+	};
+}

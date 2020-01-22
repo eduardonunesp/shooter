@@ -4,15 +4,17 @@
 
 using namespace Thing2D;
 
-class Player;
+namespace SpaceShooter {
+	class Player;
 
-class PlayState : public State {
-public:
-	PlayState();
+	class PlayState : public State {
+	public:
+		PlayState();
 
-	void init() override;
-	void update() override;
+		void init() override;
+		void update() override;
 
-private: 
-	Player* player;
-};
+	private:
+		Player* player;
+	};
+}
