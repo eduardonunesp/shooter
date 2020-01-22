@@ -6,9 +6,6 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	const int FPS = 60;
-	const int DELAY_TIME = 1000 / FPS;
-
 	Game::Game(int screen_width, int screen_height) :
 		screen_width(screen_width), screen_height(screen_height),
 		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
@@ -78,6 +75,9 @@ namespace Thing2D {
 	}
 
 	void Game::run() {
+		const Uint32 fps = video_manager->get_refresh_rate();
+		const Uint32 delay_time = 1000 / fps;
+
 		Uint32 frame_start = 0;
 		Uint32 frame_time = 0;
 
@@ -103,8 +103,8 @@ namespace Thing2D {
 
 			frame_time = SDL_GetTicks() - frame_start;
 
-			if (frame_time < DELAY_TIME) {
-				SDL_Delay((int)(DELAY_TIME - frame_time));
+			if (frame_time < delay_time) {
+				SDL_Delay((int)(delay_time - frame_time));
 			}
 		}
 	}
