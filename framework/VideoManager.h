@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <string>
 #include <map>
+#include <Rect.h>
 
 namespace Thing2D {
 	class VideoManager {
@@ -12,7 +13,9 @@ namespace Thing2D {
 
 		// Life cycle functions
 		void init(int screen_width, int screen_height);
-		void draw(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_frame, double angle, int alpha, SDL_RendererFlip flip);
+		void draw(const std::string& texture_id, int x, int y, int width, int height, 
+				int current_row, int current_frame, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip, 
+				bool debug, Rect *debug_rect);
 		void clear();
 		void render();
 		void destroy();

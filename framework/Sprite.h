@@ -15,6 +15,7 @@ namespace Thing2D {
 		void add_idle_animation(const std::string& animation_id);
 		void play(const std::string& animation_id);
 
+		virtual void init() {};
 		virtual void update();
 		virtual void draw();
 		virtual void destroy();

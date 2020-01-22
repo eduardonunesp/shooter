@@ -91,7 +91,9 @@ namespace Thing2D {
 		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
-	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, int current_row, int current_col, double angle, int alpha, SDL_RendererFlip flip) {
+	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height,
+							int current_row, int current_col, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
+							bool debug, Rect *debug_rect) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 		srcRect.x = width * current_col;
@@ -101,8 +103,19 @@ namespace Thing2D {
 		destRect.x = x;
 		destRect.y = y;
 
-		SDL_SetTextureAlphaMod(texture_map[texture_id], alpha);
-		SDL_RenderCopyEx(renderer, texture_map[texture_id], &srcRect, &destRect, angle, 0, flip);
+		auto texture = texture_map[texture_id];
+		if (texture) {
+			if (debug) {
+				SDL_Rect d_rect = debug_rect->to_sdl_rect();
+				SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+				SDL_RenderFillRect(renderer, &d_rect);
+				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			}
+
+			SDL_SetTextureColorMod(texture, r, g, b);
+			SDL_SetTextureAlphaMod(texture, alpha);
+			SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, 0, flip);
+		}
 	}
 
 	void VideoManager::clear() {

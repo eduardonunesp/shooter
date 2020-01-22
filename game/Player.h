@@ -9,6 +9,7 @@ namespace SpaceShooter {
 	public:
 		Player();
 
+		void init() override;
 		void update() override;
 
 	private:

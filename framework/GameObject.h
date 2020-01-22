@@ -18,6 +18,7 @@ namespace Thing2D {
 		GameObject(const std::string& texture_id, float x, float y, int width, int height);
 		virtual ~GameObject();
 
+		virtual void init() {};
 		virtual void update();
 		virtual void draw();
 		virtual void destroy();
@@ -37,11 +38,13 @@ namespace Thing2D {
 
 		std::string tag;
 
+		bool debug;
 		bool visible;
 		bool dead;
 		bool flipped;
 		int life;
 
+		int r, g, b;
 		int alpha;
 		double angle;
 

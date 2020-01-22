@@ -35,6 +35,7 @@ namespace Thing2D {
 				game_object->game = game;
 			}
 
+			game_object->init();
 			game_object->move(position);
 			game_objects.push_back(game_object);
 			game_objects_map[game_object_id] = game_object;

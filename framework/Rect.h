@@ -6,15 +6,16 @@ namespace Thing2D {
 	class Rect {
 	public:
 		Rect(float x, float y, int h, int w) :
-			x(x), y(y), h(h), w(w) {}
+			x(x), y(y), h(h), w(w), offset_x(0), offset_y(0) {}
 
+		float offset_x, offset_y;
 		float x, y;
 		int h, w;
 
 		inline SDL_Rect to_sdl_rect() {
 			SDL_Rect rect;
-			rect.x = (int)x;
-			rect.y = (int)y;
+			rect.x = (int)x - offset_x;
+			rect.y = (int)y - offset_y;
 			rect.h = h;
 			rect.w = w;
 			return rect;
