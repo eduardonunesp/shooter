@@ -4,10 +4,9 @@
 #include <string>
 #include <vector>
 #include "Vector.h"
-#include "Rect.h"
 
 namespace Thing2D {
-	class Vector;
+	class Box;
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
@@ -18,11 +17,14 @@ namespace Thing2D {
 		GameObject(const std::string& texture_id, float x, float y, int width, int height);
 		virtual ~GameObject();
 
-		virtual void init() {};
+		virtual void init();
 		virtual void update();
 		virtual void draw();
 		virtual void destroy();
 
+		void create_box(float x, float y, int w, int h);
+		void create_box(float x, float y, int w, int h, const std::string& label);
+		inline auto get_box(int box_idx) { return boxes[box_idx]; }
 		bool overlaps(GameObject* target);
 
 		void move(const Vector& new_position);
@@ -36,6 +38,7 @@ namespace Thing2D {
 	protected:
 		friend class Group;
 
+		std::string label;
 		std::string tag;
 
 		bool debug;
@@ -51,7 +54,7 @@ namespace Thing2D {
 		Vector position;
 		Vector velocity;
 		Vector acceleration;
-		Rect rect;
+		std::vector<Box*> boxes;
 
 		int width, height;
 		int curr_row, curr_col;

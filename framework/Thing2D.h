@@ -11,3 +11,5 @@
 #include "Vector.h"
 #include "Logger.h"
 #include "Rect.h"
+#include "Box.h"
+#include "Color.h"

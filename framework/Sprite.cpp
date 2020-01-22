@@ -19,6 +19,10 @@ namespace Thing2D {
 		destroy();
 	}
 
+	void Sprite::init() {
+		GameObject::init();
+	}
+
 	void Sprite::add_animations(const std::string& animation_id, int speed, bool loop, int frames, ...) {
 		LOG("Adding animation :" << animation_id << " speed: " << speed << " loop: " << loop);
 

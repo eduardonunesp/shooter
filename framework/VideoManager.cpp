@@ -1,6 +1,7 @@
-#include "VideoManager.h"
 #include <algorithm>
 #include <SDL_image.h>
+#include "VideoManager.h"
+#include "Box.h"
 #include "Logger.h"
 
 #define PREFERED_DRIVER "opengl"
@@ -88,12 +89,16 @@ namespace Thing2D {
 		SDL_Log("Current Desktop Mode %i\tbpp %i\t%s\t%i x %i Hz %i", display_count,
 			SDL_BITSPERPIXEL(f), SDL_GetPixelFormatName(f), curr_desktop_mode.w, curr_desktop_mode.h, curr_desktop_mode.refresh_rate);
 
+		color_cycle.push_back(Color::red());
+		color_cycle.push_back(Color::green());
+		color_cycle.push_back(Color::blue());
+
 		LOG("VideoManager Ready " + std::to_string(w) + ":" + std::to_string(h));
 	}
 
-	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height,
-							int current_row, int current_col, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
-							bool debug, Rect *debug_rect) {
+	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, bool visible,
+		int current_row, int current_col, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
+		bool debug, std::vector<Box*> debug_boxes) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 		srcRect.x = width * current_col;
@@ -105,16 +110,26 @@ namespace Thing2D {
 
 		auto texture = texture_map[texture_id];
 		if (texture) {
-			if (debug) {
-				SDL_Rect d_rect = debug_rect->to_sdl_rect();
-				SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-				SDL_RenderDrawRect(renderer, &d_rect);
-				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			SDL_SetTextureColorMod(texture, r, g, b);
+
+			if (visible) {
+				SDL_SetTextureAlphaMod(texture, alpha);
+				SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, 0, flip);
 			}
 
-			SDL_SetTextureColorMod(texture, r, g, b);
-			SDL_SetTextureAlphaMod(texture, alpha);
-			SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, 0, flip);
+			if (debug) {
+				unsigned int count = 0;
+				std::for_each(debug_boxes.begin(), debug_boxes.end(), [&](auto box) {
+					if (count > color_cycle.size()) {
+						count = 0;
+					}
+
+					Color c = color_cycle[count];
+					box->debug(renderer, c);
+					count++;
+				});
+				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			}
 		}
 	}
 

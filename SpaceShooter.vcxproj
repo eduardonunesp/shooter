@@ -156,6 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\AudioManager.h" />
+    <ClInclude Include="framework\Box.h" />
+    <ClInclude Include="framework\Color.h" />
     <ClInclude Include="framework\Game.h" />
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />

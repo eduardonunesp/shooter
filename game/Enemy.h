@@ -10,6 +10,8 @@ namespace SpaceShooter {
 		Enemy() : Sprite("plane", 10, 10, 65, 65, 1, 3) {}
 
 		void init() override {
+			Sprite::init();
+
 			add_animations("fly", 12, true, 3, 0, 1, 2);
 			position.x = (game->get_screen_width() / 2) - width;
 			r = 255;
