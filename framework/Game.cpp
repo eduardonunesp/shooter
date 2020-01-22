@@ -38,7 +38,7 @@ namespace Thing2D {
 
 	void Game::add_state(const std::string& state_id, State* state, bool is_the_current_state) {
 		if (state) {
-			LOG("Adding state id: " + state_id);
+			LOG("Adding state id: " + state_id + " " << state);
 
 			states[state_id] = state;
 

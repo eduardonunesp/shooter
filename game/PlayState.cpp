@@ -46,6 +46,7 @@ namespace SpaceShooter {
 			shot->move(playerPos.x + 35, playerPos.y);
 			shot->set_velocity(Vector::up() * 20.0f);
 			add(shot);
+			LOG("GET CURRENT STATE " << game->get_current_state());
 		}
 
 		State::update();
