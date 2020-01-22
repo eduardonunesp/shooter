@@ -108,7 +108,7 @@ namespace Thing2D {
 			if (debug) {
 				SDL_Rect d_rect = debug_rect->to_sdl_rect();
 				SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-				SDL_RenderFillRect(renderer, &d_rect);
+				SDL_RenderDrawRect(renderer, &d_rect);
 				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			}
 

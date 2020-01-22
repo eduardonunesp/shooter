@@ -21,9 +21,15 @@ namespace Thing2D {
 			return rect;
 		}
 
-		const static int buffer = 4;
+		inline bool check_sdl_intersection(Rect* other_rect) {
+			SDL_Rect this_sdl_rect = to_sdl_rect();
+			SDL_Rect other_sdl_rect = other_rect->to_sdl_rect();
+			return SDL_HasIntersection(&this_sdl_rect, &other_sdl_rect);
+		}
 
-		bool overlaps(Rect* other_rect) {
+		const static int buffer = 1;
+
+		inline bool overlaps(Rect* other_rect) {
 			int aHBuf = this->h / buffer;
 			int aWBuf = this->w / buffer;
 

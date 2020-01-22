@@ -21,8 +21,9 @@ namespace Thing2D {
 
 		// State management
 		void add_state(const std::string& state_id, State* state, bool is_the_current_state = false);
-		auto get_current_state(const std::string& state_id);
+		auto get_state_by_id(const std::string& state_id);
 		void set_current_state(const std::string& state_id);
+		auto get_current_state();
 
 		// Window properties
 		inline int get_screen_width() { return screen_width; }

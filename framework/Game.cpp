@@ -48,8 +48,12 @@ namespace Thing2D {
 		}
 	}
 
-	auto Game::get_current_state(const std::string& state_id) {
+	auto Game::get_state_by_id(const std::string& state_id) {
 		return states[state_id];
+	}
+
+	auto Game::get_current_state() {
+		return current_state;
 	}
 
 	void Game::set_current_state(const std::string& state_id) {

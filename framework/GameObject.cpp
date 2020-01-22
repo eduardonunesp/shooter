@@ -46,7 +46,7 @@ namespace Thing2D {
 	void GameObject::destroy() {}
 
 	bool GameObject::overlaps(GameObject* target) {
-		if (target->rect.overlaps(&this->rect)) {
+		if (rect.check_sdl_intersection(&target->rect)) {
 			return true;
 		}
 

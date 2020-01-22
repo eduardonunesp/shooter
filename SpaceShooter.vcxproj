@@ -167,6 +167,7 @@
     <ClInclude Include="framework\Thing2D.h" />
     <ClInclude Include="framework\Vector.h" />
     <ClInclude Include="framework\VideoManager.h" />
+    <ClInclude Include="game\Enemy.h" />
     <ClInclude Include="game\Player.h" />
     <ClInclude Include="game\PlayState.h" />
     <ClInclude Include="game\SpaceShooter.h" />

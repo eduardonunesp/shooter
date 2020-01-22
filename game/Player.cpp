@@ -10,19 +10,15 @@ namespace SpaceShooter {
 		
 		debug = true;
 
-		rect.offset_x -= 10;
+		//rect.offset_x -= 10;
 		
 	}
 
 	void Player::update() {
 		velocity = Vector::zero();
 
-		if (input_manager->is_key_down(SDL_SCANCODE_RIGHT)) {
+		if (input_manager->is_key_down(SDL_SCANCODE_RIGHT) && position.x + rect.w < game->get_screen_width()) {
 			velocity += Vector::right() * speed;
-
-			if (position.x + rect.w >= game->get_screen_width()) {
-				velocity = Vector::right() * 0;
-			}
 		}
 
 		if (input_manager->is_key_down(SDL_SCANCODE_LEFT)) {
