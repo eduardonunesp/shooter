@@ -36,8 +36,8 @@ namespace Thing2D {
 		position += velocity;
 
 		std::for_each(boxes.begin(), boxes.end(), [&](auto box) {
-			box->x = position.x;
-			box->y = position.y;
+			box->x = box->offset_x + position.x;
+			box->y = box->offset_y + position.y;
 		});
 	}
 
@@ -54,7 +54,7 @@ namespace Thing2D {
 	void GameObject::destroy() {}
 
 	void GameObject::create_box(float x, float y, int w, int h) {
-		const std::string box_label = "box_" + std::to_string(boxes.size());
+		const std::string box_label = "box_" + std::to_string(boxes.size()) + " for " + label;
 		create_box(x, y, w, h, box_label);
 	}
 
@@ -63,7 +63,7 @@ namespace Thing2D {
 			return;
 		}
 
-		LOG("Create box");
+		LOG("Create box for " << label);
 		Box* box = new Box(x, y, w, h);
 		box->label = box_label;
 		box->active = true;
@@ -86,6 +86,10 @@ namespace Thing2D {
 		return result != boxes.end();
 	}
 
+	void GameObject::set_velocity(const Vector& velocity_value) {
+		velocity = velocity_value;
+	}
+
 	void GameObject::move(const Vector& new_position) {
 		if (dead) {
 			return;
@@ -103,15 +107,23 @@ namespace Thing2D {
 		position.y += y;
 	}
 
+	void GameObject::kill() {
+		LOG("Kill " + label);
+		dead = true;
+		life = 0;
+	}
+
 	void GameObject::hurt(int damage) {
 		if (dead) {
 			return;
 		}
 
+		LOG("Hurt " << label << " with damage of " << damage);
+
 		life -= damage;
 
 		if (life <= 0) {
-			dead = true;
+			kill();
 		}
 	}
 }

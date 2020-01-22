@@ -12,12 +12,19 @@ namespace SpaceShooter {
 		void init() override {
 			Sprite::init();
 
+			life = 3;
 			add_animations("fly", 12, true, 3, 0, 1, 2);
 			position.x = (game->get_screen_width() / 2) - width;
 			r = 255;
 			g = 0;
 			b = 0;
 			debug = true;
+
+			Box* box0 = get_box(0);
+			box0->offset_x = 8;
+			box0->offset_y = 8;
+			box0->w = 33;
+			box0->h = 38;
 		}
 	};
 }

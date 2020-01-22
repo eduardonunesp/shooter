@@ -5,14 +5,16 @@
 using namespace Thing2D;
 
 namespace SpaceShooter {
+	class PlayState;
 	class Player : public Sprite {
 	public:
-		Player();
+		Player(PlayState *state);
 
 		void init() override;
 		void update() override;
 
 	private:
 		float speed;
+		PlayState* play_state;
 	};
 }

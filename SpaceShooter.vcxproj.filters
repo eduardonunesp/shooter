@@ -104,6 +104,9 @@
     <ClInclude Include="framework\Color.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="framework\Shot.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

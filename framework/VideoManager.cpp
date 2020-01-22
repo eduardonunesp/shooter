@@ -154,7 +154,7 @@ namespace Thing2D {
 
 		if (!newTexture) {
 			LOG("Failed to load texture " + file_path + ": " + IMG_GetError());
-			return;
+			throw "Failed to load texture";
 		}
 
 		LOG("Texture: " + texture_id + ":" + file_path);

@@ -164,6 +164,7 @@
     <ClInclude Include="framework\InputManager.h" />
     <ClInclude Include="framework\Logger.h" />
     <ClInclude Include="framework\Rect.h" />
+    <ClInclude Include="framework\Shot.h" />
     <ClInclude Include="framework\Sprite.h" />
     <ClInclude Include="framework\State.h" />
     <ClInclude Include="framework\Thing2D.h" />

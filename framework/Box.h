@@ -35,7 +35,7 @@ namespace Thing2D {
 			bool has_intersection = SDL_HasIntersection(&this_sdl_rect, &other_sdl_rect);
 
 			if (has_intersection && debug) {
-				LOG("Collision on box :" << label);
+				LOG("Collision on box: " << label);
 			}
 
 			return has_intersection;

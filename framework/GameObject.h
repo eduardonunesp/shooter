@@ -27,9 +27,17 @@ namespace Thing2D {
 		inline auto get_box(int box_idx) { return boxes[box_idx]; }
 		bool overlaps(GameObject* target);
 
+		void set_velocity(const Vector& velocity_value);
+		inline void set_tag(const std::string& tag_value) { tag = tag_value; }
+		inline void set_label(const std::string& label_value) { label = label_value; }
+
 		void move(const Vector& new_position);
 		void move(int x, int y);
+		void kill();
 		void hurt(int damage);
+
+		inline const std::string& get_label() { return label; }
+		inline const Vector& get_position() { return position; }
 
 		inline bool is_visible() { return visible; }
 		inline bool is_dead() { return dead; }

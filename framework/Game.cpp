@@ -52,7 +52,7 @@ namespace Thing2D {
 		return states[state_id];
 	}
 
-	auto Game::get_current_state() {
+	State* Game::get_current_state() {
 		return current_state;
 	}
 
