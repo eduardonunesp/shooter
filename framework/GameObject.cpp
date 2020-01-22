@@ -42,6 +42,10 @@ namespace Thing2D {
 	}
 
 	void GameObject::draw() {
+		if (dead) {
+			return;
+		}
+
 		video_manager->draw(texture_id, (int)position.x, (int)position.y, width, height, visible,
 							curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
 							debug, boxes);
@@ -55,6 +59,10 @@ namespace Thing2D {
 	}
 
 	void GameObject::create_box(float x, float y, int w, int h, const std::string& box_label) {
+		if (dead) {
+			return;
+		}
+
 		LOG("Create box");
 		Box* box = new Box(x, y, w, h);
 		box->label = box_label;
@@ -79,15 +87,27 @@ namespace Thing2D {
 	}
 
 	void GameObject::move(const Vector& new_position) {
+		if (dead) {
+			return;
+		}
+
 		position += new_position;
 	}
 
 	void GameObject::move(int x, int y) {
+		if (dead) {
+			return;
+		}
+
 		position.x += x;
 		position.y += y;
 	}
 
 	void GameObject::hurt(int damage) {
+		if (dead) {
+			return;
+		}
+
 		life -= damage;
 
 		if (life <= 0) {

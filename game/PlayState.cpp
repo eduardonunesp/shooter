@@ -20,7 +20,7 @@ namespace SpaceShooter {
 		GameObject* player = get("player");
 		
 		if (player->overlaps(go)) {
-			kill(go);
+			go->hurt(1);
 		}
 
 		State::update();
