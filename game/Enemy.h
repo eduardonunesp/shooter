@@ -7,7 +7,9 @@ using namespace Thing2D;
 namespace SpaceShooter {
 	class Enemy : public Sprite {
 	public:
-		Enemy() : Sprite("plane", 10, 10, 65, 65, 1, 3) {}
+		Enemy() : Sprite("plane", 10, 10, 65, 65, 1, 3) {
+			tag = "enemy";
+		}
 
 		void init() override {
 			Sprite::init();

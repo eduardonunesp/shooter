@@ -10,37 +10,36 @@ namespace Thing2D {
 	int Group::id_counter = 0;
 
 	void Group::add(const std::string& game_object_id, GameObject* game_object) {
-		if (game_object) {
-			LOG("Adding game object: " + game_object_id);
-			
-			if (video_manager) {
-				game_object->video_manager = video_manager;
-			}
-			
-			if (input_manager) {
-				game_object->input_manager = input_manager;
-			}
-
-			if (audio_manager) {
-				game_object->audio_manager = audio_manager;
-			}
-
-			if (game) {
-				game_object->game = game;
-			}
-
-			game_object->label = game_object_id;
-			game_object->init();
-			game_object->move(position);
-			game_objects.push_back(game_object);
-			game_objects_map[game_object_id] = game_object;
+		if (!game_object) {
+			return;
 		}
+
+		LOG("Adding game object label " + game_object_id + " tag " + game_object->tag);
+			
+		game_object->video_manager = video_manager;
+		game_object->input_manager = input_manager;
+		game_object->audio_manager = audio_manager;
+		game_object->game = game;
+
+		game_object->label = game_object_id;
+		game_object->init();
+		game_object->move(position);
+		game_objects.push_back(game_object);
+		game_objects_map[game_object_id] = game_object;
 	}
 
 	void Group::add(GameObject* game_object) {
-		const std::string& auto_id = "__INTERNAL_ID__" + std::to_string(id_counter);
-		add(auto_id, game_object);
-		id_counter++;
+		if (!game_object) {
+			return;
+		}
+
+		if (game_object->label.size() == 0) {
+			const std::string& auto_id = "__INTERNAL_ID__" + std::to_string(id_counter);
+			add(auto_id, game_object);
+			id_counter++;
+		} else {
+			add(game_object->label, game_object);
+		}
 	}
 
 	void Group::add(Group* other_group)	{

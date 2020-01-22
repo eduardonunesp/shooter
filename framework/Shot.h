@@ -7,7 +7,10 @@ using namespace Thing2D;
 namespace SpaceShooter {
 	class Shot : public Sprite {
 	public:
-		Shot(float x, float y) : Sprite("shot", x, y, 32, 32, 1, 1) {}
+		Shot(float x, float y) : Sprite("shot", x, y, 32, 32, 1, 1) {
+			label = "shot";
+			tag = "shot";
+		}
 
 		void init() override {
 			Sprite::init();
