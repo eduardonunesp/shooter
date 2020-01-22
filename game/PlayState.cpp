@@ -7,8 +7,7 @@ namespace SpaceShooter {
 
 	void PlayState::init() {
 		State::init();
-		player = new Player();
-		add(player);
+		add("player", new Player());
 		add("enemy", new Enemy());
 	}
 
@@ -18,9 +17,10 @@ namespace SpaceShooter {
 		}
 
 		GameObject* go = get("enemy");
+		GameObject* player = get("player");
 		
 		if (player->overlaps(go)) {
-			LOG("OVERRR LAPS");
+			kill(go);
 		}
 
 		State::update();

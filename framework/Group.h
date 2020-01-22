@@ -29,16 +29,20 @@ namespace Thing2D {
 
 		virtual void init() {};
 		virtual void update();
+		void draw();
 		virtual void destroy();
 
 		virtual void add(const std::string& game_object_id, GameObject* game_object);
 		virtual void add(GameObject* game_object);
 		virtual void add(Group* other_group);
 
+		inline auto get(const std::string& game_object_id) { return game_objects_map[game_object_id]; }
+
+		void kill(GameObject* game_object_to_kill);
+		void kill(const std::string& game_object_id);
+		
 		void remove(GameObject* game_object_to_remove);
 		void remove(const std::string& game_object_id);
-		inline auto get(const std::string& id) { return game_objects_map[id]; }
-		void draw();
 
 		unsigned int count() { return game_objects.size(); }
 		int count_visible();

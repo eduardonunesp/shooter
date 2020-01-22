@@ -9,12 +9,6 @@
 namespace Thing2D {
 	int Group::id_counter = 0;
 
-	void Group::update() {
-		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
-			game_object->update();
-		});
-	}
-
 	void Group::add(const std::string& game_object_id, GameObject* game_object) {
 		if (game_object) {
 			LOG("Adding game object: " + game_object_id);
@@ -56,15 +50,30 @@ namespace Thing2D {
 		});
 	}
 
+	void Group::kill(GameObject* game_object_to_kill) {
+		LOG("Kill game object: " << game_object_to_kill->label);
+		auto game_object = std::find_if(game_objects.begin(), game_objects.end(), [&](auto game_object) {
+			return game_object == game_object_to_kill;
+		});
+
+		if (game_object != game_objects.end()) {
+			(*game_object)->dead = true;
+		}
+	}
+
+	void Group::kill(const std::string& game_object_id) {
+		kill(game_objects_map[game_object_id]);
+	}
+
 	void Group::remove(GameObject* game_object_to_remove)	{
-		LOG("Removing game object: " << game_object_to_remove);
+		LOG("Removing game object: " << game_object_to_remove->label);
 		game_objects.erase(std::remove_if(game_objects.begin(), game_objects.end(), [&](auto game_object) {
 			return game_object == game_object_to_remove;
 		}), game_objects.end());
 	}
 
-	void Group::remove(const std::string& id) {
-		remove(game_objects_map[id]);
+	void Group::remove(const std::string& game_object_id) {
+		remove(game_objects_map[game_object_id]);
 	}
 
 	int Group::count_visible() {
@@ -89,9 +98,19 @@ namespace Thing2D {
 		return objects_found;
 	}
 
+	void Group::update() {
+		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
+			if (!game_object->dead) {
+				game_object->update();
+			}
+		});
+	}
+
 	void Group::draw() {
 		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
-			return game_object->draw();
+			if (!game_object->dead) {
+				return game_object->draw();
+			}
 		});
 	}
 

@@ -63,6 +63,10 @@ namespace Thing2D {
 	}
 
 	bool GameObject::overlaps(GameObject* target) {
+		if (target->dead) {
+			return false;
+		}
+
 		auto result = std::find_if(boxes.begin(), boxes.end(), [&](Box* this_box) {
 			auto result = std::find_if(target->boxes.begin(), target->boxes.end(), [&](Box* target_box) {
 				return this_box->check_sdl_intersection(target_box, debug);

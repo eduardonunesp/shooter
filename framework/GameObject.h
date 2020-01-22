@@ -43,7 +43,7 @@ namespace Thing2D {
 
 		bool debug;
 		bool visible;
-		bool dead;
+		bool dead; // == disabled
 		bool flipped;
 		int life;
 
