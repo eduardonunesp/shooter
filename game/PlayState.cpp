@@ -10,6 +10,7 @@ namespace SpaceShooter {
 		State::init();
 		add("player", new Player(this));
 		add("enemy", new Enemy());
+		add_timer("shot_timer", 60);
 	}
 
 	void PlayState::update() {
@@ -40,13 +41,13 @@ namespace SpaceShooter {
 			}
 		}
 
-		if (input_manager->is_key_up(SDL_SCANCODE_SPACE)) {
+		if (input_manager->is_key_up(SDL_SCANCODE_SPACE) && get_timer("shot_timer")->ended()) {
 			Shot* shot = new Shot(position.x, position.y);
 			const Vector& playerPos = player->get_position();
 			shot->move(playerPos.x + 35, playerPos.y);
 			shot->set_velocity(Vector::up() * 20.0f);
 			add(shot);
-			LOG("GET CURRENT STATE " << game->get_current_state());
+			get_timer("shot_timer")->reset();
 		}
 
 		State::update();

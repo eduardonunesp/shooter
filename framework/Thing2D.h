@@ -15,3 +15,4 @@
 #include "Color.h"
 #include "AnimationFrame.h"
 #include "Animation.h"
+#include "Timer.h"

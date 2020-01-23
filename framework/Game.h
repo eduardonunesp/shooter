@@ -28,6 +28,9 @@ namespace Thing2D {
 		// Window properties
 		inline int get_screen_width() { return screen_width; }
 		inline int get_screen_height() { return screen_height; }
+
+		// Core properties
+		inline unsigned int delta_time() { return frame_time; }
 		
 		inline void halt() {
 			running = false;
@@ -43,6 +46,7 @@ namespace Thing2D {
 
 	private:
 		bool running;
+		unsigned int frame_time;
 		State* current_state;
 		std::map<std::string, State*> states;
 	};

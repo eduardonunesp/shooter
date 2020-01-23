@@ -10,6 +10,7 @@ namespace Thing2D {
 		screen_width(screen_width), screen_height(screen_height),
 		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
 		current_state(nullptr),
+		frame_time(0),
 		running(false) {}
 
 	Game::~Game() {
@@ -83,7 +84,6 @@ namespace Thing2D {
 		const Uint32 delay_time = 1000 / fps;
 
 		Uint32 frame_start = 0;
-		Uint32 frame_time = 0;
 
 		LOG("Running the main loop " << running);
 

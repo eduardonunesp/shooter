@@ -148,6 +148,7 @@
     <ClCompile Include="framework\GameObject.cpp" />
     <ClCompile Include="framework\Group.cpp" />
     <ClCompile Include="framework\InputManager.cpp" />
+    <ClCompile Include="framework\State.cpp" />
     <ClCompile Include="framework\Sprite.cpp" />
     <ClCompile Include="framework\VideoManager.cpp" />
     <ClCompile Include="game\main.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="framework\Sprite.h" />
     <ClInclude Include="framework\State.h" />
     <ClInclude Include="framework\Thing2D.h" />
+    <ClInclude Include="framework\Timer.h" />
     <ClInclude Include="framework\Vector.h" />
     <ClInclude Include="framework\VideoManager.h" />
     <ClInclude Include="game\Enemy.h" />
