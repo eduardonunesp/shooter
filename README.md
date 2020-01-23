@@ -15,3 +15,4 @@
 - [ ] Follow target
 - [ ] Rotation
 - [ ] Text render
+- [ ] Binary blob load/save (PhysFS)
