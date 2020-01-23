@@ -54,6 +54,12 @@
     <ClCompile Include="framework\State.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="framework\Layer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\TileLayer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\AudioManager.h">
@@ -104,9 +110,6 @@
     <ClInclude Include="game\Enemy.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="framework\Box.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="framework\Color.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -123,6 +126,21 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\Recycle.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Layer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\TileLayer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\TileSet.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Tile.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Collider.h">
       <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>

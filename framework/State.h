@@ -7,7 +7,7 @@
 
 namespace Thing2D {
 	class GameObject;
-	class Group;
+	class Layer;
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
@@ -31,9 +31,7 @@ namespace Thing2D {
 
 		// Layers
 		void create_layer();
-		auto get_layer(int idx) {
-			return layers[idx];
-		}
+		auto get_layer(int idx);
 
 		// Game Object suggar function
 		void add(const std::string& game_object_id, GameObject* game_object, int layer_idx = 0);
@@ -47,8 +45,8 @@ namespace Thing2D {
 		AudioManager* audio_manager;
 		Game* game;
 
-		Group* default_layer;
-		std::vector<Group*> layers;
+		Layer* default_layer;
+		std::vector<Layer*> layers;
 		std::map<std::string, Timer*> timers;
 	};
 }

@@ -6,9 +6,9 @@
 #include "Logger.h"
 
 namespace Thing2D {
-	class Box : public Rect {
+	class Collider : public Rect {
 	public:
-		Box(float x, float y, int h, int w): 
+		Collider(float x, float y, int h, int w): 
 			Rect(x, y, h, w),
 			offset_x(0), offset_y(0) {}
 
@@ -25,7 +25,7 @@ namespace Thing2D {
 			return box;
 		}
 
-		virtual inline bool check_sdl_intersection(Box* other_rect, bool debug) {
+		virtual inline bool check_sdl_intersection(Collider* other_rect, bool debug) {
 			if (!active) {
 				return false;
 			}

@@ -1,7 +1,7 @@
 #include "State.h"
 #include <algorithm>
 #include "Game.h"
-#include "Group.h"
+#include "Layer.h"
 
 namespace Thing2D {
 	State::State() : 
@@ -22,22 +22,26 @@ namespace Thing2D {
 	}
 
 	void State::create_layer() {
-		Group* layerGroup = new Group();
-		layerGroup->video_manager = video_manager;
-		layerGroup->input_manager = input_manager;
-		layerGroup->audio_manager = audio_manager;
-		layerGroup->game = game;
-		layers.push_back(layerGroup);
+		Layer* new_layer = new Layer();
+		new_layer->video_manager = video_manager;
+		new_layer->input_manager = input_manager;
+		new_layer->audio_manager = audio_manager;
+		new_layer->game = game;
+		layers.push_back(new_layer);
+	}
+
+	auto State::get_layer(int idx) {
+		return layers[idx];
 	}
 
 	void State::add(const std::string& game_object_id, GameObject* game_object, int layer_idx) {
-		Group* layerGroup = layers[layer_idx];
-		layerGroup->add(game_object_id, game_object);
+		Layer* layer = layers[layer_idx];
+		layer->add(game_object_id, game_object);
 	}
 
 	void State::add(GameObject* game_object) {
-		Group* layerGroup = layers[0];
-		layerGroup->add(game_object);
+		Layer* layer = layers[0];
+		layer->add(game_object);
 	}
 	
 	void State::update() {

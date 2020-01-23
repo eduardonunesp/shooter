@@ -3,7 +3,7 @@
 #include "VideoManager.h"
 #include "InputManager.h"
 #include "AudioManager.h"
-#include "Box.h"
+#include "Collider.h"
 #include "Logger.h"
 
 namespace Thing2D {
@@ -64,7 +64,7 @@ namespace Thing2D {
 		}
 
 		LOG("Create box for " << label);
-		Box* box = new Box(x, y, w, h);
+		Collider* box = new Collider(x, y, w, h);
 		box->label = box_label;
 		box->active = true;
 		boxes.push_back(box);
@@ -75,8 +75,8 @@ namespace Thing2D {
 			return false;
 		}
 
-		auto result = std::find_if(boxes.begin(), boxes.end(), [&](Box* this_box) {
-			auto result = std::find_if(target->boxes.begin(), target->boxes.end(), [&](Box* target_box) {
+		auto result = std::find_if(boxes.begin(), boxes.end(), [&](Collider* this_box) {
+			auto result = std::find_if(target->boxes.begin(), target->boxes.end(), [&](Collider* target_box) {
 				return this_box->check_sdl_intersection(target_box, debug);
 			});
 			
