@@ -165,6 +165,7 @@
     <ClInclude Include="framework\Game.h" />
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />
+    <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\InputManager.h" />
     <ClInclude Include="framework\Logger.h" />
     <ClInclude Include="framework\Rect.h" />
