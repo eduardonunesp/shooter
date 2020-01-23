@@ -10,10 +10,16 @@ namespace Thing2D {
 		~AudioManager();
 
 		void init();
+		
+		// Music commands
 		void load_music(const std::string& file_path, bool loop, int volume, const std::string& music_id);
 		void play_music(const std::string& music_id);
 		void stop_music(const std::string& music_id);
 		void resume_music(const std::string& music_id);
+
+		// Sound commands
+		void load_sound(const std::string& file_path, const std::string& music_id);
+		void play_sound(const std::string& sound_id);
 
 	private:
 		struct Sound {

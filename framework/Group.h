@@ -16,11 +16,13 @@ namespace Thing2D {
 		Group(float x, float y) :
 			position(x, y),
 			video_manager(nullptr),
+			audio_manager(nullptr),
 			input_manager(nullptr) {}
 
 		Group() :
 			position(0, 0),
 			video_manager(nullptr),
+			audio_manager(nullptr),
 			input_manager(nullptr) {}
 
 		virtual ~Group() {
@@ -50,6 +52,8 @@ namespace Thing2D {
 		std::vector<GameObject*> all_by_tag(const std::string& tag);
 
 	protected:
+		friend class State;
+
 		Vector position;
 		VideoManager* video_manager;
 		InputManager* input_manager;

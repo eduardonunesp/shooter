@@ -10,7 +10,7 @@ namespace SpaceShooter {
 		State::init();
 		add("player", new Player(this));
 		add("enemy", new Enemy());
-		add_timer("shot_timer", 60);
+		create_timer("shot_timer", 60);
 	}
 
 	void PlayState::update() {
@@ -18,14 +18,14 @@ namespace SpaceShooter {
 			game->halt();
 		}
 
-		GameObject* player = get("player");
+		GameObject* player = default_layer->get("player");
 		
-		for (auto enemy : all_by_tag("enemy")) {
+		for (auto enemy : default_layer->all_by_tag("enemy")) {
 			if (player->overlaps(enemy)) {
 				enemy->hurt(1);
 			}
 
-			for (auto shot : all_by_tag("shot")) {
+			for (auto shot : default_layer->all_by_tag("shot")) {
 				if (shot->is_dead()) {
 					continue;
 				}
@@ -42,11 +42,12 @@ namespace SpaceShooter {
 		}
 
 		if (input_manager->is_key_up(SDL_SCANCODE_SPACE) && get_timer("shot_timer")->ended()) {
-			Shot* shot = new Shot(position.x, position.y);
+			Shot* shot = new Shot(0, 0);
 			const Vector& playerPos = player->get_position();
 			shot->move(playerPos.x + 35, playerPos.y);
 			shot->set_velocity(Vector::up() * 20.0f);
 			add(shot);
+			audio_manager->play_sound("boom");
 			get_timer("shot_timer")->reset();
 		}
 
