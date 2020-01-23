@@ -1,6 +1,8 @@
 #include "Sprite.h"
 #include "Logger.h"
 #include "VideoManager.h"
+#include "AnimationFrame.h"
+#include "Animation.h"
 #include <cstdarg>
 
 namespace Thing2D {
@@ -66,7 +68,7 @@ namespace Thing2D {
 	void Sprite::draw() {
 		if (curr_animation) {
 			Animation* animation = curr_animation;
-			AnimFrame* anim_frame = anim_frames[animation->curr_anim_frame];
+			AnimationFrame* anim_frame = anim_frames[animation->curr_anim_frame];
 			curr_row = anim_frame->row;
 			curr_col = anim_frame->col;
 		}
@@ -75,7 +77,7 @@ namespace Thing2D {
 	}
 
 	void Sprite::destroy() {
-		for (AnimFrame* anim_frame : anim_frames) {
+		for (AnimationFrame* anim_frame : anim_frames) {
 			delete anim_frame;
 		}
 	}
@@ -84,28 +86,8 @@ namespace Thing2D {
 		LOG("Parse sprite frames " << rows << ":" << cols);
 		for (int x = 0; x < rows; x++) {
 			for (int y = 0; y < cols; y++) {
-				anim_frames.push_back(new AnimFrame(x, y));
+				anim_frames.push_back(new AnimationFrame(x, y));
 			}
 		}
-	}
-
-	void Sprite::Animation::set_current_frame(int frame) {
-		if (curr_anim_frame == frame) {
-			return;
-		}
-
-		if (ended) {
-			return;
-		}
-
-		if (!loop) {
-			sum++;
-
-			if (sum >= frames.size()) {
-				ended = true;
-			}
-		}
-
-		curr_anim_frame = frame;
 	}
 }

@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="framework\Animation.cpp" />
     <ClCompile Include="framework\AudioManager.cpp" />
     <ClCompile Include="framework\Game.cpp" />
     <ClCompile Include="framework\GameObject.cpp" />
@@ -155,6 +156,8 @@
     <ClCompile Include="game\SpaceShooter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="framework\Animation.h" />
+    <ClInclude Include="framework\AnimationFrame.h" />
     <ClInclude Include="framework\AudioManager.h" />
     <ClInclude Include="framework\Box.h" />
     <ClInclude Include="framework\Color.h" />

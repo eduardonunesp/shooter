@@ -13,3 +13,5 @@
 #include "Rect.h"
 #include "Box.h"
 #include "Color.h"
+#include "AnimationFrame.h"
+#include "Animation.h"
