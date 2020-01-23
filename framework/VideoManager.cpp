@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <SDL_image.h>
 #include "VideoManager.h"
-#include "Box.h"
+#include "Collider.h"
 #include "Logger.h"
 
 #define PREFERED_DRIVER "opengl"
@@ -98,7 +98,7 @@ namespace Thing2D {
 
 	void VideoManager::draw(const std::string& texture_id, int x, int y, int width, int height, bool visible,
 		int current_row, int current_col, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
-		bool debug, std::vector<Box*> debug_boxes) {
+		bool debug, std::vector<Collider*> debug_boxes) {
 		SDL_Rect srcRect;
 		SDL_Rect destRect;
 		srcRect.x = width * current_col;

@@ -148,8 +148,10 @@
     <ClCompile Include="framework\GameObject.cpp" />
     <ClCompile Include="framework\Group.cpp" />
     <ClCompile Include="framework\InputManager.cpp" />
+    <ClCompile Include="framework\Layer.cpp" />
     <ClCompile Include="framework\State.cpp" />
     <ClCompile Include="framework\Sprite.cpp" />
+    <ClCompile Include="framework\TileLayer.cpp" />
     <ClCompile Include="framework\VideoManager.cpp" />
     <ClCompile Include="game\main.cpp" />
     <ClCompile Include="game\Player.cpp" />
@@ -160,11 +162,12 @@
     <ClInclude Include="framework\Animation.h" />
     <ClInclude Include="framework\AnimationFrame.h" />
     <ClInclude Include="framework\AudioManager.h" />
-    <ClInclude Include="framework\Box.h" />
+    <ClInclude Include="framework\Collider.h" />
     <ClInclude Include="framework\Color.h" />
     <ClInclude Include="framework\Game.h" />
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />
+    <ClInclude Include="framework\Layer.h" />
     <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\InputManager.h" />
     <ClInclude Include="framework\Logger.h" />
@@ -173,6 +176,9 @@
     <ClInclude Include="framework\Sprite.h" />
     <ClInclude Include="framework\State.h" />
     <ClInclude Include="framework\Thing2D.h" />
+    <ClInclude Include="framework\Tile.h" />
+    <ClInclude Include="framework\TileLayer.h" />
+    <ClInclude Include="framework\TileSet.h" />
     <ClInclude Include="framework\Timer.h" />
     <ClInclude Include="framework\Vector.h" />
     <ClInclude Include="framework\VideoManager.h" />

@@ -6,7 +6,7 @@
 #include "Vector.h"
 
 namespace Thing2D {
-	class Box;
+	class Collider;
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
@@ -62,7 +62,7 @@ namespace Thing2D {
 		Vector position;
 		Vector velocity;
 		Vector acceleration;
-		std::vector<Box*> boxes;
+		std::vector<Collider*> boxes;
 
 		int width, height;
 		int curr_row, curr_col;
