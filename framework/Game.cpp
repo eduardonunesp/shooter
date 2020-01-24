@@ -109,7 +109,7 @@ namespace Thing2D {
 				current_state->render();
 			}
 
-			video_manager->render();
+			video_manager->present();
 
 			frame_time = SDL_GetTicks() - frame_start;
 

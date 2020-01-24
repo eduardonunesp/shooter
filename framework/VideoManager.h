@@ -20,7 +20,7 @@ namespace Thing2D {
 			int current_row, int current_frame, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
 			bool debug, std::vector<Collider*> debug_boxes);
 		void clear();
-		void render();
+		void present();
 		void destroy();
 
 		// Video stuff

@@ -137,7 +137,7 @@ namespace Thing2D {
 		SDL_RenderClear(renderer);
 	}
 
-	void VideoManager::render()	{
+	void VideoManager::present()	{
 		SDL_RenderPresent(renderer);
 	}
 

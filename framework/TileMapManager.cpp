@@ -14,11 +14,15 @@ namespace Thing2D {
 		assets_path = "./assets/";
 	}
 
-	void TileMapManager::update() {}
+	void TileMapManager::update() {
+		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
+			tilemap.second->update();
+		});
+	}
 
 	void TileMapManager::render() {
 		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
-			tilemap.second->update();
+			tilemap.second->render();
 		});
 	}
 
@@ -36,6 +40,7 @@ namespace Thing2D {
 		TileMap* new_tile_map = new TileMap();
 		tilemaps[map_id] = new_tile_map;
 		curr_tile_map = new_tile_map;
+		curr_tile_map->video_manager = video_manager;
 
 		TiXmlElement* pRoot = levelDocument.RootElement();
 		LOG("Loading level:\n" << "Version: " << pRoot->Attribute("version"));
@@ -160,6 +165,7 @@ namespace Thing2D {
 
 		}
 
+		curr_tile_map = nullptr;
 		LOG("Parsed layer " << layer_root->Attribute("name"));
 	}
 }

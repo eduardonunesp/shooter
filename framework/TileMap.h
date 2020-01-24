@@ -20,6 +20,8 @@ namespace Thing2D {
 	protected:
 		friend class TileMapManager;
 
+		VideoManager* video_manager;
+
 		std::string orientation;
 		int width, height;
 		int tile_width, tile_height;
