@@ -60,6 +60,12 @@
     <ClCompile Include="framework\TileLayer.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="framework\TileMap.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\TileMapManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\AudioManager.h">
@@ -147,6 +153,9 @@
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\TileMap.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\TileMapManager.h">
       <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>

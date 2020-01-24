@@ -9,15 +9,11 @@ namespace Thing2D {
 	protected:
 		friend class TileMap;
 
-		enum class Orientation {
-			ORIENTATION_ORTHOGANAL,
-			ORIENTATION_ISOMETRIC
-		};
-
 		// Tileset congs
+		int first_gid;
 		int id;
 		std::string name;
-		Orientation orientation;
+		std::string orientation;
 		int grid_width, grid_height;
 
 		// Texture confs

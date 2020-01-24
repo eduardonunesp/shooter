@@ -152,6 +152,8 @@
     <ClCompile Include="framework\State.cpp" />
     <ClCompile Include="framework\Sprite.cpp" />
     <ClCompile Include="framework\TileLayer.cpp" />
+    <ClCompile Include="framework\TileMap.cpp" />
+    <ClCompile Include="framework\TileMapManager.cpp" />
     <ClCompile Include="framework\VideoManager.cpp" />
     <ClCompile Include="game\main.cpp" />
     <ClCompile Include="game\Player.cpp" />
@@ -180,6 +182,7 @@
     <ClInclude Include="framework\Tile.h" />
     <ClInclude Include="framework\TileLayer.h" />
     <ClInclude Include="framework\TileMap.h" />
+    <ClInclude Include="framework\TileMapManager.h" />
     <ClInclude Include="framework\TileSet.h" />
     <ClInclude Include="framework\Timer.h" />
     <ClInclude Include="framework\Vector.h" />

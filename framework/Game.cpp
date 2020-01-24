@@ -4,6 +4,7 @@
 #include "AudioManager.h"
 #include "State.h"
 #include "Logger.h"
+#include "TileMapManager.h"
 
 namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :
@@ -31,6 +32,9 @@ namespace Thing2D {
 
 		audio_manager = new AudioManager();
 		audio_manager->init();
+
+		tile_map_manager = new TileMapManager();
+		tile_map_manager->init();
 
 		running = true;
 

@@ -7,6 +7,7 @@ namespace Thing2D {
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
+	class TileMapManager;
 	class State;
 
 	class Game {
@@ -43,6 +44,7 @@ namespace Thing2D {
 		VideoManager* video_manager;
 		InputManager* input_manager;
 		AudioManager* audio_manager;
+		TileMapManager* tile_map_manager;
 
 	private:
 		bool running;
