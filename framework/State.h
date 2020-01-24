@@ -20,11 +20,11 @@ namespace Thing2D {
 		// Life cycle
 		virtual void init();
 		virtual void update();
-		virtual void draw();
+		virtual void render();
 		virtual void destroy();
 
 		// Timer
-		void create_timer(const std::string& timer_id, int time_limit_ms);
+		void create_timer(const std::string& timer_id, float time_limit_ms);
 		auto get_timer(const std::string& timer_id) {
 			return timers[timer_id];
 		}

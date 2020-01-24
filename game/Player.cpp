@@ -9,7 +9,7 @@ namespace SpaceShooter {
 		Sprite::init();
 
 		add_animations("fly", 12, true, 3, 0, 1, 2);
-		position.x = (game->get_screen_width() / 2) - width;
+		position.x = ((int)game->get_screen_width() / 2) - width;
 		
 		debug = true;
 

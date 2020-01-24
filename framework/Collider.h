@@ -18,8 +18,8 @@ namespace Thing2D {
 
 		inline SDL_Rect to_sdl_rect() {
 			SDL_Rect box;
-			box.x = (int)x + offset_x;
-			box.y = (int)y + offset_y;
+			box.x = (int)(x + offset_x);
+			box.y = (int)(y + offset_y);
 			box.h = h;
 			box.w = w;
 			return box;

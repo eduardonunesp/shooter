@@ -43,8 +43,8 @@ namespace SpaceShooter {
 
 		if (input_manager->is_key_up(SDL_SCANCODE_SPACE) && get_timer("shot_timer")->ended()) {
 			Shot* shot = new Shot(0, 0);
-			const Vector& playerPos = player->get_position();
-			shot->move(playerPos.x + 35, playerPos.y);
+			const Vector& player_pos = player->get_position();
+			shot->move(player_pos.x + 35, player_pos.y);
 			shot->set_velocity(Vector::up() * 20.0f);
 			add(shot);
 			audio_manager->play_sound("boom");

@@ -36,7 +36,7 @@ namespace Thing2D {
 		// Life cycle
 		virtual void init() {};
 		virtual void update();
-		void draw();
+		void render();
 		virtual void destroy();
 
 		// Adding game objects

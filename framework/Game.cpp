@@ -100,7 +100,7 @@ namespace Thing2D {
 
 			if (current_state) {
 				current_state->update();
-				current_state->draw();
+				current_state->render();
 			}
 
 			video_manager->render();

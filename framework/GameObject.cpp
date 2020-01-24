@@ -41,12 +41,12 @@ namespace Thing2D {
 		});
 	}
 
-	void GameObject::draw() {
+	void GameObject::render() {
 		if (dead) {
 			return;
 		}
 
-		video_manager->draw(texture_id, (int)position.x, (int)position.y, width, height, visible,
+		video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
 							curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
 							debug, boxes);
 	}

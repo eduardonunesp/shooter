@@ -14,7 +14,7 @@ namespace Thing2D {
 			left_time -= delta_time;
 		}
 
-		void set_time_limit(int new_time_limit) {
+		void set_time_limit(float new_time_limit) {
 			left_time = new_time_limit;
 		}
 

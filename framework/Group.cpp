@@ -106,14 +106,14 @@ namespace Thing2D {
 		});
 	}
 
-	void Group::draw() {
+	void Group::render() {
 		if (!visible) {
 			return;
 		}
 
 		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
 			if (!game_object->dead) {
-				return game_object->draw();
+				return game_object->render();
 			}
 		});
 	}

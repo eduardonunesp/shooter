@@ -65,7 +65,7 @@ namespace Thing2D {
 		GameObject::update();
 	}
 
-	void Sprite::draw() {
+	void Sprite::render() {
 		if (curr_animation) {
 			Animation* animation = curr_animation;
 			AnimationFrame* anim_frame = anim_frames[animation->curr_anim_frame];
@@ -73,7 +73,7 @@ namespace Thing2D {
 			curr_col = anim_frame->col;
 		}
 
-		GameObject::draw();
+		GameObject::render();
 	}
 
 	void Sprite::destroy() {

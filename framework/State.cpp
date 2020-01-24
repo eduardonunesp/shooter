@@ -16,7 +16,7 @@ namespace Thing2D {
 		default_layer = layers[0];
 	}
 
-	void State::create_timer(const std::string& timer_id, int time_limit_ms) {
+	void State::create_timer(const std::string& timer_id, float time_limit_ms) {
 		timers[timer_id] = new Timer(time_limit_ms);
 		timers[timer_id]->reset();
 	}
@@ -54,9 +54,9 @@ namespace Thing2D {
 		});
 	}
 
-	void State::draw() {
+	void State::render() {
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
-			layer->draw();
+			layer->render();
 		});
 	}
 

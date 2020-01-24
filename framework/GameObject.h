@@ -19,7 +19,7 @@ namespace Thing2D {
 
 		virtual void init();
 		virtual void update();
-		virtual void draw();
+		virtual void render();
 		virtual void destroy();
 
 		void create_box(float x, float y, int w, int h);
