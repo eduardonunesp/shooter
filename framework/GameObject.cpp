@@ -24,7 +24,7 @@ namespace Thing2D {
 	}
 
 	void GameObject::init() {
-		create_box(position.x, position.y, width, height);
+		create_collider(position.x, position.y, width, height);
 	}
 
 	void GameObject::update() {
@@ -35,7 +35,7 @@ namespace Thing2D {
 		velocity += acceleration;
 		position += velocity;
 
-		std::for_each(boxes.begin(), boxes.end(), [&](auto box) {
+		std::for_each(colliders.begin(), colliders.end(), [&](auto box) {
 			box->x = box->offset_x + position.x;
 			box->y = box->offset_y + position.y;
 		});
@@ -48,17 +48,17 @@ namespace Thing2D {
 
 		video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
 							curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
-							debug, boxes);
+							debug, colliders);
 	}
 
 	void GameObject::destroy() {}
 
-	void GameObject::create_box(float x, float y, int w, int h) {
-		const std::string box_label = "box_" + std::to_string(boxes.size()) + " for " + label;
-		create_box(x, y, w, h, box_label);
+	void GameObject::create_collider(float x, float y, int w, int h) {
+		const std::string box_label = "box_" + std::to_string(colliders.size()) + " for " + label;
+		create_collider(x, y, w, h, box_label);
 	}
 
-	void GameObject::create_box(float x, float y, int w, int h, const std::string& box_label) {
+	void GameObject::create_collider(float x, float y, int w, int h, const std::string& box_label) {
 		if (dead) {
 			return;
 		}
@@ -67,7 +67,7 @@ namespace Thing2D {
 		Collider* box = new Collider(x, y, w, h);
 		box->label = box_label;
 		box->active = true;
-		boxes.push_back(box);
+		colliders.push_back(box);
 	}
 
 	bool GameObject::overlaps(GameObject* target) {
@@ -75,15 +75,15 @@ namespace Thing2D {
 			return false;
 		}
 
-		auto result = std::find_if(boxes.begin(), boxes.end(), [&](Collider* this_box) {
-			auto result = std::find_if(target->boxes.begin(), target->boxes.end(), [&](Collider* target_box) {
+		auto result = std::find_if(colliders.begin(), colliders.end(), [&](Collider* this_box) {
+			auto result = std::find_if(target->colliders.begin(), target->colliders.end(), [&](Collider* target_box) {
 				return this_box->check_sdl_intersection(target_box, debug);
 			});
 			
-			return result != target->boxes.end();
+			return result != target->colliders.end();
 		});
 
-		return result != boxes.end();
+		return result != colliders.end();
 	}
 
 	void GameObject::set_velocity(const Vector& velocity_value) {

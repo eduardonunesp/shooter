@@ -18,6 +18,7 @@
 #include "Timer.h"
 #include "Recycle.h"
 #include "Layer.h"
+#include "Props.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"

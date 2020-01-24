@@ -3,18 +3,17 @@
 #include <string>
 #include <map>
 #include "Layer.h"
+#include "Props.h"
 
 namespace Thing2D {
-	class TileLayer : public Layer {
+	class TileLayer : public Layer, public Props {
 	public:
-		TileLayer(int tile_size, int map_width, int map_height);
+		TileLayer(const std::string &name);
+		TileLayer(float x, float y, const std::string& name);
 
 	protected:
-		int tile_size;
-		int map_width;
-		int map_height;
-
-		std::map<std::string, std::string> string_prop;
-		std::map<std::string, int> int_prop;
+		std::string name;
+		int width;
+		int height;
 	};
 }

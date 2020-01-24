@@ -168,6 +168,7 @@
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />
     <ClInclude Include="framework\Layer.h" />
+    <ClInclude Include="framework\Props.h" />
     <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\InputManager.h" />
     <ClInclude Include="framework\Logger.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="framework\Thing2D.h" />
     <ClInclude Include="framework\Tile.h" />
     <ClInclude Include="framework\TileLayer.h" />
+    <ClInclude Include="framework\TileMap.h" />
     <ClInclude Include="framework\TileSet.h" />
     <ClInclude Include="framework\Timer.h" />
     <ClInclude Include="framework\Vector.h" />

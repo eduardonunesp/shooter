@@ -13,7 +13,7 @@ namespace SpaceShooter {
 		
 		debug = true;
 
-		Collider *box0 = get_box(0);
+		Collider *box0 = get_collider(0);
 		box0->offset_x = 8;
 		box0->offset_y = 8;
 		box0->w = 33;
