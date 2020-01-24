@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <map>
+#include <vector>
 #include "Layer.h"
 #include "Props.h"
 
@@ -12,8 +12,12 @@ namespace Thing2D {
 		TileLayer(float x, float y, const std::string& name);
 
 	protected:
+		friend class TileMapManager;
+
 		std::string name;
 		int width;
 		int height;
+
+		std::vector<std::vector<int>> tile_ids;
 	};
 }

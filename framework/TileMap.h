@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "Props.h"
 
 namespace Thing2D {
 	class TileLayer;
 	class TileSet;
 
-	class TileMap {
+	class TileMap : public Props {
 	public:
 		TileMap();
 
@@ -17,6 +18,8 @@ namespace Thing2D {
 		void destroy();
 
 	protected:
+		friend class TileMapManager;
+
 		std::string orientation;
 		int width, height;
 		int tile_width, tile_height;

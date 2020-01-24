@@ -8,13 +8,13 @@ namespace Thing2D {
 	class TileSet : public Props {
 	protected:
 		friend class TileMap;
+		friend class TileMapManager;
 
 		// Tileset congs
 		int first_gid;
-		int id;
 		std::string name;
 		std::string orientation;
-		int grid_width, grid_height;
+		int tile_width, tile_height;
 
 		// Texture confs
 		int width, height;

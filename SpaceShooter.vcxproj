@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="framework\Animation.cpp" />
     <ClCompile Include="framework\AudioManager.cpp" />
+    <ClCompile Include="framework\base64.cpp" />
     <ClCompile Include="framework\Game.cpp" />
     <ClCompile Include="framework\GameObject.cpp" />
     <ClCompile Include="framework\Group.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="framework\Animation.h" />
     <ClInclude Include="framework\AnimationFrame.h" />
     <ClInclude Include="framework\AudioManager.h" />
+    <ClInclude Include="framework\base64.h" />
     <ClInclude Include="framework\Collider.h" />
     <ClInclude Include="framework\Color.h" />
     <ClInclude Include="framework\Game.h" />
@@ -203,6 +205,8 @@
     <Import Project="packages\sdl2_image.nuget.2.0.3.2\build\native\sdl2_image.nuget.targets" Condition="Exists('packages\sdl2_image.nuget.2.0.3.2\build\native\sdl2_image.nuget.targets')" />
     <Import Project="packages\sdl2_mixer.nuget.redist.2.0.4\build\native\sdl2_mixer.nuget.redist.targets" Condition="Exists('packages\sdl2_mixer.nuget.redist.2.0.4\build\native\sdl2_mixer.nuget.redist.targets')" />
     <Import Project="packages\sdl2_mixer.nuget.2.0.4\build\native\sdl2_mixer.nuget.targets" Condition="Exists('packages\sdl2_mixer.nuget.2.0.4\build\native\sdl2_mixer.nuget.targets')" />
+    <Import Project="packages\zlib-msvc-x64.1.2.11.8900\build\native\zlib-msvc-x64.targets" Condition="Exists('packages\zlib-msvc-x64.1.2.11.8900\build\native\zlib-msvc-x64.targets')" />
+    <Import Project="packages\TinyXml.SilverHorn.2.6.2.1\build\TinyXml.SilverHorn.targets" Condition="Exists('packages\TinyXml.SilverHorn.2.6.2.1\build\TinyXml.SilverHorn.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -214,5 +218,7 @@
     <Error Condition="!Exists('packages\sdl2_image.nuget.2.0.3.2\build\native\sdl2_image.nuget.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_image.nuget.2.0.3.2\build\native\sdl2_image.nuget.targets'))" />
     <Error Condition="!Exists('packages\sdl2_mixer.nuget.redist.2.0.4\build\native\sdl2_mixer.nuget.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_mixer.nuget.redist.2.0.4\build\native\sdl2_mixer.nuget.redist.targets'))" />
     <Error Condition="!Exists('packages\sdl2_mixer.nuget.2.0.4\build\native\sdl2_mixer.nuget.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sdl2_mixer.nuget.2.0.4\build\native\sdl2_mixer.nuget.targets'))" />
+    <Error Condition="!Exists('packages\zlib-msvc-x64.1.2.11.8900\build\native\zlib-msvc-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\zlib-msvc-x64.1.2.11.8900\build\native\zlib-msvc-x64.targets'))" />
+    <Error Condition="!Exists('packages\TinyXml.SilverHorn.2.6.2.1\build\TinyXml.SilverHorn.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\TinyXml.SilverHorn.2.6.2.1\build\TinyXml.SilverHorn.targets'))" />
   </Target>
 </Project>

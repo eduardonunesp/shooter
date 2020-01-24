@@ -35,6 +35,7 @@ namespace Thing2D {
 
 		tile_map_manager = new TileMapManager();
 		tile_map_manager->init();
+		tile_map_manager->video_manager = video_manager;
 
 		running = true;
 
@@ -76,6 +77,7 @@ namespace Thing2D {
 			current_state->video_manager = video_manager;
 			current_state->input_manager = input_manager;
 			current_state->audio_manager = audio_manager;
+			current_state->tile_map_manager = tile_map_manager;
 
 			LOG("Set current state: " + state_id);
 
