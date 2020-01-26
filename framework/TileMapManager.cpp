@@ -49,8 +49,8 @@ namespace Thing2D {
 
 		pRoot->Attribute("tilewidth", &new_tile_map->tile_width);
 		pRoot->Attribute("tileheight", &new_tile_map->tile_height);
-		pRoot->Attribute("width", &new_tile_map->width);
-		pRoot->Attribute("height", &new_tile_map->height);
+		pRoot->Attribute("width", &new_tile_map->cols);
+		pRoot->Attribute("height", &new_tile_map->rows);
 
 		TiXmlElement* pProperties = pRoot->FirstChildElement();
 
@@ -113,8 +113,8 @@ namespace Thing2D {
 		LOG("Parsing" << layer_root->Attribute("name"));
 
 		TileLayer* new_tile_layer = new TileLayer(layer_root->Attribute("name"));
-		new_tile_layer->width = curr_tile_map->width;
-		new_tile_layer->height = curr_tile_map->height;
+		new_tile_layer->cols = curr_tile_map->cols;
+		new_tile_layer->rows = curr_tile_map->rows;
 
 		curr_tile_map->tile_layers.push_back(new_tile_layer);
 
@@ -146,19 +146,19 @@ namespace Thing2D {
 			}
 
 			// uncompress zlib compression
-			uLongf size_of_ids = curr_tile_map->width * curr_tile_map->height * sizeof(int);
-			std::vector<int> ids(curr_tile_map->width * curr_tile_map->height);
+			uLongf size_of_ids = curr_tile_map->cols * curr_tile_map->rows * sizeof(int);
+			std::vector<int> ids(curr_tile_map->cols * curr_tile_map->rows);
 			uncompress((Bytef*)&ids[0], &size_of_ids, (const Bytef*)decoded_ids.c_str(), decoded_ids.size());
 
-			std::vector<int> layer_row(curr_tile_map->width);
+			std::vector<int> layer_row(curr_tile_map->cols);
 
-			for (int j = 0; j < curr_tile_map->height; j++) {
+			for (int j = 0; j < curr_tile_map->rows; j++) {
 				data.push_back(layer_row);
 			}
 
-			for (int rows = 0; rows < curr_tile_map->height; rows++) {
-				for (int cols = 0; cols < curr_tile_map->width; cols++) {
-					data[rows][cols] = ids[rows * curr_tile_map->width + cols];
+			for (int rows = 0; rows < curr_tile_map->rows; rows++) {
+				for (int cols = 0; cols < curr_tile_map->cols; cols++) {
+					data[rows][cols] = ids[rows * curr_tile_map->cols + cols];
 				}
 			}
 

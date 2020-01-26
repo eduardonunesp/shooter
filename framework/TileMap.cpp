@@ -8,7 +8,7 @@
 namespace Thing2D {
 	TileMap::TileMap():
 		video_manager(nullptr),
-		height(0), width(0),
+		rows(0), cols(0),
 		tile_height(0), tile_width(0) {}
 
 	void TileMap::init() {}
@@ -19,9 +19,9 @@ namespace Thing2D {
 		std::vector<Collider*> debug_boxes;
 
 		std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
-			for (int w = 0; w < tile_layer->width; w++) {
-				for (int h = 0; h < tile_layer->height; h++) {
-					int tile_id = tile_layer->tile_ids[w][h];
+			for (int row = 0; row < tile_layer->rows; row++) {
+				for (int col = 0; col < tile_layer->cols; col++) {
+					int tile_id = tile_layer->tile_ids[row][col];
 
 					if (tile_id == 0) {
 						continue;
@@ -30,9 +30,9 @@ namespace Thing2D {
 					TileSet* tile_set = tile_set_by_id(tile_id);
 
 					if (tile_set) {
-						video_manager->render(tile_set->name, w * tile_width, h* tile_height, tile_width, tile_height, true,
-							w, h, 0, 255, 255, 255, 255, SDL_FLIP_NONE,
-							false, debug_boxes);
+						//video_manager->render(tile_set->name, col * tile_width, row * tile_height, tile_width * row, tile_width * col, true,
+						//	row, col, 0, 255, 255, 255, 255, SDL_FLIP_NONE,
+						//	false, debug_boxes);
 					} else {
 						ERR("Error on instantiate tile set from tile set id: " << tile_set);
 					}

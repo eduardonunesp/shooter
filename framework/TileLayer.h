@@ -15,8 +15,8 @@ namespace Thing2D {
 		friend class TileMap;
 
 		std::string name;
-		int width;
-		int height;
+		int cols;
+		int rows;
 
 		std::vector<std::vector<int>> tile_ids;
 	};

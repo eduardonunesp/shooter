@@ -24,7 +24,7 @@ namespace Thing2D {
 		VideoManager* video_manager;
 
 		std::string orientation;
-		int width, height;
+		int cols, rows;
 		int tile_width, tile_height;
 
 		TileSet* tile_set_by_id(int id);
