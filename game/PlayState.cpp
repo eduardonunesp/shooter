@@ -3,7 +3,7 @@
 #include "Enemy.h"
 #include "Shot.h"
 
-namespace SpaceShooter {
+namespace Shooter {
 	PlayState::PlayState() {}
 
 	void PlayState::init() {

@@ -7,8 +7,8 @@ namespace Thing2D {
 	class Timer {
 	public:
 		Timer(float time_limit):
-			time_limit(time_limit),
-			left_time(time_limit) {}
+			left_time(time_limit),
+			time_limit(time_limit) {}
 
 		void update(int delta_time) {
 			left_time -= delta_time;

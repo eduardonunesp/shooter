@@ -17,16 +17,16 @@ namespace Thing2D {
 			visible(true),
 			position(x, y),
 			video_manager(nullptr),
-			audio_manager(nullptr),
 			input_manager(nullptr),
+			audio_manager(nullptr),
 			game(nullptr) {}
 
 		Group() :
 			visible(true),
 			position(0, 0),
 			video_manager(nullptr),
-			audio_manager(nullptr),
 			input_manager(nullptr),
+			audio_manager(nullptr),
 			game(nullptr) {}
 
 		virtual ~Group() {

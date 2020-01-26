@@ -8,11 +8,11 @@
 
 namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :
+		platform_info(),
 		screen_width(screen_width), screen_height(screen_height),
 		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
-		current_state(nullptr),
-		frame_time(0),
-		running(false) {}
+		running(false), frame_time(0),
+		current_state(nullptr) {}
 
 	Game::~Game() {
 		LOG("Destroying game resources");

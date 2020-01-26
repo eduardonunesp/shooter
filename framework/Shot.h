@@ -4,7 +4,7 @@
 
 using namespace Thing2D;
 
-namespace SpaceShooter {
+namespace Shooter {
 	class Shot : public Sprite {
 	public:
 		Shot(float x, float y) : Sprite("shot", x, y, 32, 32, 1, 1) {

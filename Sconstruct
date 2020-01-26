@@ -1,0 +1,35 @@
+from sys import platform
+
+IncludePath = [
+    'framework', 
+    'game', 
+    '/usr/local/Cellar/sdl2/2.0.10/include/SDL2',
+    '/usr/local/Cellar/sdl2_mixer/2.0.4/include/SDL2',
+    '/usr/local/Cellar/sdl2_image/2.0.5/include/SDL2'
+]
+LibsPath = []   
+Libs = ['SDL2', 'SDL2_mixer', 'SDL2_image']
+CommonFlags = '-std=c++14 -Wall'
+Defines = '_DEBUG -Wall -pedantic'
+
+env = Environment(CPPPATH=IncludePath, CCFLAGS=CommonFlags, LIBS=Libs, LIBPATH=LibsPath, CPPDEFINES=Defines)
+
+files = Split("""
+./framework/Animation.cpp
+./framework/AudioManager.cpp
+./framework/Game.cpp
+./framework/GameObject.cpp
+./framework/Group.cpp
+./framework/InputManager.cpp
+./framework/Layer.cpp
+./framework/Sprite.cpp
+./framework/State.cpp
+./framework/TileLayer.cpp
+./framework/VideoManager.cpp
+./game/PlayState.cpp
+./game/Player.cpp
+./game/Shooter.cpp
+""");
+
+program = env.Program(target="shooter", source=files)
+env.Default(program)

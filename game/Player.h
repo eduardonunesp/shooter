@@ -4,7 +4,7 @@
 
 using namespace Thing2D;
 
-namespace SpaceShooter {
+namespace Shooter {
 	class PlayState;
 	class Player : public Sprite {
 	public:
@@ -15,6 +15,5 @@ namespace SpaceShooter {
 
 	private:
 		float speed;
-		PlayState* play_state;
 	};
 }

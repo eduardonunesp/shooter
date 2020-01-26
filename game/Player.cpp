@@ -2,8 +2,10 @@
 #include "Shot.h"
 #include "PlayState.h"
 
-namespace SpaceShooter {
-	Player::Player(PlayState *state) : Sprite("plane", 100, 100, 65, 65, 1, 3), speed(10.0f), play_state(state) {}
+namespace Shooter {
+	Player::Player(PlayState *state) : 
+		Sprite("plane", 100, 100, 65, 65, 1, 3), 
+		speed(10.0f) {}
 
 	void Player::init() {
 		Sprite::init();
