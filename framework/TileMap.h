@@ -27,6 +27,8 @@ namespace Thing2D {
 		int width, height;
 		int tile_width, tile_height;
 
+		TileSet* tile_set_by_id(int id);
+
 		std::vector<TileSet*> tile_sets;
 		std::vector<TileLayer*> tile_layers;
 	};

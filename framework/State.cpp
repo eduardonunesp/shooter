@@ -2,12 +2,14 @@
 #include <algorithm>
 #include "Game.h"
 #include "Layer.h"
+#include "TileMapManager.h"
 
 namespace Thing2D {
 	State::State() : 
 		video_manager(nullptr),
 		input_manager(nullptr),
 		audio_manager(nullptr),
+		tile_map_manager(nullptr),
 		game(nullptr),
 		default_layer(nullptr) {}
 
@@ -52,12 +54,16 @@ namespace Thing2D {
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
 			layer->update();
 		});
+
+		tile_map_manager->update();
 	}
 
 	void State::render() {
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
 			layer->render();
 		});
+
+		tile_map_manager->render();
 	}
 
 	void State::destroy() {

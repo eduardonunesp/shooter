@@ -6,13 +6,13 @@
 #include "Props.h"
 
 namespace Thing2D {
-	class TileLayer : public Layer, public Props {
+	class TileLayer: public Props {
 	public:
 		TileLayer(const std::string &name);
-		TileLayer(float x, float y, const std::string& name);
 
 	protected:
 		friend class TileMapManager;
+		friend class TileMap;
 
 		std::string name;
 		int width;
