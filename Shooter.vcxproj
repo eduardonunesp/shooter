@@ -156,10 +156,10 @@
     <ClCompile Include="framework\TileMap.cpp" />
     <ClCompile Include="framework\TileMapManager.cpp" />
     <ClCompile Include="framework\VideoManager.cpp" />
-    <ClCompile Include="game\main.cpp" />
     <ClCompile Include="game\Player.cpp" />
     <ClCompile Include="game\PlayState.cpp" />
     <ClCompile Include="game\Shooter.cpp" />
+    <ClCompile Include="game\SpaceShooter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\Animation.h" />
@@ -168,10 +168,12 @@
     <ClInclude Include="framework\base64.h" />
     <ClInclude Include="framework\Collider.h" />
     <ClInclude Include="framework\Color.h" />
+    <ClInclude Include="framework\EntryPoint.h" />
     <ClInclude Include="framework\Game.h" />
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />
     <ClInclude Include="framework\Layer.h" />
+    <ClInclude Include="framework\PlatformInfo.h" />
     <ClInclude Include="framework\Props.h" />
     <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\InputManager.h" />
