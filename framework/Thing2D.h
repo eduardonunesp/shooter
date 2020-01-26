@@ -19,7 +19,7 @@
 #include "Recycle.h"
 #include "Layer.h"
 #include "Props.h"
-#include "TileMapManager.h"
+#include "TiledMapLoader.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"

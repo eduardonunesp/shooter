@@ -4,7 +4,7 @@
 #include "AudioManager.h"
 #include "State.h"
 #include "Logger.h"
-#include "TileMapManager.h"
+#include "TiledMapLoader.h"
 
 namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :
@@ -61,9 +61,9 @@ namespace Thing2D {
 		audio_manager = new AudioManager();
 		audio_manager->init();
 
-		tile_map_manager = new TileMapManager();
-		tile_map_manager->init();
-		tile_map_manager->video_manager = video_manager;
+		tiled_map_loader = new TiledMapLoader();
+		tiled_map_loader->init();
+		tiled_map_loader->video_manager = video_manager;
 
 		running = true;
 
@@ -105,7 +105,6 @@ namespace Thing2D {
 			current_state->video_manager = video_manager;
 			current_state->input_manager = input_manager;
 			current_state->audio_manager = audio_manager;
-			current_state->tile_map_manager = tile_map_manager;
 
 			LOG("Set current state: " + state_id);
 

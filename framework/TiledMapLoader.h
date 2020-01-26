@@ -5,10 +5,10 @@
 #include <tinyxml.h>
 
 namespace Thing2D {
-	class TileMap;
+	class TiledState;
 	class VideoManager;
 
-	class TileMapManager {
+	class TiledMapLoader {
 	public:
 		// Life cycle
 		void init();
@@ -22,6 +22,7 @@ namespace Thing2D {
 	protected:
 		friend class Game;
 
+		// Needed to load texture
 		VideoManager* video_manager;
 
 		void parse_tilesets(TiXmlElement* tileset_root);
@@ -29,7 +30,7 @@ namespace Thing2D {
 		void parse_layers(TiXmlElement* layer_root);
 
 		std::string assets_path;
-		TileMap* curr_tile_map;
-		std::map<std::string, TileMap*> tilemaps;
+		TiledState* curr_tile_map;
+		std::map<std::string, TiledState*> tilemaps;
 	};
 }

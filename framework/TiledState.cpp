@@ -1,4 +1,4 @@
-#include "TileMap.h"
+#include "TiledState.h"
 #include "TileSet.h"
 #include "TileLayer.h"
 #include "Tile.h"
@@ -7,16 +7,16 @@
 #include <algorithm>
 
 namespace Thing2D {
-	TileMap::TileMap():
-		video_manager(nullptr),
+	TiledState::TiledState():
+		State(),
 		rows(0), cols(0),
 		tile_height(0), tile_width(0) {}
 
-	void TileMap::init() {}
+	void TiledState::init() {}
 
-	void TileMap::update() {}
+	void TiledState::update() {}
 
-	void TileMap::render() {
+	void TiledState::render() {
 		std::vector<Collider*> debug_boxes;
 
 		std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
@@ -58,9 +58,9 @@ namespace Thing2D {
 		});
 	}
 
-	void TileMap::destroy() {}
+	void TiledState::destroy() {}
 	
-	TileSet* TileMap::tile_set_by_id(int tile_id) {
+	TileSet* TiledState::tile_set_by_id(int tile_id) {
 		for (int i = 0; i < tile_sets.size(); i++) {
 			if (i + 1 <= tile_sets.size() - 1) {
 				if (tile_id >= tile_sets[i]->first_grid_id && tile_id < tile_sets[i + 1]->first_grid_id) {

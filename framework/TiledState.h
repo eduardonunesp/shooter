@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "Props.h"
+#include "State.h"
 
 namespace Thing2D {
 	class TileLayer;
@@ -9,20 +10,18 @@ namespace Thing2D {
 	class Tile;
 	class VideoManager;
 
-	class TileMap : public Props {
+	class TiledState : public State, public Props {
 	public:
-		TileMap();
+		TiledState();
 
 		// Life cycle
-		void init();
-		void update();
-		void render();
-		void destroy();
+		void init() override;
+		void update() override;
+		void render() override;
+		void destroy() override;
 
 	protected:
-		friend class TileMapManager;
-
-		VideoManager* video_manager;
+		friend class TiledMapLoader;
 
 		std::string orientation;
 		int cols, rows;

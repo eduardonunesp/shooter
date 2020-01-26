@@ -11,7 +11,6 @@ namespace Thing2D {
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
-	class TileMapManager;
 	class Game;
 
 	class State {
@@ -31,7 +30,7 @@ namespace Thing2D {
 		}
 
 		// Layers
-		void create_layer();
+		void create_layer(unsigned int order = 0);
 		auto get_layer(int idx);
 
 		// Game Object suggar function
@@ -44,7 +43,6 @@ namespace Thing2D {
 		VideoManager* video_manager;
 		InputManager* input_manager;
 		AudioManager* audio_manager;
-		TileMapManager* tile_map_manager;
 		Game* game;
 
 		Layer* default_layer;

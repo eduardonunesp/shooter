@@ -11,8 +11,8 @@ namespace Thing2D {
 		TileLayer(const std::string &name);
 
 	protected:
-		friend class TileMapManager;
-		friend class TileMap;
+		friend class TiledMapLoader;
+		friend class TiledState;
 
 		std::string name;
 		int cols;

@@ -21,7 +21,7 @@ namespace Thing2D {
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
-	class TileMapManager;
+	class TiledMapLoader;
 	class State;
 
 	class Game {
@@ -67,7 +67,7 @@ namespace Thing2D {
 		VideoManager* video_manager;
 		InputManager* input_manager;
 		AudioManager* audio_manager;
-		TileMapManager* tile_map_manager;
+		TiledMapLoader* tiled_map_loader;
 
 	private:
 		PlatformOS curr_platform_os;

@@ -1,9 +1,9 @@
-#include "TileMapManager.h"
+#include "TiledMapLoader.h"
 #include <zlib.h>
 #include <algorithm>
 #include <math.h>
 #include "base64.h"
-#include "TileMap.h"
+#include "TiledState.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"
@@ -11,26 +11,26 @@
 #include "VideoManager.h"
 
 namespace Thing2D {
-	void TileMapManager::init() {
+	void TiledMapLoader::init() {
 		LOG("Initialize TileMap Manager");
 		assets_path = "./assets/";
 	}
 
-	void TileMapManager::update() {
+	void TiledMapLoader::update() {
 		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
 			tilemap.second->update();
 		});
 	}
 
-	void TileMapManager::render() {
+	void TiledMapLoader::render() {
 		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
 			tilemap.second->render();
 		});
 	}
 
-	void TileMapManager::destroy() {}
+	void TiledMapLoader::destroy() {}
 	
-	void TileMapManager::load_tmx_map(const std::string& file_path, const std::string& map_id) {
+	void TiledMapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {
 		LOG("Loading tile map " << file_path);
 
 		TiXmlDocument levelDocument;
@@ -39,7 +39,7 @@ namespace Thing2D {
 			throw "Failed to load tmx fila map";
 		}
 
-		TileMap* new_tile_map = new TileMap();
+		TiledState* new_tile_map = new TiledState();
 		curr_tile_map = new_tile_map;
 		tilemaps[map_id] = new_tile_map;
 		curr_tile_map->video_manager = video_manager;
@@ -79,7 +79,7 @@ namespace Thing2D {
 		curr_tile_map = nullptr;
 	}
 
-	void TileMapManager::parse_tilesets(TiXmlElement* tileset_root) {
+	void TiledMapLoader::parse_tilesets(TiXmlElement* tileset_root) {
 		TileSet* new_tile_set = new TileSet();
 		curr_tile_map->tile_sets.push_back(new_tile_set);
 
@@ -110,7 +110,7 @@ namespace Thing2D {
 		}
 	}
 	
-	void TileMapManager::parse_properties(TiXmlElement* properties_root) {
+	void TiledMapLoader::parse_properties(TiXmlElement* properties_root) {
 		const char* type = properties_root->Attribute("type");
 		LOG("Property " << properties_root->Attribute("value") << " type " << (type ? type : "string") << " Name " << properties_root->Attribute("name"));
 
@@ -123,7 +123,7 @@ namespace Thing2D {
 		}
 	}
 	
-	void TileMapManager::parse_layers(TiXmlElement* layer_root) {
+	void TiledMapLoader::parse_layers(TiXmlElement* layer_root) {
 		LOG("Parsing" << layer_root->Attribute("name"));
 
 		TileLayer* new_tile_layer = new TileLayer(layer_root->Attribute("name"));

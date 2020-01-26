@@ -2,14 +2,12 @@
 #include <algorithm>
 #include "Game.h"
 #include "Layer.h"
-#include "TileMapManager.h"
 
 namespace Thing2D {
 	State::State() : 
 		video_manager(nullptr),
 		input_manager(nullptr),
 		audio_manager(nullptr),
-		tile_map_manager(nullptr),
 		game(nullptr),
 		default_layer(nullptr) {}
 
@@ -23,13 +21,24 @@ namespace Thing2D {
 		timers[timer_id]->reset();
 	}
 
-	void State::create_layer() {
-		Layer* new_layer = new Layer();
+	void State::create_layer(unsigned int order) {
+		Layer* new_layer = new Layer(order);
+
+		if (order == 0 && layers.size() > 0) {
+			new_layer->order = layers.size();
+		}
+
+		new_layer->order = layers.size();
 		new_layer->video_manager = video_manager;
 		new_layer->input_manager = input_manager;
 		new_layer->audio_manager = audio_manager;
 		new_layer->game = game;
+
 		layers.push_back(new_layer);
+
+		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
+			return layer_a->order < layer_b->order;
+		});
 	}
 
 	auto State::get_layer(int idx) {
@@ -54,16 +63,12 @@ namespace Thing2D {
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
 			layer->update();
 		});
-
-		tile_map_manager->update();
 	}
 
 	void State::render() {
-		tile_map_manager->render();
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
 			layer->render();
 		});
-
 	}
 
 	void State::destroy() {

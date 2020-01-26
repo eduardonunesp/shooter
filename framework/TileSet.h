@@ -7,8 +7,8 @@
 namespace Thing2D {
 	class TileSet : public Props {
 	protected:
-		friend class TileMap;
-		friend class TileMapManager;
+		friend class TiledState;
+		friend class TiledMapLoader;
 
 		// Tileset congs
 		int first_grid_id;

@@ -6,6 +6,9 @@ namespace Thing2D {
 	class Layer : public Group {
 	public:
 		Layer();
+		Layer(int order);
 		Layer(float x, float y);
+
+		unsigned int order;
 	};
 }

@@ -12,7 +12,7 @@ namespace Shooter {
 		video_manager->load_texture("./assets/plane.png", "plane");
 		video_manager->load_texture("./assets/shot.png", "shot");
 		audio_manager->load_sound("./assets/boom.wav", "boom");
-		tile_map_manager->load_tmx_map("./assets/map.tmx", "map");
+		tiled_map_loader->load_tmx_map("./assets/map.tmx", "map");
 		add_state("play_state", new PlayState(), true);
 	}
 }
