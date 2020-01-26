@@ -159,7 +159,6 @@
     <ClCompile Include="game\Player.cpp" />
     <ClCompile Include="game\PlayState.cpp" />
     <ClCompile Include="game\Shooter.cpp" />
-    <ClCompile Include="game\SpaceShooter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\Animation.h" />
@@ -173,7 +172,6 @@
     <ClInclude Include="framework\GameObject.h" />
     <ClInclude Include="framework\Group.h" />
     <ClInclude Include="framework\Layer.h" />
-    <ClInclude Include="framework\PlatformInfo.h" />
     <ClInclude Include="framework\Props.h" />
     <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\InputManager.h" />

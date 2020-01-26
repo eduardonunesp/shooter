@@ -1,10 +1,23 @@
 #pragma once
 
+#ifdef WIN 
+#define main SDL_main
+#endif
+
 #include <string>
 #include <map>
-#include "PlatformInfo.h"
 
 namespace Thing2D {
+	enum class PlatformOS {
+		UNKNOW = 0x0,
+		MACOS = 0x1,
+		IOS_SIM = 0x2,
+		IOS_IPHONE = 0x3,
+		WIN_386 = 0x4,
+		WIN_X64 = 0x5,
+		LINUX = 0x6
+	};
+
 	class VideoManager;
 	class InputManager;
 	class AudioManager;
@@ -38,13 +51,16 @@ namespace Thing2D {
 			running = false;
 		}
 
-		inline PlatformInfo& get_platform_info() {
-			return platform_info;
+		inline PlatformOS& get_curr_platform_os() {
+			return curr_platform_os;
+		}
+
+		inline bool is_debug_mode() {
+			return debug_mode;
 		}
 
 	protected:
-		PlatformInfo platform_info;
-
+		bool debug_mode;
 		int screen_width;
 		int screen_height;
 
@@ -54,6 +70,7 @@ namespace Thing2D {
 		TileMapManager* tile_map_manager;
 
 	private:
+		PlatformOS curr_platform_os;
 		bool running;
 		unsigned int frame_time;
 		State* current_state;

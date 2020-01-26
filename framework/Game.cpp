@@ -8,11 +8,39 @@
 
 namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :
-		platform_info(),
 		screen_width(screen_width), screen_height(screen_height),
 		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
 		running(false), frame_time(0),
-		current_state(nullptr) {}
+		current_state(nullptr) {
+#if defined(_DEBUG) 
+		debug_mode = true;
+#else
+		debug_mode = false;
+#endif
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#ifdef _WIN64
+		curr_platform_os = PlatformOS::WIN_X64;
+#else
+		curr_platform_os = PlatformOS::WIN_386;
+#endif
+#elif __APPLE__
+#include <TargetConditionals.h>
+#if TARGET_IPHONE_SIMULATOR
+		curr_platform_os = PlatformOS::IOS_SIM;
+#elif TARGET_OS_IPHONE
+		curr_platform_os = PlatformOS::IOS_IPHONE;
+#elif TARGET_OS_MAC
+		curr_platform_os = PlatformOS::MACOS;
+#else
+#   error "Unknown Apple platform"
+#endif
+#elif __linux__
+		curr_platform_os = PlatformOS::LINUX;
+#else
+#	error "Unknown compiler"
+#endif
+	}
 
 	Game::~Game() {
 		LOG("Destroying game resources");

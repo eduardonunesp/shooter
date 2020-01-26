@@ -38,8 +38,8 @@ namespace Thing2D {
 		}
 
 		TileMap* new_tile_map = new TileMap();
-		tilemaps[map_id] = new_tile_map;
 		curr_tile_map = new_tile_map;
+		tilemaps[map_id] = new_tile_map;
 		curr_tile_map->video_manager = video_manager;
 
 		TiXmlElement* pRoot = levelDocument.RootElement();
@@ -74,6 +74,7 @@ namespace Thing2D {
 		}
 
 		curr_tile_map->init();
+		curr_tile_map = nullptr;
 	}
 
 	void TileMapManager::parse_tilesets(TiXmlElement* tileset_root) {
@@ -165,7 +166,6 @@ namespace Thing2D {
 
 		}
 
-		curr_tile_map = nullptr;
 		LOG("Parsed layer " << layer_root->Attribute("name"));
 	}
 }

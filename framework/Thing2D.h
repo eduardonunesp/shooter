@@ -1,6 +1,5 @@
 #pragma once
 
-#include "PlatformInfo.h"
 #include "Game.h"
 #include "VideoManager.h"
 #include "InputManager.h"
