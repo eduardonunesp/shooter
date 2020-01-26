@@ -4,7 +4,7 @@
 
 using namespace Thing2D;
 
-namespace SpaceShooter {
+namespace Shooter {
 	class Player;
 
 	class PlayState : public State {

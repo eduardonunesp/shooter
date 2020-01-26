@@ -38,7 +38,11 @@ namespace Thing2D {
 			LOG("Video driver available: " << SDL_GetVideoDriver(i));
 		}
 
-		int window_flags = SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_OPENGL ;
+		int window_flags = SDL_WINDOW_OPENGL ;
+	
+#ifdef ALLOW_HIGHDPI
+		window_flags |= SDL_WINDOW_ALLOW_HIGHDPI
+#endif
 
 		window = SDL_CreateWindow("GAME WINDOW", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, window_flags);
 

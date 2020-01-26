@@ -21,7 +21,7 @@
     <ClCompile Include="game\PlayState.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="game\SpaceShooter.cpp">
+    <ClCompile Include="game\Shooter.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="framework\AudioManager.cpp">
@@ -98,7 +98,7 @@
     <ClInclude Include="framework\VideoManager.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="game\SpaceShooter.h">
+    <ClInclude Include="game\Shooter.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="game\Player.h">

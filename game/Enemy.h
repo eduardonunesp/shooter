@@ -4,7 +4,7 @@
 
 using namespace Thing2D;
 
-namespace SpaceShooter {
+namespace Shooter {
 	class Enemy : public Sprite {
 	public:
 		Enemy() : Sprite("plane", 10, 10, 65, 65, 1, 3) {

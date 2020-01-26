@@ -10,9 +10,7 @@ IncludePath = [
 LibsPath = []   
 Libs = ['SDL2', 'SDL2_mixer', 'SDL2_image']
 CommonFlags = '-std=c++14 -Wall'
-Defines = '_DEBUG'
-
-# -Wall -pedantic
+Defines = '_DEBUG -Wall -pedantic'
 
 env = Environment(CPPPATH=IncludePath, CCFLAGS=CommonFlags, LIBS=Libs, LIBPATH=LibsPath, CPPDEFINES=Defines)
 
@@ -30,9 +28,8 @@ files = Split("""
 ./framework/VideoManager.cpp
 ./game/PlayState.cpp
 ./game/Player.cpp
-./game/SpaceShooter.cpp
-./game/main.cpp
+./game/Shooter.cpp
 """);
 
-t = env.Program(target="shooter", source=files)
-Default(t)
+program = env.Program(target="shooter", source=files)
+env.Default(program)

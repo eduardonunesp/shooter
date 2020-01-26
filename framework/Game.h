@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include "PlatformInfo.h"
 
 namespace Thing2D {
 	class VideoManager;
@@ -36,7 +37,13 @@ namespace Thing2D {
 			running = false;
 		}
 
+		inline PlatformInfo& get_platform_info() {
+			return platform_info;
+		}
+
 	protected:
+		PlatformInfo platform_info;
+
 		int screen_width;
 		int screen_height;
 
@@ -50,4 +57,6 @@ namespace Thing2D {
 		State* current_state;
 		std::map<std::string, State*> states;
 	};
+
+	Game* CreateGame();
 }
