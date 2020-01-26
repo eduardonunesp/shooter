@@ -1,6 +1,7 @@
 #include "TileMap.h"
 #include "TileSet.h"
 #include "TileLayer.h"
+#include "Tile.h"
 #include "VideoManager.h"
 #include "Logger.h"
 #include <algorithm>
@@ -19,9 +20,9 @@ namespace Thing2D {
 		std::vector<Collider*> debug_boxes;
 
 		std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
-			for (int row = 0; row < tile_layer->rows; row++) {
-				for (int col = 0; col < tile_layer->cols; col++) {
-					int tile_id = tile_layer->tile_ids[row][col];
+			for (int layer_row = 0; layer_row < tile_layer->rows; layer_row++) {
+				for (int layer_col = 0; layer_col < tile_layer->cols; layer_col++) {
+					int tile_id = tile_layer->tile_ids[layer_row][layer_col];
 
 					if (tile_id == 0) {
 						continue;
@@ -30,9 +31,25 @@ namespace Thing2D {
 					TileSet* tile_set = tile_set_by_id(tile_id);
 
 					if (tile_set) {
-						//video_manager->render(tile_set->name, col * tile_width, row * tile_height, tile_width * row, tile_width * col, true,
-						//	row, col, 0, 255, 255, 255, 255, SDL_FLIP_NONE,
-						//	false, debug_boxes);
+						tile_id--;
+						
+						Tile* tile = tiles[tile_id];
+
+						int row = tile->row;
+						int col = tile->col;
+						
+						video_manager->render(
+							tile_set->name,
+							layer_col * tile_height,
+							layer_row * tile_width,
+							tile_set->margin,
+							tile_set->spacing,
+							tile_width, tile_width, 
+							true,
+							row, col,
+							0, 255, 255, 255, 255, SDL_FLIP_NONE,
+							false, debug_boxes
+						);
 					} else {
 						ERR("Error on instantiate tile set from tile set id: " << tile_set);
 					}

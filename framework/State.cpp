@@ -59,11 +59,11 @@ namespace Thing2D {
 	}
 
 	void State::render() {
+		tile_map_manager->render();
 		std::for_each(layers.begin(), layers.end(), [](auto layer) {
 			layer->render();
 		});
 
-		tile_map_manager->render();
 	}
 
 	void State::destroy() {

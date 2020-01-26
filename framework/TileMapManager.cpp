@@ -1,10 +1,12 @@
 #include "TileMapManager.h"
 #include <zlib.h>
 #include <algorithm>
+#include <math.h>
 #include "base64.h"
 #include "TileMap.h"
 #include "TileLayer.h"
 #include "TileSet.h"
+#include "Tile.h"
 #include "Logger.h"
 #include "VideoManager.h"
 
@@ -94,6 +96,18 @@ namespace Thing2D {
 		tileset_root->Attribute("margin", &new_tile_set->margin);
 		new_tile_set->name = tileset_root->Attribute("name");
 		new_tile_set->texture_id = tileset_root->Attribute("name");
+
+		int rows = floor(new_tile_set->width / new_tile_set->tile_width);
+		int cols = floor(new_tile_set->height / new_tile_set->tile_height);
+
+		for (int y = 0; y < cols; y++) {
+			for (int x = 0; x < rows; x++) {
+				Tile* tile = new Tile();
+				tile->col = x;
+				tile->row = y;
+				curr_tile_map->tiles.push_back(tile);
+			}
+		}
 	}
 	
 	void TileMapManager::parse_properties(TiXmlElement* properties_root) {

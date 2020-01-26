@@ -6,6 +6,7 @@
 namespace Thing2D {
 	class TileLayer;
 	class TileSet;
+	class Tile;
 	class VideoManager;
 
 	class TileMap : public Props {
@@ -31,5 +32,6 @@ namespace Thing2D {
 
 		std::vector<TileSet*> tile_sets;
 		std::vector<TileLayer*> tile_layers;
+		std::vector<Tile*> tiles;
 	};
 }

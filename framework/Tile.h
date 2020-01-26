@@ -6,7 +6,7 @@ namespace Thing2D {
 	class Tile : public Props {
 	public:
 		int id;
-		int width;
-		int height;
+		int row;
+		int col;
 	};
 }

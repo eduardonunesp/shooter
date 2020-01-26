@@ -43,7 +43,7 @@ namespace Thing2D {
 
 	void GameObject::render() {
 		if (!dead) {
-			video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
+			video_manager->render(texture_id, (int)position.x, (int)position.y, 0, 0, width, height, visible,
 				curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
 				debug, colliders);
 		}
