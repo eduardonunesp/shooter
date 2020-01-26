@@ -46,7 +46,7 @@ namespace Thing2D {
 							tile_set->spacing,
 							tile_width, tile_width, 
 							true,
-							row, col,
+							col, row,
 							0, 255, 255, 255, 255, SDL_FLIP_NONE,
 							false, debug_boxes
 						);

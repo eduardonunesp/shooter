@@ -103,8 +103,8 @@ namespace Thing2D {
 		for (int y = 0; y < cols; y++) {
 			for (int x = 0; x < rows; x++) {
 				Tile* tile = new Tile();
-				tile->col = x;
-				tile->row = y;
+				tile->col = y;
+				tile->row = x;
 				curr_tile_map->tiles.push_back(tile);
 			}
 		}
