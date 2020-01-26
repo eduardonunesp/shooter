@@ -16,6 +16,8 @@ namespace Thing2D {
 	void TileMap::update() {}
 
 	void TileMap::render() {
+		std::vector<Collider*> debug_boxes;
+
 		std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
 			for (int w = 0; w < tile_layer->width; w++) {
 				for (int h = 0; h < tile_layer->height; h++) {
@@ -27,16 +29,13 @@ namespace Thing2D {
 
 					TileSet* tile_set = tile_set_by_id(tile_id);
 
-					// texture id
-					//tile_set->name
-
-
-
-					//video_manager->render(tile_set->name)
-
-					/*video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
-						curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
-						debug, colliders);*/
+					if (tile_set) {
+						video_manager->render(tile_set->name, w * tile_width, h* tile_height, tile_width, tile_height, true,
+							w, h, 0, 255, 255, 255, 255, SDL_FLIP_NONE,
+							false, debug_boxes);
+					} else {
+						ERR("Error on instantiate tile set from tile set id: " << tile_set);
+					}
 				}
 			}
 		});
