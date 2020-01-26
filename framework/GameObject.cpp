@@ -42,13 +42,11 @@ namespace Thing2D {
 	}
 
 	void GameObject::render() {
-		if (dead) {
-			return;
+		if (!dead) {
+			video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
+				curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
+				debug, colliders);
 		}
-
-		video_manager->render(texture_id, (int)position.x, (int)position.y, width, height, visible,
-							curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
-							debug, colliders);
 	}
 
 	void GameObject::destroy() {}

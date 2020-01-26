@@ -6,6 +6,7 @@
 namespace Thing2D {
 	class TileLayer;
 	class TileSet;
+	class VideoManager;
 
 	class TileMap : public Props {
 	public:

@@ -18,10 +18,6 @@ namespace Thing2D {
 		std::for_each(tile_layers.begin(), tile_layers.end(), [](TileLayer* tile_layer) {
 			
 		});
-
-		//(const std::string & texture_id, int x, int y, int width, int height, bool visible,
-		//	int current_row, int current_col, double angle, int alpha, int r, int g, int b, SDL_RendererFlip flip,
-		//	bool debug, std::vector<Collider*> debug_boxes)
 	}
 
 	void TileMap::destroy() {}

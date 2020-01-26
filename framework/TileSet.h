@@ -11,7 +11,7 @@ namespace Thing2D {
 		friend class TileMapManager;
 
 		// Tileset congs
-		int first_gid;
+		int first_grid_id;
 		std::string name;
 		std::string orientation;
 		int tile_width, tile_height;

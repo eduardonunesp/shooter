@@ -86,7 +86,7 @@ namespace Thing2D {
 
 		tileset_root->FirstChildElement()->Attribute("width", &new_tile_set->width);
 		tileset_root->FirstChildElement()->Attribute("height", &new_tile_set->height);
-		tileset_root->Attribute("firstgid", &new_tile_set->first_gid);
+		tileset_root->Attribute("firstgid", &new_tile_set->first_grid_id);
 		tileset_root->Attribute("tilewidth", &new_tile_set->tile_width);
 		tileset_root->Attribute("tileheight", &new_tile_set->tile_height);
 		tileset_root->Attribute("spacing", &new_tile_set->spacing);
@@ -127,7 +127,7 @@ namespace Thing2D {
 			if (e->Value() == std::string("properties")) {
 				for (TiXmlElement* property = e->FirstChildElement(); property != NULL; property = property->NextSiblingElement()) {
 					if (property->Value() == std::string("property")) {
-
+						// TODO: Add to others props
 					}
 				}
 			}
