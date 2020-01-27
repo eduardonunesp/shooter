@@ -16,8 +16,14 @@ namespace Thing2D {
 
 		virtual void render();
 
+		// Adding game objects
 		void add(const std::string& game_object_id, GameObject* game_object) override;
 		void add(GameObject* game_object) override;
+
+		// Setters
+		inline void set_order(int order_value) {
+			order = order_value;
+		}
 
 	protected:
 		friend class State;
@@ -27,6 +33,6 @@ namespace Thing2D {
 		AudioManager* audio_manager;
 		Game* game;
 
-		unsigned int order;
+		int order;
 	};
 }

@@ -13,7 +13,6 @@ namespace Thing2D {
 
 	void State::init() {
 		create_layer();
-		default_layer = layers[0];
 	}
 
 	void State::create_timer(const std::string& timer_id, float time_limit_ms) {
@@ -34,15 +33,18 @@ namespace Thing2D {
 		layer->init();
 		layers.push_back(layer);
 
-		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
-			return layer_a->order < layer_b->order;
-		});
+		sort_layers_by_order();
 
-		LOG("Layer added in order " << layer->order);
+		LOG("Layer " << layer->label << " added in order " << layer->order);
 	}
 
 	void State::create_layer(unsigned int order) {
 		Layer* new_layer = new Layer(order);
+
+		if (layers.size() == 0) {
+			new_layer->label = "default layer";
+			default_layer = new_layer;
+		}
 
 		if (order == 0 && layers.size() > 0) {
 			new_layer->order = layers.size();
@@ -57,15 +59,17 @@ namespace Thing2D {
 		new_layer->init();
 		layers.push_back(new_layer);
 
-		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
-			return layer_a->order < layer_b->order;
-		});
+		sort_layers_by_order();
 
-		LOG("Layer added in order " << new_layer->order);
+		LOG("Layer " << new_layer->label << " added in order " << new_layer->order);
 	}
 
 	auto State::get_layer(int idx) {
 		return layers[idx];
+	}
+
+	void State::add(const std::string& game_object_id, GameObject* game_object) {
+		default_layer->add(game_object_id, game_object);
 	}
 
 	void State::add(const std::string& game_object_id, GameObject* game_object, int layer_idx) {
@@ -74,8 +78,13 @@ namespace Thing2D {
 	}
 
 	void State::add(GameObject* game_object) {
-		Layer* layer = layers[0];
-		layer->add(game_object);
+		default_layer->add(game_object);
+	}
+
+	void State::sort_layers_by_order() {
+		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
+			return layer_a->order > layer_b->order;
+		});
 	}
 	
 	void State::update() {

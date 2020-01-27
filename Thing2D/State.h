@@ -34,8 +34,9 @@ namespace Thing2D {
 		void create_layer(unsigned int order = 0);
 		auto get_layer(int idx);
 
-		// Game Object suggar function
-		void add(const std::string& game_object_id, GameObject* game_object, int layer_idx = 0);
+		// Add game object suggar function
+		void add(const std::string& game_object_id, GameObject* game_object);
+		void add(const std::string& game_object_id, GameObject* game_object, int layer_idx);
 		void add(GameObject* game_object);
 
 	protected:
@@ -45,6 +46,8 @@ namespace Thing2D {
 		InputManager* input_manager;
 		AudioManager* audio_manager;
 		Game* game;
+
+		void sort_layers_by_order();
 
 		Layer* default_layer;
 		std::vector<Layer*> layers;

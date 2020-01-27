@@ -13,6 +13,7 @@ namespace Thing2D {
 			Group (0, 0) {}
 
 		Group(float x, float y) :
+			label(""),
 			visible(true),
 			position(x, y) {}
 
@@ -29,8 +30,12 @@ namespace Thing2D {
 		virtual void add(const std::string& game_object_id, GameObject* game_object);
 		virtual void add(GameObject* game_object);
 		virtual void add(Group* other_group);
-
 		inline auto get(const std::string& game_object_id) { return game_objects_map[game_object_id]; }
+
+		// Setters
+		void set_label(const std::string& label_value) {
+			label = label_value;
+		}
 
 		// Killing
 		void kill(GameObject* game_object_to_kill);
@@ -49,6 +54,7 @@ namespace Thing2D {
 	protected:
 		friend class State;
 
+		std::string label;
 		bool visible;
 		Vector position;
 

@@ -8,7 +8,7 @@ namespace Shooter {
 	class PlayState;
 	class Player : public Sprite {
 	public:
-		Player(PlayState *state);
+		Player();
 
 		void init() override;
 		void update() override;

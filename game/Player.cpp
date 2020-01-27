@@ -3,7 +3,7 @@
 #include "PlayState.h"
 
 namespace Shooter {
-	Player::Player(PlayState *state) : 
+	Player::Player() : 
 		Sprite("plane", 100, 100, 65, 65, 1, 3), 
 		speed(10.0f) {}
 
