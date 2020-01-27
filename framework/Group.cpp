@@ -2,9 +2,6 @@
 #include "Group.h"
 #include "GameObject.h"
 #include "Logger.h"
-#include "VideoManager.h"
-#include "InputManager.h"
-#include "AudioManager.h"
 
 namespace Thing2D {
 	int Group::id_counter = 0;
@@ -16,15 +13,7 @@ namespace Thing2D {
 
 		LOG("Adding game object label " + game_object_id + " tag " + game_object->tag);
 			
-		game_object->video_manager = video_manager;
-		game_object->input_manager = input_manager;
-		game_object->audio_manager = audio_manager;
-		game_object->game = game;
-
 		game_object->label = game_object_id;
-		game_object->init();
-		game_object->move(position);
-
 		game_objects.push_back(game_object);
 		game_objects_map[game_object_id] = game_object;
 	}

@@ -6,28 +6,15 @@
 
 namespace Thing2D {
 	class GameObject;
-	class VideoManager;
-	class InputManager;
-	class AudioManager;
-	class Game;
 
 	class Group {
 	public:
+		Group() :
+			Group (0, 0) {}
+
 		Group(float x, float y) :
 			visible(true),
-			position(x, y),
-			video_manager(nullptr),
-			input_manager(nullptr),
-			audio_manager(nullptr),
-			game(nullptr) {}
-
-		Group() :
-			visible(true),
-			position(0, 0),
-			video_manager(nullptr),
-			input_manager(nullptr),
-			audio_manager(nullptr),
-			game(nullptr) {}
+			position(x, y) {}
 
 		virtual ~Group() {
 			destroy();
@@ -64,11 +51,6 @@ namespace Thing2D {
 
 		bool visible;
 		Vector position;
-
-		VideoManager* video_manager;
-		InputManager* input_manager;
-		AudioManager* audio_manager;
-		Game* game;
 
 		std::map<std::string, GameObject*> game_objects_map;
 		std::vector<GameObject*> game_objects;
