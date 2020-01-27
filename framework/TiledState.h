@@ -5,10 +5,11 @@
 #include "State.h"
 
 namespace Thing2D {
+	class Collider;
 	class TileLayer;
 	class TileSet;
 	class Tile;
-	class VideoManager;
+	class TiledMapLoader;
 
 	class TiledState : public State, public Props {
 	public:
@@ -23,12 +24,15 @@ namespace Thing2D {
 	protected:
 		friend class TiledMapLoader;
 
+		TiledMapLoader* tiled_map_loader;
+
 		std::string orientation;
 		int cols, rows;
 		int tile_width, tile_height;
 
 		TileSet* tile_set_by_id(int id);
 
+		std::vector<Collider*> debug_boxes;
 		std::vector<TileSet*> tile_sets;
 		std::vector<TileLayer*> tile_layers;
 		std::vector<Tile*> tiles;

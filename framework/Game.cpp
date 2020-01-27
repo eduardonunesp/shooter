@@ -61,10 +61,6 @@ namespace Thing2D {
 		audio_manager = new AudioManager();
 		audio_manager->init();
 
-		tiled_map_loader = new TiledMapLoader();
-		tiled_map_loader->init();
-		tiled_map_loader->video_manager = video_manager;
-
 		running = true;
 
 		LOG("Game initialized");

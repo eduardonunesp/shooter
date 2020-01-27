@@ -2,14 +2,21 @@
 #include <Thing2D.h>
 #include <EntryPoint.h>
 
+using namespace Thing2D;
+
 namespace Shooter {
-	class ShooterGame : public Thing2D::Game {
+	class TiledMapLoader;
+
+	class ShooterGame : public Game {
 	public:
 		ShooterGame();
 		void init();
+
+	protected:
+		TiledMapLoader* tiled_map_loader;
 	};
 }
 
-Thing2D::Game *Thing2D::CreateGame() {
+Game *CreateGame() {
 	return new Shooter::ShooterGame();
 }

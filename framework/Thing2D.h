@@ -20,6 +20,7 @@
 #include "Layer.h"
 #include "Props.h"
 #include "TiledMapLoader.h"
+#include "TiledState.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"

@@ -16,19 +16,11 @@ namespace Thing2D {
 		assets_path = "./assets/";
 	}
 
-	void TiledMapLoader::update() {
+	void TiledMapLoader::destroy() {
 		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
-			tilemap.second->update();
+			tilemap.second->destroy();
 		});
 	}
-
-	void TiledMapLoader::render() {
-		std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
-			tilemap.second->render();
-		});
-	}
-
-	void TiledMapLoader::destroy() {}
 	
 	void TiledMapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {
 		LOG("Loading tile map " << file_path);
@@ -41,8 +33,10 @@ namespace Thing2D {
 
 		TiledState* new_tile_map = new TiledState();
 		curr_tile_map = new_tile_map;
+		curr_tile_map->tiled_map_loader = this;
 		tilemaps[map_id] = new_tile_map;
 		curr_tile_map->video_manager = video_manager;
+
 
 		TiXmlElement* pRoot = levelDocument.RootElement();
 		LOG("Loading level:\n" << "Version: " << pRoot->Attribute("version"));

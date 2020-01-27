@@ -6,10 +6,12 @@ using namespace Thing2D;
 
 namespace Shooter {
 	class Player;
+	class TiledMapLoader;
 
-	class PlayState : public State {
+	class PlayState : public TiledState
+	{
 	public:
-		PlayState();
+		PlayState(TiledMapLoader* tiled_map_loader);
 
 		void init() override;
 		void update() override;

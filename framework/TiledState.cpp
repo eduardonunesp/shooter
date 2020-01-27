@@ -1,23 +1,29 @@
 #include "TiledState.h"
 #include "TileSet.h"
 #include "TileLayer.h"
+#include "TiledMapLoader.h"
 #include "Tile.h"
 #include "VideoManager.h"
 #include "Logger.h"
 #include <algorithm>
 
 namespace Thing2D {
-	TiledState::TiledState():
+	TiledState::TiledState(TiledMapLoader* tiled_map_loader) :
 		State(),
+		tiled_map_loader(tiled_map_loader),
 		rows(0), cols(0),
 		tile_height(0), tile_width(0) {}
 
-	void TiledState::init() {}
+	void TiledState::init() {
+		State::init();
+	}
 
-	void TiledState::update() {}
+	void TiledState::update() {
+		State::update();
+	}
 
 	void TiledState::render() {
-		std::vector<Collider*> debug_boxes;
+		State::render();
 
 		std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
 			for (int layer_row = 0; layer_row < tile_layer->rows; layer_row++) {
@@ -58,7 +64,9 @@ namespace Thing2D {
 		});
 	}
 
-	void TiledState::destroy() {}
+	void TiledState::destroy() {
+		TiledState::destroy();
+	}
 	
 	TileSet* TiledState::tile_set_by_id(int tile_id) {
 		for (int i = 0; i < tile_sets.size(); i++) {

@@ -10,10 +10,12 @@ namespace Thing2D {
 
 	class TiledMapLoader {
 	public:
+		TiledMapLoader(VideoManager* video_manager) :
+			video_manager(video_manager), 
+			curr_tile_map(nullptr) {}
+
 		// Life cycle
 		void init();
-		void update();
-		void render();
 		void destroy();
 
 		// Load map
