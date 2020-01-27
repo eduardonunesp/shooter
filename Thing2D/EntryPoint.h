@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Thing2D.h"
-#include "Shooter.h"
-#include "Thing2D.h"
 
 #ifdef WIN && _DEBUG
 #define _CRT_SECURE_NO_WARNINGS

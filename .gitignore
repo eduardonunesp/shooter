@@ -5,8 +5,7 @@ x64
 src/x64
 Release
 packages
-framework/*.o
-game/*.o
+*.o
 .sconsign.dblite
 shooter
 .DS_Store

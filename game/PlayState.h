@@ -5,8 +5,9 @@
 
 using namespace Thing2D;
 
+class Map;
+
 namespace Shooter {
-	class Tiled::Map;
 	class Player;
 
 	class PlayState : public Thing2D::State

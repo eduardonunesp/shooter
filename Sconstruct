@@ -1,34 +1,40 @@
 from sys import platform
 
 IncludePath = [
-    'framework', 
-    'game', 
+    './', 
     '/usr/local/Cellar/sdl2/2.0.10/include/SDL2',
     '/usr/local/Cellar/sdl2_mixer/2.0.4/include/SDL2',
-    '/usr/local/Cellar/sdl2_image/2.0.5/include/SDL2'
+    '/usr/local/Cellar/sdl2_image/2.0.5/include/SDL2',
+    '/usr/local/Cellar/tinyxml/2.6.2/include',
+    '/usr/local/opt/zlib/include'
 ]
-LibsPath = []   
-Libs = ['SDL2', 'SDL2_mixer', 'SDL2_image']
+LibsPath = [
+    '/usr/local/opt/zlib/lib'
+]   
+Libs = ['SDL2', 'SDL2_mixer', 'SDL2_image', 'tinyxml', 'z']
 CommonFlags = '-std=c++14 -Wall'
 Defines = '_DEBUG -Wall -pedantic'
 
 env = Environment(CPPPATH=IncludePath, CCFLAGS=CommonFlags, LIBS=Libs, LIBPATH=LibsPath, CPPDEFINES=Defines)
 
 files = Split("""
-./framework/Animation.cpp
-./framework/AudioManager.cpp
-./framework/Game.cpp
-./framework/GameObject.cpp
-./framework/Group.cpp
-./framework/InputManager.cpp
-./framework/Layer.cpp
-./framework/Sprite.cpp
-./framework/State.cpp
-./framework/TileLayer.cpp
-./framework/VideoManager.cpp
-./game/PlayState.cpp
-./game/Player.cpp
-./game/Shooter.cpp
+Game/PlayState.cpp
+Game/Player.cpp
+Game/Shooter.cpp
+Thing2D/Tiled/MapLoader.cpp
+Thing2D/Tiled/TileLayer.cpp
+Thing2D/Tiled/TiledLayer.cpp
+Thing2D/Tiled/base64.cpp
+Thing2D/Animation.cpp
+Thing2D/AudioManager.cpp
+Thing2D/Game.cpp
+Thing2D/GameObject.cpp
+Thing2D/Group.cpp
+Thing2D/InputManager.cpp
+Thing2D/Layer.cpp
+Thing2D/Sprite.cpp
+Thing2D/State.cpp
+Thing2D/VideoManager.cpp
 """);
 
 program = env.Program(target="shooter", source=files)
