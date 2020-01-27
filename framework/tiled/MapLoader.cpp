@@ -1,9 +1,9 @@
-#include "TiledMapLoader.h"
+#include "MapLoader.h"
 #include <zlib.h>
 #include <algorithm>
 #include <math.h>
 #include "base64.h"
-#include "TiledState.h"
+#include "State.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"
@@ -13,18 +13,18 @@
 namespace Thing2D {
 	namespace Tiled {
 
-		void TiledMapLoader::init() {
+		void MapLoader::init() {
 			LOG("Initialize TileMap Manager");
 			assets_path = "./assets/";
 		}
 
-		void TiledMapLoader::destroy() {
+		void MapLoader::destroy() {
 			std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
 				tilemap.second->destroy();
 				});
 		}
 
-		void TiledMapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {
+		void MapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {
 			LOG("Loading tile map " << file_path);
 
 			TiXmlDocument levelDocument;
@@ -33,7 +33,7 @@ namespace Thing2D {
 				throw "Failed to load tmx fila map";
 			}
 
-			TiledState* new_tile_map = new TiledState();
+			State* new_tile_map = new State();
 			curr_tile_map = new_tile_map;
 			curr_tile_map->tiled_map_loader = this;
 			tilemaps[map_id] = new_tile_map;
@@ -75,7 +75,7 @@ namespace Thing2D {
 			curr_tile_map = nullptr;
 		}
 
-		void TiledMapLoader::parse_tilesets(TiXmlElement* tileset_root) {
+		void MapLoader::parse_tilesets(TiXmlElement* tileset_root) {
 			TileSet* new_tile_set = new TileSet();
 			curr_tile_map->tile_sets.push_back(new_tile_set);
 
@@ -106,7 +106,7 @@ namespace Thing2D {
 			}
 		}
 
-		void TiledMapLoader::parse_properties(TiXmlElement* properties_root) {
+		void MapLoader::parse_properties(TiXmlElement* properties_root) {
 			const char* type = properties_root->Attribute("type");
 			LOG("Property " << properties_root->Attribute("value") << " type " << (type ? type : "string") << " Name " << properties_root->Attribute("name"));
 
@@ -119,7 +119,7 @@ namespace Thing2D {
 			}
 		}
 
-		void TiledMapLoader::parse_layers(TiXmlElement* layer_root) {
+		void MapLoader::parse_layers(TiXmlElement* layer_root) {
 			LOG("Parsing" << layer_root->Attribute("name"));
 
 			TileLayer* new_tile_layer = new TileLayer(layer_root->Attribute("name"));

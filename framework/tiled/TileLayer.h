@@ -13,8 +13,8 @@ namespace Thing2D {
 			TileLayer(const std::string& name);
 
 		protected:
-			friend class TiledMapLoader;
-			friend class TiledState;
+			friend class MapLoader;
+			friend class State;
 
 			std::string name;
 			int cols;

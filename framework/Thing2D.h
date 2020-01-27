@@ -19,8 +19,3 @@
 #include "Recycle.h"
 #include "Layer.h"
 #include "Props.h"
-#include "tiled/TiledMapLoader.h"
-#include "tiled/TiledState.h"
-#include "tiled/TileLayer.h"
-#include "tiled/TileSet.h"
-#include "tiled/Tile.h"

@@ -8,11 +8,11 @@ namespace Thing2D {
 	class VideoManager;
 
 	namespace Tiled {
-		class TiledState;
+		class State;
 
-		class TiledMapLoader {
+		class MapLoader {
 		public:
-			TiledMapLoader(VideoManager* video_manager) :
+			MapLoader(VideoManager* video_manager) :
 				video_manager(video_manager),
 				curr_tile_map(nullptr) {}
 
@@ -34,8 +34,8 @@ namespace Thing2D {
 			void parse_layers(TiXmlElement* layer_root);
 
 			std::string assets_path;
-			TiledState* curr_tile_map;
-			std::map<std::string, TiledState*> tilemaps;
+			State* curr_tile_map;
+			std::map<std::string, State*> tilemaps;
 		};
 	}
 }

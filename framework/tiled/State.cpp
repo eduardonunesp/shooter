@@ -1,7 +1,7 @@
-#include "TiledState.h"
+#include "State.h"
 #include "TileSet.h"
 #include "TileLayer.h"
-#include "TiledMapLoader.h"
+#include "MapLoader.h"
 #include "Tile.h"
 #include "VideoManager.h"
 #include "Logger.h"
@@ -10,24 +10,17 @@
 namespace Thing2D {
 	namespace Tiled {
 
-		TiledState::TiledState() :
-			State(),
+		State::State() :
 			video_manager(nullptr),
 			tiled_map_loader(tiled_map_loader),
 			rows(0), cols(0),
 			tile_height(0), tile_width(0) {}
 
-		void TiledState::init() {
-			State::init();
-		}
+		void State::init() {}
 
-		void TiledState::update() {
-			State::update();
-		}
+		void State::update() {}
 
-		void TiledState::render() {
-			State::render();
-
+		void State::render() {
 			std::for_each(tile_layers.begin(), tile_layers.end(), [&](TileLayer* tile_layer) {
 				for (int layer_row = 0; layer_row < tile_layer->rows; layer_row++) {
 					for (int layer_col = 0; layer_col < tile_layer->cols; layer_col++) {
@@ -67,11 +60,9 @@ namespace Thing2D {
 				});
 		}
 
-		void TiledState::destroy() {
-			TiledState::destroy();
-		}
+		void State::destroy() {}
 
-		TileSet* TiledState::tile_set_by_id(int tile_id) {
+		TileSet* State::tile_set_by_id(int tile_id) {
 			for (int i = 0; i < tile_sets.size(); i++) {
 				if (i + 1 <= tile_sets.size() - 1) {
 					if (tile_id >= tile_sets[i]->first_grid_id && tile_id < tile_sets[i + 1]->first_grid_id) {
