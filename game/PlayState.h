@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Thing2D.h>
+#include <Thing2D/Thing2D.h>
 
 namespace Shooter {
 	class Player;

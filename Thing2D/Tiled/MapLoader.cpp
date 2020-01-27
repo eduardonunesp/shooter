@@ -19,9 +19,7 @@ namespace Thing2D {
 		}
 
 		void MapLoader::destroy() {
-			//std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
-			//	tilemap.second->destroy();
-			//	});
+			// TODO: Should destroy some day
 		}
 
 		void MapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {

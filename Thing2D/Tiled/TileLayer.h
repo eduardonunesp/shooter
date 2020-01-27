@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>
-#include "Layer.h"
 #include "Props.h"
 
 namespace Thing2D {

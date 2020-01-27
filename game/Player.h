@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Thing2D.h>
+#include <Thing2D/Thing2D.h>
 
 using namespace Thing2D;
 
