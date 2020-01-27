@@ -66,6 +66,7 @@ namespace Thing2D {
 	void AudioManager::play_music(const std::string& music_id) {
 		auto music = musics[music_id];
 		if (music) {
+			musics_playing.push_back(music_id);
 			music->play();
 		}
 	}
@@ -73,6 +74,13 @@ namespace Thing2D {
 	void AudioManager::stop_music(const std::string& music_id) {
 		auto music = musics[music_id];
 		if (music) {
+			std::vector<std::string>::iterator music_itr = std::find_if(musics_playing.begin(), musics_playing.end(), [&](auto other_music_id) {
+				return other_music_id == music_id;
+			});
+
+			if (music_itr != musics_playing.end()) {
+				musics_playing.erase(music_itr);
+			}
 			music->stop();
 		}
 	}
@@ -81,6 +89,26 @@ namespace Thing2D {
 		auto music = musics[music_id];
 		if (music) {
 			music->resume();
+		}
+	}
+
+	void AudioManager::stop_all_playing() {
+		if (!paused) {
+			LOG("Stop music by losting focus");
+			paused = true;
+			std::for_each(musics_playing.begin(), musics_playing.end(), [&](auto music_id) {
+				musics[music_id]->stop();
+			});
+		}
+	}
+
+	void AudioManager::resume_all_playing() {
+		if (paused) {
+			LOG("Resume music by focus gained");
+			paused = false;
+			std::for_each(musics_playing.begin(), musics_playing.end(), [&](auto music_id) {
+				musics[music_id]->resume();
+			});
 		}
 	}
 	

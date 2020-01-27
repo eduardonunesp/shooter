@@ -26,6 +26,25 @@ namespace Thing2D {
 				quit_pressed = true;
 				break;
 
+			case SDL_WINDOWEVENT:
+				switch (event.window.event) {
+				case SDL_WINDOWEVENT_SHOWN:
+				case SDL_WINDOWEVENT_MAXIMIZED:
+				case SDL_WINDOWEVENT_RESTORED:
+				case SDL_WINDOWEVENT_FOCUS_GAINED:
+				case SDL_WINDOWEVENT_HIDDEN:
+					LOG("Focus gained");
+					focused = true;
+					break;
+
+				case SDL_WINDOWEVENT_FOCUS_LOST:
+				case SDL_WINDOWEVENT_MINIMIZED:
+					LOG("Focus lost");
+					focused = false;
+					break;
+				}
+				break;
+
 			case SDL_KEYDOWN:
 				if (event.key.repeat > 0) { return; }
 				LOG("Key down " + std::to_string(event.key.keysym.scancode));

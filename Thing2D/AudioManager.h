@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 #include <SDL_mixer.h>
 
 namespace Thing2D {
@@ -16,6 +17,9 @@ namespace Thing2D {
 		void play_music(const std::string& music_id);
 		void stop_music(const std::string& music_id);
 		void resume_music(const std::string& music_id);
+
+		void stop_all_playing();
+		void resume_all_playing();
 
 		// Sound commands
 		void load_sound(const std::string& file_path, const std::string& music_id);
@@ -46,6 +50,8 @@ namespace Thing2D {
 			Mix_Music* mix_music;
 		};
 
+		bool paused;
+		std::vector<std::string> musics_playing;
 		std::map<std::string, Sound*> sounds;
 		std::map<std::string, Music*> musics;
 	};

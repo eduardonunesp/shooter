@@ -14,6 +14,7 @@ namespace Shooter {
 		video_manager->load_texture("./Assets/plane.png", "plane");
 		video_manager->load_texture("./Assets/shot.png", "shot");
 		audio_manager->load_sound("./Assets/boom.wav", "boom");
+		audio_manager->load_music("./Assets/away.ogg", true, 100, "music");
 
 		Tiled::MapLoader* map_loader = new Tiled::MapLoader(video_manager);
 		map_loader->load_tmx_map("./Assets/map.tmx", "map");

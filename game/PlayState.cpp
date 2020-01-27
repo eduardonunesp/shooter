@@ -17,6 +17,7 @@ namespace Shooter {
 		tlayer->set_label("tiled layer");
 		tlayer->set_order(-1);
 		add_layer(tlayer);
+		audio_manager->play_music("music");
 
 		add("player", new Player());
 		//add("enemy", new Enemy());

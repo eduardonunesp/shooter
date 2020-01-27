@@ -128,7 +128,12 @@ namespace Thing2D {
 			video_manager->clear();
 
 			if (current_state) {
-				current_state->update();
+				if (input_manager->has_focus()) {
+					audio_manager->resume_all_playing();
+					current_state->update();
+				} else {
+					audio_manager->stop_all_playing();
+				}
 				current_state->render();
 			}
 
