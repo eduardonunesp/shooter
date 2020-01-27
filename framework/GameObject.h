@@ -51,6 +51,7 @@ namespace Thing2D {
 
 	protected:
 		friend class Group;
+		friend class Layer;
 
 		std::string label;
 		std::string tag;

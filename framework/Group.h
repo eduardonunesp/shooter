@@ -36,7 +36,6 @@ namespace Thing2D {
 		// Life cycle
 		virtual void init() {};
 		virtual void update();
-		void render();
 		virtual void destroy();
 
 		// Adding game objects
@@ -71,9 +70,10 @@ namespace Thing2D {
 		AudioManager* audio_manager;
 		Game* game;
 
-	private:
-		static int id_counter;
 		std::map<std::string, GameObject*> game_objects_map;
 		std::vector<GameObject*> game_objects;
+
+	private:
+		static int id_counter;
 	};
 }

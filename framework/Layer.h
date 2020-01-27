@@ -9,6 +9,10 @@ namespace Thing2D {
 		Layer(int order);
 		Layer(float x, float y);
 
+		virtual void render();
+
+	protected:
+		friend class State;
 		unsigned int order;
 	};
 }

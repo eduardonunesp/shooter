@@ -106,18 +106,6 @@ namespace Thing2D {
 		});
 	}
 
-	void Group::render() {
-		if (!visible) {
-			return;
-		}
-
-		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
-			if (!game_object->dead) {
-				return game_object->render();
-			}
-		});
-	}
-
 	void Group::destroy() {
 		LOG("Destroy resources on group");
 		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
