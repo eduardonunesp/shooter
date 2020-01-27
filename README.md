@@ -3,16 +3,17 @@
 # Engine TODO
 - [x] Timers
 - [x] Tilemap tiled and XML
+- [ ] Pool of objects
+- [ ] Particles (Flixel)
+- [ ] Collide callback on GameObject
 - [ ] Path (Flixel)
 - [ ] Follow target
 - [ ] Angular velocity
 - [ ] Text render
 - [ ] Math functions rand, clamp
-- [ ] Particles (Flixel)
-- [ ] Collide callback on GameObject
 - [ ] Load objects and properties from Tiled
 - [ ] std::vector shuffle
 - [ ] Group shuffle
-- [ ] Pool of objects
 - [ ] Use mode SDL functions as possible for 2D stuff
+- [ ] Joystic / Controllers configuration
 - [ ] Binary blob load/save (PhysFS)
