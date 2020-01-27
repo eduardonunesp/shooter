@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <math.h>
 #include "base64.h"
-#include "State.h"
+#include "Map.h"
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"
@@ -19,9 +19,9 @@ namespace Thing2D {
 		}
 
 		void MapLoader::destroy() {
-			std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
-				tilemap.second->destroy();
-				});
+			//std::for_each(tilemaps.begin(), tilemaps.end(), [](auto tilemap) {
+			//	tilemap.second->destroy();
+			//	});
 		}
 
 		void MapLoader::load_tmx_map(const std::string& file_path, const std::string& map_id) {
@@ -33,22 +33,19 @@ namespace Thing2D {
 				throw "Failed to load tmx fila map";
 			}
 
-			State* new_tile_map = new State();
-			curr_tile_map = new_tile_map;
-			curr_tile_map->tiled_map_loader = this;
-			tilemaps[map_id] = new_tile_map;
-			curr_tile_map->video_manager = video_manager;
-
+			Map* new_map = new Map();
+			curr_map = new_map;
+			maps[map_id] = new_map;
 
 			TiXmlElement* pRoot = levelDocument.RootElement();
 			LOG("Loading level:\n" << "Version: " << pRoot->Attribute("version"));
 			LOG("Width:" << pRoot->Attribute("width") << " - Height:" << pRoot->Attribute("height"));
 			LOG("Tile Width:" << pRoot->Attribute("tilewidth") << " - Tile Height:" << pRoot->Attribute("tileheight"));
 
-			pRoot->Attribute("tilewidth", &new_tile_map->tile_width);
-			pRoot->Attribute("tileheight", &new_tile_map->tile_height);
-			pRoot->Attribute("width", &new_tile_map->cols);
-			pRoot->Attribute("height", &new_tile_map->rows);
+			pRoot->Attribute("tilewidth", &new_map->tile_width);
+			pRoot->Attribute("tileheight", &new_map->tile_height);
+			pRoot->Attribute("width", &new_map->cols);
+			pRoot->Attribute("height", &new_map->rows);
 
 			TiXmlElement* pProperties = pRoot->FirstChildElement();
 
@@ -71,13 +68,12 @@ namespace Thing2D {
 				}
 			}
 
-			curr_tile_map->init();
-			curr_tile_map = nullptr;
+			curr_map = nullptr;
 		}
 
 		void MapLoader::parse_tilesets(TiXmlElement* tileset_root) {
 			TileSet* new_tile_set = new TileSet();
-			curr_tile_map->tile_sets.push_back(new_tile_set);
+			curr_map->tile_sets.push_back(new_tile_set);
 
 			const std::string texture_path = assets_path + tileset_root->FirstChildElement()->Attribute("source");
 			LOG("adding texture " << texture_path << " with ID " << tileset_root->Attribute("name"));
@@ -90,7 +86,6 @@ namespace Thing2D {
 			tileset_root->Attribute("tileheight", &new_tile_set->tile_height);
 			tileset_root->Attribute("spacing", &new_tile_set->spacing);
 			tileset_root->Attribute("margin", &new_tile_set->margin);
-			new_tile_set->name = tileset_root->Attribute("name");
 			new_tile_set->texture_id = tileset_root->Attribute("name");
 
 			int rows = floor(new_tile_set->width / new_tile_set->tile_width);
@@ -101,7 +96,7 @@ namespace Thing2D {
 					Tile* tile = new Tile();
 					tile->col = y;
 					tile->row = x;
-					curr_tile_map->tiles.push_back(tile);
+					curr_map->tiles.push_back(tile);
 				}
 			}
 		}
@@ -111,11 +106,11 @@ namespace Thing2D {
 			LOG("Property " << properties_root->Attribute("value") << " type " << (type ? type : "string") << " Name " << properties_root->Attribute("name"));
 
 			if (type) {
-				curr_tile_map->string_prop[properties_root->Attribute("name")] = std::string(properties_root->Attribute("value"));
+				curr_map->string_prop[properties_root->Attribute("name")] = std::string(properties_root->Attribute("value"));
 			} else {
 				int v;
 				properties_root->Attribute("value", &v);
-				curr_tile_map->int_prop[properties_root->Attribute("name")] = v;
+				curr_map->int_prop[properties_root->Attribute("name")] = v;
 			}
 		}
 
@@ -123,10 +118,10 @@ namespace Thing2D {
 			LOG("Parsing" << layer_root->Attribute("name"));
 
 			TileLayer* new_tile_layer = new TileLayer(layer_root->Attribute("name"));
-			new_tile_layer->cols = curr_tile_map->cols;
-			new_tile_layer->rows = curr_tile_map->rows;
+			new_tile_layer->cols = curr_map->cols;
+			new_tile_layer->rows = curr_map->rows;
 
-			curr_tile_map->tile_layers.push_back(new_tile_layer);
+			curr_map->tile_layers.push_back(new_tile_layer);
 
 			std::vector<std::vector<int>> data;
 
@@ -156,19 +151,19 @@ namespace Thing2D {
 				}
 
 				// uncompress zlib compression
-				uLongf size_of_ids = curr_tile_map->cols * curr_tile_map->rows * sizeof(int);
-				std::vector<int> ids(curr_tile_map->cols * curr_tile_map->rows);
+				uLongf size_of_ids = curr_map->cols * curr_map->rows * sizeof(int);
+				std::vector<int> ids(curr_map->cols * curr_map->rows);
 				uncompress((Bytef*)&ids[0], &size_of_ids, (const Bytef*)decoded_ids.c_str(), decoded_ids.size());
 
-				std::vector<int> layer_row(curr_tile_map->cols);
+				std::vector<int> layer_row(curr_map->cols);
 
-				for (int j = 0; j < curr_tile_map->rows; j++) {
+				for (int j = 0; j < curr_map->rows; j++) {
 					data.push_back(layer_row);
 				}
 
-				for (int rows = 0; rows < curr_tile_map->rows; rows++) {
-					for (int cols = 0; cols < curr_tile_map->cols; cols++) {
-						data[rows][cols] = ids[rows * curr_tile_map->cols + cols];
+				for (int rows = 0; rows < curr_map->rows; rows++) {
+					for (int cols = 0; cols < curr_map->cols; cols++) {
+						data[rows][cols] = ids[rows * curr_map->cols + cols];
 					}
 				}
 

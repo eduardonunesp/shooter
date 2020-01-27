@@ -4,11 +4,10 @@
 
 namespace Thing2D {
 	namespace Tiled {
-		class Tile : public Props {
-		public:
-			int id;
-			int row;
-			int col;
+		struct Tile : Props {
+			unsigned int id;
+			unsigned int row;
+			unsigned int col;
 		};
 	}
 }

@@ -6,22 +6,15 @@
 
 namespace Thing2D {
 	namespace Tiled {
-
-		class TileSet : public Props {
-		protected:
-			friend class State;
-			friend class MapLoader;
-
-			// Tileset congs
+		struct TileSet : Props {
+			// Tileset confs
 			int first_grid_id;
-			std::string name;
-			std::string orientation;
-			int tile_width, tile_height;
-
-			// Texture confs
 			int width, height;
+			int tile_width, tile_height;
 			int spacing;
 			int margin;
+
+			// Texture confs
 			std::string texture_id;
 		};
 	}

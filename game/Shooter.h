@@ -3,15 +3,10 @@
 #include <EntryPoint.h>
 
 namespace Shooter {
-	class TiledMapLoader;
-
 	class ShooterGame : public Thing2D::Game {
 	public:
 		ShooterGame();
 		void init();
-
-	protected:
-		TiledMapLoader* tiled_map_loader;
 	};
 }
 

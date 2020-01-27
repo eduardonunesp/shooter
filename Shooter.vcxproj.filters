@@ -13,6 +13,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Framework\Tiled">
+      <UniqueIdentifier>{0258faef-4a59-4f43-8d39-9ac18758138e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game\Player.cpp">
@@ -56,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="framework\VideoManager.cpp">
       <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\tiled\TileLayer.cpp">
+      <Filter>Framework\Tiled</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\tiled\MapLoader.cpp">
+      <Filter>Framework\Tiled</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +142,24 @@
     </ClInclude>
     <ClInclude Include="framework\VideoManager.h">
       <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\Props.h">
+      <Filter>Framework\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\Tile.h">
+      <Filter>Framework\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\TileLayer.h">
+      <Filter>Framework\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\TileSet.h">
+      <Filter>Framework\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\MapLoader.h">
+      <Filter>Framework\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\tiled\Map.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
