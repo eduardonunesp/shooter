@@ -3,6 +3,7 @@
 #include "Map.h"
 #include "TileSet.h"
 #include "Tile.h"
+#include "../VideoManager.h"
 #include "TileLayer.h"
 #include "../Logger.h"
 
@@ -11,11 +12,7 @@ namespace Thing2D {
 		TiledLayer::TiledLayer(Map *map) :
 			map(map), Layer() {}
 
-		void TiledLayer::init() {
-			std::for_each(map->tiles.begin(), map->tiles.end(), [&](Tile* tile) {
-				add(tile);
-			});
-		}
+		void TiledLayer::init() {}
 		
 		void TiledLayer::render() {
 			std::for_each(map->tile_layers.begin(), map->tile_layers.end(), [&](TileLayer* tile_layer) {
@@ -37,22 +34,18 @@ namespace Thing2D {
 							int row = tile->row;
 							int col = tile->col;
 
-							tile->reset();
-							tile->set_position(layer_col * map->tile_height, layer_row * map->tile_width);
-							
-
-							//video_manager->render(
-							//	tile_set->name,
-							//	layer_col * tile_height,
-							//	layer_row * tile_width,
-							//	tile_set->margin,
-							//	tile_set->spacing,
-							//	tile_width, tile_width,
-							//	true,
-							//	col, row,
-							//	0, 255, 255, 255, 255, SDL_FLIP_NONE,
-							//	false, debug_boxes
-							//);
+							video_manager->render(
+								tile_set->texture_id,
+								layer_col * map->tile_height,
+								layer_row * map->tile_width,
+								tile_set->margin,
+								tile_set->spacing,
+								map->tile_width, map->tile_width,
+								true,
+								col, row,
+								0, 255, 255, 255, 255, SDL_FLIP_NONE,
+								false, debug_boxes
+							);
 						} else {
 							ERR("Error on instantiate tile set from tile set id: " << tile_set);
 						}

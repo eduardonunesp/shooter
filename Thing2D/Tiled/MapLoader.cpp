@@ -94,10 +94,7 @@ namespace Thing2D {
 
 			for (int y = 0; y < cols; y++) {
 				for (int x = 0; x < rows; x++) {
-					Tile* tile = new Tile(new_tile_set->texture_id, 0, 0, new_tile_set->tile_width, new_tile_set->tile_height);
-					tile->set_label("Tile " + std::to_string(curr_map->tiles.size()));
-					tile->set_texture_row_col(y, x);
-					tile->set_texture_margin_space(new_tile_set->margin, new_tile_set->spacing);
+					Tile* tile = new Tile(curr_map->tiles.size(), x, y);
 					curr_map->tiles.push_back(tile);
 				}
 			}

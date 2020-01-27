@@ -1,8 +1,11 @@
 #pragma once
 
+#include <vector>
 #include "../Layer.h"
 
 namespace Thing2D {
+	class Collider;
+
 	namespace Tiled {
 		class Map;
 		class TileSet;
@@ -18,6 +21,7 @@ namespace Thing2D {
 			TileSet* tile_set_by_id(int tile_id);
 
 			Map* map;
+			std::vector<Collider*> debug_boxes;
 		};
 	}
 }
