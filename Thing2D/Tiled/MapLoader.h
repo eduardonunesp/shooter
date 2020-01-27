@@ -17,6 +17,9 @@ namespace Thing2D {
 			// Life cycle
 			void destroy();
 
+			// Get
+			Map* get_map(const std::string& map_id) { return maps[map_id]; }
+
 			// Load map
 			void load_tmx_map(const std::string& file_path, const std::string& map_id);
 

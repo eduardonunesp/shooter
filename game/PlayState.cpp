@@ -5,7 +5,7 @@
 
 namespace Shooter {
 	PlayState::PlayState() :
-		State() {}
+		State(), map(nullptr) {}
 
 	void PlayState::init() {
 		State::init();

@@ -18,6 +18,8 @@ namespace Shooter {
 		Tiled::MapLoader* map_loader = new Tiled::MapLoader(video_manager);
 		map_loader->load_tmx_map("./Assets/map.tmx", "map");
 		
-		add_state("play_state", new PlayState(), true);
+		PlayState* ps = new PlayState();
+		ps->map = map_loader->get_map("map");
+		add_state("play_state", ps, true);
 	}
 }
