@@ -5,9 +5,9 @@
 
 namespace Thing2D {
 	namespace Tiled {
-		class TileSet;
-		class TileLayer;
-		class Tile;
+		struct TileSet;
+		struct TileLayer;
+		struct Tile;
 
 		struct Map : Props {
 			int width, height;

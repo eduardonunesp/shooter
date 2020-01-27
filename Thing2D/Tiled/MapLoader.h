@@ -8,7 +8,7 @@ namespace Thing2D {
 	class VideoManager;
 
 	namespace Tiled {
-		class Map;
+		struct Map;
 
 		class MapLoader {
 		public:

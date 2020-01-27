@@ -6,7 +6,7 @@
 
 namespace Thing2D {
 	namespace Tiled {
-		struct TileLayer : public Props {
+		struct TileLayer : Props {
 			TileLayer(const std::string& name);
 
 			std::string name;

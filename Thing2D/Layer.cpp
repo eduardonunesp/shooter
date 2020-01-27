@@ -13,19 +13,19 @@ namespace Thing2D {
 
 	Layer::Layer(int order) :
 		Group(), 
-		order(order),
 		video_manager(nullptr),
 		input_manager(nullptr),
 		audio_manager(nullptr),
-		game(nullptr) {}
+		game(nullptr),
+		order(order) {}
 
 	Layer::Layer(float x, float y) : 
 		Group(x, y),
-		order(0),
 		video_manager(nullptr),
 		input_manager(nullptr),
 		audio_manager(nullptr),
-		game(nullptr) {}
+		game(nullptr),
+		order(0) {}
 
 	void Layer::add(const std::string& game_object_id, GameObject* game_object) {
 		if (game_object) {

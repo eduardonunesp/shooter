@@ -8,7 +8,7 @@
 
 namespace Thing2D {
 	GameObject::GameObject(const std::string& texture_id, float x, float y, int width, int height) :
-		debug(false), visible(true), dead(false), flipped(false), life(1),
+		debug(false), dead(false), life(1), visible(true), flipped(false),
 		r(255), g(255), b(255), alpha(255), angle(0), 
 		position(x, y), velocity(0, 0), acceleration(0, 0),
 		width(width), height(height),

@@ -7,8 +7,8 @@ namespace Thing2D {
 	class Collider;
 
 	namespace Tiled {
-		class Map;
-		class TileSet;
+		struct Map;
+		struct TileSet;
 
 		class TiledLayer : public Layer {
 		public:
