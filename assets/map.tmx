@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="120" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="1">
  <properties>
   <property name="areana" value="mortal"/>
   <property name="lives" type="int" value="2"/>
@@ -7,9 +7,9 @@
  <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
   <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
- <layer id="3" name="Tile Layer 1" width="20" height="20">
+ <layer id="3" name="Tile Layer 1" width="20" height="120">
   <data encoding="base64" compression="zlib">
-   eAFTZmBgkKMiVibDLDWgHnQMc9NgMA/mFmw0Oe7DZg5MbNQ81PTICEwbTEDMjCNdocsTCj9OoDlcQMyNZJ4eEhtdnpB5gkC9QkAsjGQGLC5BNLo8IfOQ9RLDHjUPNb0QE2bIaugRfhrAdADCyPYSy0Z2H6iMhJlFLfNg5S6x7kFXBwChny6P
+   eAHtlMsKwjAQRauufGzUvZuC+P9f6AS8UC5JR0MQxFMYpkw6p8kZyDxN021gzB2se/R4aE/f4G3i/9uIXcfea/vbB+cQcRzEOwfnEnEdxJPbnlw7bw9HPRkvm42vZzyfjff7esbz2Xi/r2c8eVH2ftWVP+Wpr5V/keczLGc7vaJ1TtVr5/UZ6tt3co2XzXCNu+SVO/KxiLW+1przdO+2vq/Vi1vV45UHAxjAAAYwgAEMYAADGMAABjCAAQxgAAMYwAAGMIABDGAAAxjAAAYw8PcGngjTLBk=
   </data>
  </layer>
 </map>

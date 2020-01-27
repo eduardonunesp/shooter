@@ -43,6 +43,10 @@ namespace Thing2D {
 			pRoot->Attribute("tileheight", &new_map->tile_height);
 			pRoot->Attribute("width", &new_map->cols);
 			pRoot->Attribute("height", &new_map->rows);
+			new_map->width = new_map->tile_width * new_map->cols;
+			new_map->height = new_map->tile_height * new_map->rows;
+
+			LOG("Total size: " << new_map->width << " " << new_map->height);
 
 			TiXmlElement* pProperties = pRoot->FirstChildElement();
 

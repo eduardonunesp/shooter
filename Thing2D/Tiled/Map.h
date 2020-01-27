@@ -10,6 +10,7 @@ namespace Thing2D {
 		class Tile;
 
 		struct Map : Props {
+			int width, height;
 			int tile_width, tile_height;
 			int cols, rows;
 
