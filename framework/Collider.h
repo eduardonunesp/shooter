@@ -10,6 +10,7 @@ namespace Thing2D {
 	public:
 		Collider(float x, float y, int h, int w): 
 			Rect(x, y, h, w),
+			active(true),
 			offset_x(0), offset_y(0) {}
 
 		std::string label;

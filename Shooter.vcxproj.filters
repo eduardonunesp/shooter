@@ -113,13 +113,7 @@
     <ClInclude Include="framework\Logger.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="framework\Props.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="framework\Rect.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Recycle.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\Sprite.h">

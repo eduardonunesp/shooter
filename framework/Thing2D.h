@@ -16,6 +16,4 @@
 #include "AnimationFrame.h"
 #include "Animation.h"
 #include "Timer.h"
-#include "Recycle.h"
 #include "Layer.h"
-#include "Props.h"

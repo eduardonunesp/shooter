@@ -171,9 +171,7 @@
     <ClInclude Include="framework\InputManager.h" />
     <ClInclude Include="framework\Layer.h" />
     <ClInclude Include="framework\Logger.h" />
-    <ClInclude Include="framework\Props.h" />
     <ClInclude Include="framework\Rect.h" />
-    <ClInclude Include="framework\Recycle.h" />
     <ClInclude Include="framework\Shot.h" />
     <ClInclude Include="framework\Sprite.h" />
     <ClInclude Include="framework\State.h" />
