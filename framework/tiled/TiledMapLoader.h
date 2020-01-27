@@ -5,34 +5,37 @@
 #include <tinyxml.h>
 
 namespace Thing2D {
-	class TiledState;
 	class VideoManager;
 
-	class TiledMapLoader {
-	public:
-		TiledMapLoader(VideoManager* video_manager) :
-			video_manager(video_manager), 
-			curr_tile_map(nullptr) {}
+	namespace Tiled {
+		class TiledState;
 
-		// Life cycle
-		void init();
-		void destroy();
+		class TiledMapLoader {
+		public:
+			TiledMapLoader(VideoManager* video_manager) :
+				video_manager(video_manager),
+				curr_tile_map(nullptr) {}
 
-		// Load map
-		void load_tmx_map(const std::string& map_id, const std::string& file_path);
+			// Life cycle
+			void init();
+			void destroy();
 
-	protected:
-		friend class Game;
+			// Load map
+			void load_tmx_map(const std::string& map_id, const std::string& file_path);
 
-		// Needed to load texture
-		VideoManager* video_manager;
+		protected:
+			friend class Game;
 
-		void parse_tilesets(TiXmlElement* tileset_root);
-		void parse_properties(TiXmlElement* properties_root);
-		void parse_layers(TiXmlElement* layer_root);
+			// Needed to load texture
+			VideoManager* video_manager;
 
-		std::string assets_path;
-		TiledState* curr_tile_map;
-		std::map<std::string, TiledState*> tilemaps;
-	};
+			void parse_tilesets(TiXmlElement* tileset_root);
+			void parse_properties(TiXmlElement* properties_root);
+			void parse_layers(TiXmlElement* layer_root);
+
+			std::string assets_path;
+			TiledState* curr_tile_map;
+			std::map<std::string, TiledState*> tilemaps;
+		};
+	}
 }

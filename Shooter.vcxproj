@@ -183,6 +183,7 @@
     <ClInclude Include="framework\Thing2D.h" />
     <ClInclude Include="framework\tiled\Tile.h" />
     <ClInclude Include="framework\tiled\TiledMapLoader.h" />
+    <ClInclude Include="framework\tiled\TiledResources.h" />
     <ClInclude Include="framework\tiled\TiledState.h" />
     <ClInclude Include="framework\tiled\TileLayer.h" />
     <ClInclude Include="framework\tiled\TileSet.h" />

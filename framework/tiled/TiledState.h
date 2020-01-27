@@ -6,35 +6,40 @@
 
 namespace Thing2D {
 	class Collider;
-	class TileLayer;
-	class TileSet;
-	class Tile;
-	class TiledMapLoader;
+	class VideoManager;
 
-	class TiledState : public State, public Props {
-	public:
-		TiledState();
+	namespace Tiled {
+		class TileLayer;
+		class TileSet;
+		class Tile;
+		class TiledMapLoader;
 
-		// Life cycle
-		void init() override;
-		void update() override;
-		void render() override;
-		void destroy() override;
+		class TiledState : public State, public Props {
+		public:
+			TiledState();
 
-	protected:
-		friend class TiledMapLoader;
+			// Life cycle
+			void init() override;
+			void update() override;
+			void render() override;
+			void destroy() override;
 
-		TiledMapLoader* tiled_map_loader;
+		protected:
+			friend class TiledMapLoader;
 
-		std::string orientation;
-		int cols, rows;
-		int tile_width, tile_height;
+			TiledMapLoader* tiled_map_loader;
+			VideoManager* video_manager;
 
-		TileSet* tile_set_by_id(int id);
+			std::string orientation;
+			int cols, rows;
+			int tile_width, tile_height;
 
-		std::vector<Collider*> debug_boxes;
-		std::vector<TileSet*> tile_sets;
-		std::vector<TileLayer*> tile_layers;
-		std::vector<Tile*> tiles;
-	};
+			TileSet* tile_set_by_id(int id);
+
+			std::vector<Collider*> debug_boxes;
+			std::vector<TileSet*> tile_sets;
+			std::vector<TileLayer*> tile_layers;
+			std::vector<Tile*> tiles;
+		};
+	}
 }
