@@ -6,12 +6,9 @@
 
 namespace Thing2D {
 	namespace Tiled {
-		class TileLayer : public Props {
-		public:
+		struct TileLayer : public Props {
 			TileLayer(const std::string& name);
 
-		protected:
-			friend class MapLoader;
 			std::string name;
 			int cols, rows;
 			std::vector<std::vector<int>> tile_ids;

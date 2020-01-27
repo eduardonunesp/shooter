@@ -8,7 +8,9 @@ namespace Thing2D {
 		class Tile : public GameObject, public Props {
 		public:
 			Tile(const std::string& texture_id, float x, float y, int width, int height) : 
-				GameObject(texture_id, x, y, width, height), row(0), col(0) {}
+				GameObject(texture_id, x, y, width, height), row(0), col(0) {
+				dead = true;
+			}
 
 			unsigned int row;
 			unsigned int col;

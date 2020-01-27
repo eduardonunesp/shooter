@@ -42,11 +42,17 @@ namespace Thing2D {
 	}
 
 	void Layer::add(GameObject* game_object) {
-		Group::add(game_object);
-	}
-
-	void Layer::add(Group* other_group) {
-		Group::add(other_group);
+		if (game_object) {
+			game_object->video_manager = video_manager;
+			game_object->input_manager = input_manager;
+			game_object->audio_manager = audio_manager;
+			game_object->game = game;
+			game_object->init();
+			game_object->move(position);
+			Group::add(game_object);
+		} else {
+			ERR("Game object is NULL");
+		}
 	}
 
 	void Layer::render() {

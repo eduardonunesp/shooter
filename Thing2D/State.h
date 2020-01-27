@@ -30,6 +30,7 @@ namespace Thing2D {
 		}
 
 		// Layers
+		void add_layer(Layer* layer);
 		void create_layer(unsigned int order = 0);
 		auto get_layer(int idx);
 

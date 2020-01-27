@@ -40,7 +40,24 @@ namespace Thing2D {
 		inline const std::string& get_label() { return label; }
 		inline const Vector& get_position() { return position; }
 
+		// Setters
+		inline void set_texture_row_col(int row, int col) {
+			curr_texture_row = row;
+			curr_texture_col = col;
+		}
+
+		inline void set_texture_margin_space(int margin, int spacing) {
+			curr_texture_margin = margin;
+			curr_texture_spacing = spacing;
+		}
+
+		inline void set_position(int x, int y) {
+			position.x = x;
+			position.y = y;
+		}
+
 		// Basic game object logic
+		void reset();
 		void kill();
 		void hurt(int damage);
 
@@ -74,6 +91,7 @@ namespace Thing2D {
 
 		int width, height;
 		int curr_texture_row, curr_texture_col;
+		int curr_texture_margin, curr_texture_spacing;
 		std::string texture_id;
 
 		VideoManager* video_manager;

@@ -24,8 +24,6 @@ namespace Thing2D {
 			void load_tmx_map(const std::string& file_path, const std::string& map_id);
 
 		protected:
-			friend class Game;
-
 			// Needed to load texture
 			VideoManager* video_manager;
 

@@ -6,15 +6,10 @@
  </properties>
  <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
   <image source="tmw_desert_spacing.png" width="265" height="199"/>
-  <tile id="17" type="te"/>
-  <tile id="29" type="dd"/>
- </tileset>
- <tileset firstgid="49" name="buch-outdoor" tilewidth="32" tileheight="32" tilecount="72" columns="12">
-  <image source="buch-outdoor.png" width="384" height="192"/>
  </tileset>
  <layer id="3" name="Tile Layer 1" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eAGTY2BgkBvFo2FApTTACDSHCYiZqWQeJ9AcLiDmppJ5gkBzhIBYmErmjead0fJjJKcBAE+oLi0=
+   eAHt0DUSw0AQBECZmZmZ8f+vc8cX+MqONVUd6DSTbCZJkiw58hQoUqJMmIyHb/2K/1Vq1GnQpEWbMLF+x6BLjz4DhowYEybWnxhMmTFnwZIVa8LE+huDLTv2HDhy4kyYWP9icOXGnQdPXrwJ82s/3Kff6QXSC6QX+PcCHyZyCTE=
   </data>
  </layer>
 </map>

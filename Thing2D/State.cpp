@@ -21,6 +21,26 @@ namespace Thing2D {
 		timers[timer_id]->reset();
 	}
 
+	void State::add_layer(Layer* layer) {
+		layer->video_manager = video_manager;
+		layer->input_manager = input_manager;
+		layer->audio_manager = audio_manager;
+		layer->game = game;
+
+		if (layers.size() > 0) {
+			layer->order = layers.size();
+		}
+
+		layer->init();
+		layers.push_back(layer);
+
+		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
+			return layer_a->order < layer_b->order;
+		});
+
+		LOG("Layer added in order " << layer->order);
+	}
+
 	void State::create_layer(unsigned int order) {
 		Layer* new_layer = new Layer(order);
 
@@ -34,11 +54,14 @@ namespace Thing2D {
 		new_layer->audio_manager = audio_manager;
 		new_layer->game = game;
 
+		new_layer->init();
 		layers.push_back(new_layer);
 
 		std::sort(layers.begin(), layers.end(), [](auto layer_a, auto layer_b) {
 			return layer_a->order < layer_b->order;
 		});
+
+		LOG("Layer added in order " << new_layer->order);
 	}
 
 	auto State::get_layer(int idx) {

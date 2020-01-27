@@ -6,3 +6,4 @@
 #include "Tile.h"
 #include "TileLayer.h"
 #include "TileSet.h"
+#include "TiledLayer.h"

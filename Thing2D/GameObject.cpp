@@ -43,7 +43,8 @@ namespace Thing2D {
 
 	void GameObject::render() {
 		if (!dead) {
-			video_manager->render(texture_id, (int)position.x, (int)position.y, 0, 0, width, height, visible,
+			// TODO: Don't render objects out of the game screen
+			video_manager->render(texture_id, (int)position.x, (int)position.y, curr_texture_margin, curr_texture_spacing, width, height, visible,
 				curr_texture_row, curr_texture_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
 				debug, colliders);
 		}
@@ -103,6 +104,14 @@ namespace Thing2D {
 
 		position.x += x;
 		position.y += y;
+	}
+
+	void GameObject::reset() {
+		if (dead) {
+			dead = false;
+			life = 1;
+			position = Vector::zero();
+		}
 	}
 
 	void GameObject::kill() {

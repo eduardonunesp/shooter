@@ -15,9 +15,9 @@ namespace Thing2D {
 		Layer(float x, float y);
 
 		virtual void render();
+
 		void add(const std::string& game_object_id, GameObject* game_object) override;
 		void add(GameObject* game_object) override;
-		void add(Group* other_group) override;
 
 	protected:
 		friend class State;

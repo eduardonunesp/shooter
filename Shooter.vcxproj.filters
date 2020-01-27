@@ -67,6 +67,9 @@
     <ClCompile Include="Thing2D\Tiled\base64.cpp">
       <Filter>Thing2D\Tiled</Filter>
     </ClCompile>
+    <ClCompile Include="Thing2D\Tiled\TiledLayer.cpp">
+      <Filter>Thing2D\Tiled</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Thing2D\Animation.h">
@@ -163,6 +166,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Thing2D\Tiled\base64.h">
+      <Filter>Thing2D\Tiled</Filter>
+    </ClInclude>
+    <ClInclude Include="Thing2D\Tiled\TiledLayer.h">
       <Filter>Thing2D\Tiled</Filter>
     </ClInclude>
   </ItemGroup>

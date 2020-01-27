@@ -46,12 +46,14 @@ namespace Thing2D {
 
 			TiXmlElement* pProperties = pRoot->FirstChildElement();
 
+			// parse properties on root
 			for (TiXmlElement* e = pProperties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
 				if (e->Value() == std::string("property")) {
 					parse_properties(e);
 				}
 			}
 
+			// parse tileset
 			for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()) {
 				if (e->Value() == std::string("tileset")) {
 					parse_tilesets(e);
@@ -88,11 +90,14 @@ namespace Thing2D {
 			int rows = floor(new_tile_set->width / new_tile_set->tile_width);
 			int cols = floor(new_tile_set->height / new_tile_set->tile_height);
 
+			LOG("Slicing tileset " << new_tile_set->texture_id << " with Rows " << rows << " cols " << cols);
+
 			for (int y = 0; y < cols; y++) {
 				for (int x = 0; x < rows; x++) {
 					Tile* tile = new Tile(new_tile_set->texture_id, 0, 0, new_tile_set->tile_width, new_tile_set->tile_height);
-					tile->col = y;
-					tile->row = x;
+					tile->set_label("Tile " + std::to_string(curr_map->tiles.size()));
+					tile->set_texture_row_col(y, x);
+					tile->set_texture_margin_space(new_tile_set->margin, new_tile_set->spacing);
 					curr_map->tiles.push_back(tile);
 				}
 			}

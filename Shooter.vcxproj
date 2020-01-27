@@ -159,6 +159,7 @@
     <ClCompile Include="Thing2D\State.cpp" />
     <ClCompile Include="Thing2D\Tiled\base64.cpp" />
     <ClCompile Include="Thing2D\Tiled\MapLoader.cpp" />
+    <ClCompile Include="Thing2D\Tiled\TiledLayer.cpp" />
     <ClCompile Include="Thing2D\Tiled\TileLayer.cpp" />
     <ClCompile Include="Thing2D\VideoManager.cpp" />
   </ItemGroup>
@@ -190,6 +191,7 @@
     <ClInclude Include="Thing2D\Tiled\Props.h" />
     <ClInclude Include="Thing2D\Tiled\Tile.h" />
     <ClInclude Include="Thing2D\Tiled\Tiled.h" />
+    <ClInclude Include="Thing2D\Tiled\TiledLayer.h" />
     <ClInclude Include="Thing2D\Tiled\TileLayer.h" />
     <ClInclude Include="Thing2D\Tiled\TileSet.h" />
     <ClInclude Include="Thing2D\Timer.h" />
