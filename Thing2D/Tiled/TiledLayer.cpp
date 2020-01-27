@@ -38,14 +38,20 @@ namespace Thing2D {
 							int row = tile->row;
 							int col = tile->col;
 
-							if (position.y + map->tile_height > 0) {
+							if (
+								(((layer_row * map->tile_height) + map->tile_height + position.y) < 0) ||
+								(((layer_row * map->tile_height) + map->tile_height + position.y) > game->get_screen_height() + map->tile_height) ||
+								(((layer_col * map->tile_width) + map->tile_width + position.x) < 0) ||
+								(((layer_col * map->tile_width) + map->tile_width + position.x) > game->get_screen_width() + map->tile_width)
+							) {
+								// Do not call draw off screen
 								continue;
 							}
 
 							video_manager->render(
 								tile_set->texture_id,
-								(layer_col * map->tile_height) + position.x,
-								(layer_row * map->tile_width) + position.y,
+								(layer_col * map->tile_width) + position.x,
+								(layer_row * map->tile_height) + position.y,
 								tile_set->margin,
 								tile_set->spacing,
 								map->tile_width, map->tile_width,

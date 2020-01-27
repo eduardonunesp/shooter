@@ -19,7 +19,7 @@ namespace Shooter {
 		add_layer(tlayer);
 
 		add("player", new Player());
-		add("enemy", new Enemy());
+		//add("enemy", new Enemy());
 		create_timer("shot_timer", 60);
 	}
 

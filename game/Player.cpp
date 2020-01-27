@@ -11,6 +11,7 @@ namespace Shooter {
 
 		add_animations("fly", 12, true, 3, 0, 1, 2);
 		position.x = ((int)game->get_screen_width() / 2) - width;
+		position.y = 500;
 		
 		debug = true;
 
