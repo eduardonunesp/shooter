@@ -3,9 +3,8 @@
 #include "PlayState.h"
 
 namespace Shooter {
-	Player::Player() : 
-		Sprite("plane", 100, 100, 65, 65, 1, 3), 
-		speed(10.0f) {}
+	Player::Player() :
+		Sprite("plane", 100, 100, 65, 65, 1, 3) {}
 
 	void Player::init() {
 		Sprite::init();
@@ -23,24 +22,6 @@ namespace Shooter {
 	}
 
 	void Player::update() {
-		velocity = Vector::zero();
-
-		if (input_manager->is_key_down(SDL_SCANCODE_RIGHT) && position.x + width < game->get_screen_width()) {
-			velocity += Vector::right() * speed;
-		}
-
-		if (input_manager->is_key_down(SDL_SCANCODE_LEFT) && position.x > 0) {
-			velocity += Vector::left() * speed;
-		}
-
-		if (input_manager->is_key_down(SDL_SCANCODE_DOWN)) {
-			velocity += Vector::down() * speed;
-		}
-
-		if (input_manager->is_key_down(SDL_SCANCODE_UP)) {
-			velocity += Vector::up() * speed;
-		}
-
 		Sprite::update();
 	}
 }

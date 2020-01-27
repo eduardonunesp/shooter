@@ -29,10 +29,15 @@ namespace Thing2D {
 		inline auto get_collider(int collider_idx) { return colliders[collider_idx]; }
 		bool overlaps(GameObject* target);
 
-		// Basic phiscs
+		// Basic physics
 		void set_velocity(const Vector& velocity_value);
+		void add_velocity(const Vector& new_velocity);
 		void move(const Vector& new_position);
 		void move(int x, int y);
+		void set_texture_row_col(int row, int col);
+		void set_texture_margin_space(int margin, int spacing);
+		void set_position(int x, int y);
+		void set_position(const Vector& new_position);
 
 		// Identification
 		inline void set_tag(const std::string& tag_value) { tag = tag_value; }
@@ -40,21 +45,9 @@ namespace Thing2D {
 		inline const std::string& get_label() { return label; }
 		inline const Vector& get_position() { return position; }
 
-		// Setters
-		inline void set_texture_row_col(int row, int col) {
-			curr_texture_row = row;
-			curr_texture_col = col;
-		}
-
-		inline void set_texture_margin_space(int margin, int spacing) {
-			curr_texture_margin = margin;
-			curr_texture_spacing = spacing;
-		}
-
-		inline void set_position(int x, int y) {
-			position.x = x;
-			position.y = y;
-		}
+		// Geometry
+		inline int get_width() { return width; }
+		inline int get_height() { return height; }
 
 		// Basic game object logic
 		void reset();

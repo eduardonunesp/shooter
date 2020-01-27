@@ -4,13 +4,17 @@
 #include "TileSet.h"
 #include "Tile.h"
 #include "../VideoManager.h"
+#include "../Game.h"
 #include "TileLayer.h"
 #include "../Logger.h"
 
 namespace Thing2D {
 	namespace Tiled {
 		TiledLayer::TiledLayer(Map *map) :
-			map(map), Layer() {}
+			TiledLayer(0, 0, map) {}
+
+		TiledLayer::TiledLayer(int x, int y, Map* map) :
+			Layer(x, y), map(map) {}
 
 		void TiledLayer::init() {}
 		
@@ -34,10 +38,14 @@ namespace Thing2D {
 							int row = tile->row;
 							int col = tile->col;
 
+							if (position.y + map->tile_height > 0) {
+								continue;
+							}
+
 							video_manager->render(
 								tile_set->texture_id,
-								layer_col * map->tile_height,
-								layer_row * map->tile_width,
+								(layer_col * map->tile_height) + position.x,
+								(layer_row * map->tile_width) + position.y,
 								tile_set->margin,
 								tile_set->spacing,
 								map->tile_width, map->tile_width,

@@ -52,6 +52,7 @@ namespace Thing2D {
 		SDL_SetMainReady();
 		
 		video_manager = new VideoManager();
+		video_manager->game = this;
 		video_manager->init(screen_width, screen_height);
 
 		input_manager = new InputManager();
@@ -137,6 +138,10 @@ namespace Thing2D {
 
 			if (frame_time < delay_time) {
 				SDL_Delay((int)(delay_time - frame_time));
+			}
+
+			if (debug_mode) {
+				SDL_SetWindowTitle(video_manager->window, std::to_string(frame_time).c_str());
 			}
 		}
 	}

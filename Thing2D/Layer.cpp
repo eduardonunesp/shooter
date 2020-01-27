@@ -34,7 +34,6 @@ namespace Thing2D {
 			game_object->audio_manager = audio_manager;
 			game_object->game = game;
 			game_object->init();
-			game_object->move(position);
 			Group::add(game_object_id, game_object);
 		} else {
 			ERR("Game object is NULL");
@@ -48,7 +47,6 @@ namespace Thing2D {
 			game_object->audio_manager = audio_manager;
 			game_object->game = game;
 			game_object->init();
-			game_object->move(position);
 			Group::add(game_object);
 		} else {
 			ERR("Game object is NULL");

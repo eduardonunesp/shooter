@@ -106,6 +106,29 @@ namespace Thing2D {
 		position.y += y;
 	}
 
+	void GameObject::set_texture_row_col(int row, int col) {
+		curr_texture_row = row;
+		curr_texture_col = col;
+	}
+
+	void GameObject::set_texture_margin_space(int margin, int spacing) {
+		curr_texture_margin = margin;
+		curr_texture_spacing = spacing;
+	}
+
+	void GameObject::set_position(int x, int y) {
+		position.x = x;
+		position.y = y;
+	}
+
+	void GameObject::set_position(const Vector& new_position) {
+		position = new_position;
+	}
+
+	void GameObject::add_velocity(const Vector& new_velocity) {
+		velocity += new_velocity;
+	}
+
 	void GameObject::reset() {
 		if (dead) {
 			dead = false;

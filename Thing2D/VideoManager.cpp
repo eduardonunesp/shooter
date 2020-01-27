@@ -3,8 +3,7 @@
 #include "VideoManager.h"
 #include "Collider.h"
 #include "Logger.h"
-
-#define PREFERED_DRIVER "opengl"
+#include "Game.h"
 
 namespace Thing2D {
 	void VideoManager::init(int screen_width, int screen_height) {
@@ -18,18 +17,30 @@ namespace Thing2D {
 
 		int r_drivers = SDL_GetNumRenderDrivers();
 		LOG("RENDER DRIVERS: " << r_drivers);
+
+		std::string prefered_driver = "opengl";
+
+		switch (game->get_curr_platform_os()) {
+		case PlatformOS::WIN_386:
+		case PlatformOS::WIN_X64:
+			prefered_driver = "direct3d";
+			break;
+		default:
+			prefered_driver = "opengl";
+			break;
+		}
 		
 		for (int i = 0; i < r_drivers; i++) {
 			SDL_RendererInfo renderer_info;
 			SDL_GetRenderDriverInfo(i, &renderer_info);
 			LOG("Renderer driver available: " << renderer_info.name);
 
-			if (renderer_info.name == std::string(PREFERED_DRIVER)) {
+			if (renderer_info.name == prefered_driver) {
 				prefered_render_driver = i;
 			}
 		}
 
-		LOG("Using render driver: " << prefered_render_driver);
+		LOG("Using render driver: " << prefered_driver);
 
 		int v_drivers = SDL_GetNumVideoDrivers();
 		LOG("VIDEO DRIVERS: " << v_drivers);
@@ -38,11 +49,15 @@ namespace Thing2D {
 			LOG("Video driver available: " << SDL_GetVideoDriver(i));
 		}
 
-		int window_flags = SDL_WINDOW_OPENGL ;
+		int window_flags = 0;
 	
 #ifdef ALLOW_HIGHDPI
 		window_flags |= SDL_WINDOW_ALLOW_HIGHDPI
 #endif
+
+		if (prefered_driver == "opengl") {
+			window_flags |= SDL_WINDOW_OPENGL;
+		}
 
 		window = SDL_CreateWindow("GAME WINDOW", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, window_flags);
 

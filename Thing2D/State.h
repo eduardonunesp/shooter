@@ -32,7 +32,7 @@ namespace Thing2D {
 		// Layers
 		void add_layer(Layer* layer);
 		void create_layer(unsigned int order = 0);
-		auto get_layer(int idx);
+		Layer* get_layer(int idx);
 
 		// Add game object suggar function
 		void add(const std::string& game_object_id, GameObject* game_object);

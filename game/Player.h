@@ -12,8 +12,5 @@ namespace Shooter {
 
 		void init() override;
 		void update() override;
-
-	private:
-		float speed;
 	};
 }

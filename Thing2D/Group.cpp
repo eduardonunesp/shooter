@@ -13,6 +13,8 @@ namespace Thing2D {
 
 		LOG("Adding game object label " + game_object_id + " tag " + game_object->tag);
 			
+		game_object->position.x += position.x;
+		game_object->position.y += position.y;
 		game_object->label = game_object_id;
 		game_objects.push_back(game_object);
 		game_objects_map[game_object_id] = game_object;
@@ -37,6 +39,14 @@ namespace Thing2D {
 		std::for_each(other_group->game_objects.begin(), other_group->game_objects.end(), [&](auto game_object) {
 			add(game_object);
 		});
+	}
+
+	void Group::add_velocity(const Vector& new_velocity) {
+		velocity += new_velocity;
+	}
+
+	void Group::set_velocity(const Vector& velocity_value) {
+		velocity = velocity_value;
 	}
 
 	void Group::kill(GameObject* game_object_to_kill) {
@@ -88,8 +98,12 @@ namespace Thing2D {
 	}
 
 	void Group::update() {
-		std::for_each(game_objects.begin(), game_objects.end(), [](auto game_object) {
+		position += velocity;
+
+		std::for_each(game_objects.begin(), game_objects.end(), [&](auto game_object) {
 			if (!game_object->dead) {
+				game_object->position.x += position.x;
+				game_object->position.y += position.y;
 				game_object->update();
 			}
 		});

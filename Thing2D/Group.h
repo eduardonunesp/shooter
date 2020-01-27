@@ -32,9 +32,18 @@ namespace Thing2D {
 		virtual void add(Group* other_group);
 		inline auto get(const std::string& game_object_id) { return game_objects_map[game_object_id]; }
 
+		// Basic physics
+		void add_velocity(const Vector& new_velocity);
+		void set_velocity(const Vector& velocity_value);
+
 		// Setters
 		void set_label(const std::string& label_value) {
 			label = label_value;
+		}
+
+		// Getters
+		Vector get_position() {
+			return position;
 		}
 
 		// Killing
@@ -57,6 +66,7 @@ namespace Thing2D {
 		std::string label;
 		bool visible;
 		Vector position;
+		Vector velocity;
 
 		std::map<std::string, GameObject*> game_objects_map;
 		std::vector<GameObject*> game_objects;

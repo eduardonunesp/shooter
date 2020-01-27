@@ -64,7 +64,7 @@ namespace Thing2D {
 		LOG("Layer " << new_layer->label << " added in order " << new_layer->order);
 	}
 
-	auto State::get_layer(int idx) {
+	Layer* State::get_layer(int idx) {
 		return layers[idx];
 	}
 

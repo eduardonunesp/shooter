@@ -12,6 +12,7 @@ namespace Thing2D {
 
 		class TiledLayer : public Layer {
 		public:
+			TiledLayer(int x, int y, Map* map);
 			TiledLayer(Map* map);
 
 			void init() override;

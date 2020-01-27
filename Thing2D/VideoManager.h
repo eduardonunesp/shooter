@@ -8,6 +8,7 @@
 
 namespace Thing2D {
 	class Collider;
+	class Game;
 
 	class VideoManager {
 	public:
@@ -31,6 +32,10 @@ namespace Thing2D {
 		void load_texture(const std::string& file_path, const::std::string& texture_id);
 		void clear_texture_map();
 		void clear_from_texture_map(const std::string texture_id);
+
+	protected:
+		friend class Game;
+		Game* game;
 
 	private:
 		std::vector<Color> color_cycle;
