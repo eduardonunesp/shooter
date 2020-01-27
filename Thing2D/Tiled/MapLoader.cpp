@@ -7,16 +7,15 @@
 #include "TileLayer.h"
 #include "TileSet.h"
 #include "Tile.h"
-#include "Logger.h"
-#include "VideoManager.h"
+#include "../Logger.h"
+#include "../VideoManager.h"
 
 namespace Thing2D {
 	namespace Tiled {
-
-		void MapLoader::init() {
-			LOG("Initialize TileMap Manager");
-			assets_path = "./assets/";
-		}
+		MapLoader::MapLoader(VideoManager *video_manager) :
+			video_manager(video_manager),
+			assets_path("./Assets/"),
+			curr_map(nullptr) {}
 
 		void MapLoader::destroy() {
 			// TODO: Should destroy some day
@@ -91,7 +90,7 @@ namespace Thing2D {
 
 			for (int y = 0; y < cols; y++) {
 				for (int x = 0; x < rows; x++) {
-					Tile* tile = new Tile();
+					Tile* tile = new Tile(new_tile_set->texture_id, 0, 0, new_tile_set->tile_width, new_tile_set->tile_height);
 					tile->col = y;
 					tile->row = x;
 					curr_map->tiles.push_back(tile);

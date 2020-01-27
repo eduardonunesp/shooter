@@ -73,7 +73,7 @@ namespace Thing2D {
 		std::vector<Collider*> colliders;
 
 		int width, height;
-		int curr_row, curr_col;
+		int curr_texture_row, curr_texture_col;
 		std::string texture_id;
 
 		VideoManager* video_manager;

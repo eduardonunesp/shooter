@@ -12,7 +12,7 @@ namespace Thing2D {
 		r(255), g(255), b(255), alpha(255), angle(0), 
 		position(x, y), velocity(0, 0), acceleration(0, 0),
 		width(width), height(height),
-		curr_row(0), curr_col(0),
+		curr_texture_row(0), curr_texture_col(0),
 		texture_id(texture_id),
 		video_manager(nullptr),
 		input_manager(nullptr),
@@ -44,7 +44,7 @@ namespace Thing2D {
 	void GameObject::render() {
 		if (!dead) {
 			video_manager->render(texture_id, (int)position.x, (int)position.y, 0, 0, width, height, visible,
-				curr_row, curr_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
+				curr_texture_row, curr_texture_col, angle, alpha, r, g, b, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE,
 				debug, colliders);
 		}
 	}

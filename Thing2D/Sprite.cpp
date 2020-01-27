@@ -69,8 +69,8 @@ namespace Thing2D {
 		if (curr_animation) {
 			Animation* animation = curr_animation;
 			AnimationFrame* anim_frame = anim_frames[animation->curr_anim_frame];
-			curr_row = anim_frame->row;
-			curr_col = anim_frame->col;
+			curr_texture_row = anim_frame->row;
+			curr_texture_col = anim_frame->col;
 		}
 
 		GameObject::render();

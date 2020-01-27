@@ -5,14 +5,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{43515fd8-f1e4-4980-a268-9492763ba680}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Thing2D">
       <UniqueIdentifier>{e037112d-b460-49b3-8f06-8c20644800dd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Thing2D\Tiled">
       <UniqueIdentifier>{4e94db2e-4fdc-418f-8850-295b95c58223}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{43515fd8-f1e4-4980-a268-9492763ba680}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,9 +23,6 @@
       <Filter>Thing2D</Filter>
     </ClCompile>
     <ClCompile Include="Thing2D\AudioManager.cpp">
-      <Filter>Thing2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Thing2D\base64.cpp">
       <Filter>Thing2D</Filter>
     </ClCompile>
     <ClCompile Include="Thing2D\Game.cpp">
@@ -67,6 +64,9 @@
     <ClCompile Include="Game\Shooter.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Thing2D\Tiled\base64.cpp">
+      <Filter>Thing2D\Tiled</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Thing2D\Animation.h">
@@ -76,9 +76,6 @@
       <Filter>Thing2D</Filter>
     </ClInclude>
     <ClInclude Include="Thing2D\AudioManager.h">
-      <Filter>Thing2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Thing2D\base64.h">
       <Filter>Thing2D</Filter>
     </ClInclude>
     <ClInclude Include="Thing2D\Collider.h">
@@ -164,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Game\Shot.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Thing2D\Tiled\base64.h">
+      <Filter>Thing2D\Tiled</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

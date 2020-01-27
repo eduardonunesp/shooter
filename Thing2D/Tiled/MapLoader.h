@@ -12,16 +12,13 @@ namespace Thing2D {
 
 		class MapLoader {
 		public:
-			MapLoader(VideoManager* video_manager) :
-				video_manager(video_manager),
-				curr_map(nullptr) {}
+			MapLoader(VideoManager* video_manager);
 
 			// Life cycle
-			void init();
 			void destroy();
 
 			// Load map
-			void load_tmx_map(const std::string& map_id, const std::string& file_path);
+			void load_tmx_map(const std::string& file_path, const std::string& map_id);
 
 		protected:
 			friend class Game;

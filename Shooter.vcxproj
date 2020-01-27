@@ -150,7 +150,6 @@
     <ClCompile Include="Game\Shooter.cpp" />
     <ClCompile Include="Thing2D\Animation.cpp" />
     <ClCompile Include="Thing2D\AudioManager.cpp" />
-    <ClCompile Include="Thing2D\base64.cpp" />
     <ClCompile Include="Thing2D\Game.cpp" />
     <ClCompile Include="Thing2D\GameObject.cpp" />
     <ClCompile Include="Thing2D\Group.cpp" />
@@ -158,6 +157,7 @@
     <ClCompile Include="Thing2D\Layer.cpp" />
     <ClCompile Include="Thing2D\Sprite.cpp" />
     <ClCompile Include="Thing2D\State.cpp" />
+    <ClCompile Include="Thing2D\Tiled\base64.cpp" />
     <ClCompile Include="Thing2D\Tiled\MapLoader.cpp" />
     <ClCompile Include="Thing2D\Tiled\TileLayer.cpp" />
     <ClCompile Include="Thing2D\VideoManager.cpp" />
@@ -171,7 +171,6 @@
     <ClInclude Include="Thing2D\Animation.h" />
     <ClInclude Include="Thing2D\AnimationFrame.h" />
     <ClInclude Include="Thing2D\AudioManager.h" />
-    <ClInclude Include="Thing2D\base64.h" />
     <ClInclude Include="Thing2D\Collider.h" />
     <ClInclude Include="Thing2D\Color.h" />
     <ClInclude Include="Thing2D\EntryPoint.h" />
@@ -185,6 +184,7 @@
     <ClInclude Include="Thing2D\Sprite.h" />
     <ClInclude Include="Thing2D\State.h" />
     <ClInclude Include="Thing2D\Thing2D.h" />
+    <ClInclude Include="Thing2D\Tiled\base64.h" />
     <ClInclude Include="Thing2D\Tiled\Map.h" />
     <ClInclude Include="Thing2D\Tiled\MapLoader.h" />
     <ClInclude Include="Thing2D\Tiled\Props.h" />
