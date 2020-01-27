@@ -11,6 +11,10 @@
 - [ ] Angular velocity
 - [ ] Text render
 - [ ] Tween basic engine
+- [ ] Box2D 
+- [ ] Resources loading from XML files
+- [ ] Basic scripting
+- [ ] Event listerners on input system
 - [ ] Math functions rand, clamp
 - [ ] Load objects and properties from Tiled
 - [ ] std::vector shuffle
