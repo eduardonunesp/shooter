@@ -13,6 +13,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Framework\Tiled">
+      <UniqueIdentifier>{a9d1c4ea-5a94-4f08-9bd8-d55765136478}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game\Player.cpp">
@@ -24,7 +27,13 @@
     <ClCompile Include="game\Shooter.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="framework\Animation.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
     <ClCompile Include="framework\AudioManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="framework\base64.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="framework\Game.cpp">
@@ -39,36 +48,63 @@
     <ClCompile Include="framework\InputManager.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="framework\Layer.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
     <ClCompile Include="framework\Sprite.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="framework\VideoManager.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="framework\Animation.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
     <ClCompile Include="framework\State.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="framework\Layer.cpp">
+    <ClCompile Include="framework\VideoManager.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="framework\TileLayer.cpp">
-      <Filter>Framework</Filter>
+    <ClCompile Include="framework\tiled\TiledMapLoader.cpp">
+      <Filter>Framework\Tiled</Filter>
     </ClCompile>
-    <ClCompile Include="framework\base64.cpp">
-      <Filter>Framework</Filter>
+    <ClCompile Include="framework\tiled\TiledState.cpp">
+      <Filter>Framework\Tiled</Filter>
     </ClCompile>
-    <ClCompile Include="framework\TiledState.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="framework\TiledMapLoader.cpp">
-      <Filter>Framework</Filter>
+    <ClCompile Include="framework\tiled\TileLayer.cpp">
+      <Filter>Framework\Tiled</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game\Shooter.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\PlayState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Enemy.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Shot.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Animation.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\AnimationFrame.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
     <ClInclude Include="framework\AudioManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\base64.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Collider.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Color.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\EntryPoint.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\Game.h">
@@ -83,10 +119,19 @@
     <ClInclude Include="framework\InputManager.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="framework\Layer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
     <ClInclude Include="framework\Logger.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="framework\Props.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
     <ClInclude Include="framework\Rect.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework\Recycle.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\Sprite.h">
@@ -98,71 +143,29 @@
     <ClInclude Include="framework\Thing2D.h">
       <Filter>Framework</Filter>
     </ClInclude>
+    <ClInclude Include="framework\Timer.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
     <ClInclude Include="framework\Vector.h">
       <Filter>Framework</Filter>
     </ClInclude>
     <ClInclude Include="framework\VideoManager.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="game\Shooter.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="framework\tiled\Tile.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
-    <ClInclude Include="game\Player.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="framework\tiled\TiledMapLoader.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
-    <ClInclude Include="game\PlayState.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="framework\tiled\TiledState.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
-    <ClInclude Include="game\Enemy.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="framework\tiled\TileLayer.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
-    <ClInclude Include="framework\Color.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Shot.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\AnimationFrame.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Animation.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Timer.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Recycle.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Layer.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\TileLayer.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\TileSet.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Tile.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Collider.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\Props.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\base64.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\EntryPoint.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\TiledState.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="framework\TiledMapLoader.h">
-      <Filter>Framework</Filter>
+    <ClInclude Include="framework\tiled\TileSet.h">
+      <Filter>Framework\Tiled</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,11 +2,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Shot.h"
-#include "TiledMapLoader.h"
 
 namespace Shooter {
-	PlayState::PlayState(TiledMapLoader* tiled_map_loader) :
-		TiledState(tiled_map_loader) {}
+	PlayState::PlayState() :
+		State() {}
 
 	void PlayState::init() {
 		State::init();

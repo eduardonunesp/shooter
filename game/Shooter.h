@@ -2,12 +2,10 @@
 #include <Thing2D.h>
 #include <EntryPoint.h>
 
-using namespace Thing2D;
-
 namespace Shooter {
 	class TiledMapLoader;
 
-	class ShooterGame : public Game {
+	class ShooterGame : public Thing2D::Game {
 	public:
 		ShooterGame();
 		void init();
@@ -17,6 +15,6 @@ namespace Shooter {
 	};
 }
 
-Game *CreateGame() {
+Thing2D::Game * Thing2D::CreateGame() {
 	return new Shooter::ShooterGame();
 }

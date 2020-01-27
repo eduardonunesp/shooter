@@ -4,7 +4,6 @@
 #include "AudioManager.h"
 #include "State.h"
 #include "Logger.h"
-#include "TiledMapLoader.h"
 
 namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :

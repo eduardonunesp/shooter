@@ -1,5 +1,4 @@
 #include "Shooter.h"
-#include "TiledMapLoader.h"
 #include "PlayState.h"
 
 namespace Shooter {
@@ -13,10 +12,6 @@ namespace Shooter {
 		video_manager->load_texture("./assets/shot.png", "shot");
 		audio_manager->load_sound("./assets/boom.wav", "boom");
 
-		tiled_map_loader = new Thing2D::TiledMapLoader(video_manager);
-		tiled_map_loader->init();
-		tiled_map_loader->load_tmx_map("./assets/map.tmx", "map");
-
-		add_state("play_state", new PlayState(tiled_map_loader), true);
+		add_state("play_state", new PlayState(), true);
 	}
 }

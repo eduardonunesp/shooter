@@ -8,7 +8,7 @@
 #include <algorithm>
 
 namespace Thing2D {
-	TiledState::TiledState(TiledMapLoader* tiled_map_loader) :
+	TiledState::TiledState():
 		State(),
 		tiled_map_loader(tiled_map_loader),
 		rows(0), cols(0),
