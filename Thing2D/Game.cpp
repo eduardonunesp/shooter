@@ -9,7 +9,7 @@ namespace Thing2D {
 	Game::Game(int screen_width, int screen_height) :
 		screen_width(screen_width), screen_height(screen_height),
 		video_manager(nullptr), input_manager(nullptr), audio_manager(nullptr),
-		running(false), frame_time(0),
+		running(false), 
 		current_state(nullptr) {
 #if defined(_DEBUG) 
 		debug_mode = true;
@@ -110,14 +110,20 @@ namespace Thing2D {
 
 	void Game::run() {
 		const Uint32 fps = video_manager->get_refresh_rate();
-		const Uint32 delay_time = 1000 / fps;
+		const Uint32 frame_target_time = 1000 / fps;
 
 		Uint32 frame_start = 0;
 
 		LOG("Running the main loop " << running);
 
 		while (running) {
-			frame_start = SDL_GetTicks();
+			while (!SDL_TICKS_PASSED(SDL_GetTicks(), ticks_last_frame + frame_target_time));
+			
+			fdelta_time = (SDL_GetTicks() - ticks_last_frame) / 1000.0f;
+
+			fdelta_time = (fdelta_time > 0.05f) ? 0.05f : fdelta_time;
+
+			ticks_last_frame = SDL_GetTicks() - frame_start;
 
 			input_manager->read();
 
@@ -139,14 +145,8 @@ namespace Thing2D {
 
 			video_manager->present();
 
-			frame_time = SDL_GetTicks() - frame_start;
-
-			if (frame_time < delay_time) {
-				SDL_Delay((int)(delay_time - frame_time));
-			}
-
 			if (debug_mode) {
-				SDL_SetWindowTitle(video_manager->window, std::to_string(frame_time).c_str());
+				SDL_SetWindowTitle(video_manager->window, std::to_string(fdelta_time).c_str());
 			}
 		}
 	}

@@ -4,8 +4,8 @@
 #include "Shot.h"
 
 namespace Shooter {
-	const float tlayer_scrool_speed = 2.0f;
-	const float player_speed = 10.0f;
+	const float tlayer_scrool_speed = 100.0f;
+	const float player_speed = 400.0f;
 
 	PlayState::PlayState() :
 		State(), map(nullptr) {}
@@ -21,7 +21,7 @@ namespace Shooter {
 
 		add("player", new Player());
 		//add("enemy", new Enemy());
-		create_timer("shot_timer", 60);
+		create_timer("shot_timer", 0.3f);
 	}
 
 	void PlayState::update() {
@@ -30,25 +30,25 @@ namespace Shooter {
 		}
 
 		Layer* tlayer = get_layer(0);
-		tlayer->set_velocity(Vector::down() * tlayer_scrool_speed);
+		tlayer->set_velocity(Vector::down() * tlayer_scrool_speed * game->delta_time());
 
 		GameObject* player = default_layer->get("player");
 		player->set_velocity(Vector::zero());
 
 		if (input_manager->is_key_down(SDL_SCANCODE_RIGHT) && player->get_position().x + player->get_width() < game->get_screen_width()) {
-			player->add_velocity(Vector::right() * player_speed);
+			player->add_velocity(Vector::right() * player_speed * game->delta_time());
 		}
 
 		if (input_manager->is_key_down(SDL_SCANCODE_LEFT) && player->get_position().x > 0) {
-			player->add_velocity(Vector::left() * player_speed);
+			player->add_velocity(Vector::left() * player_speed * game->delta_time());
 		}
 
 		if (input_manager->is_key_down(SDL_SCANCODE_DOWN) && (player->get_position().y + player->get_height()) < game->get_screen_height()) {
-			player->add_velocity(Vector::down() * player_speed);
+			player->add_velocity(Vector::down() * player_speed * game->delta_time());
 		}
 
 		if (input_manager->is_key_down(SDL_SCANCODE_UP) && player->get_position().y > 0) {
-			player->add_velocity(Vector::up() * player_speed);
+			player->add_velocity(Vector::up() * player_speed * game->delta_time());
 		}
 
 		for (auto enemy : default_layer->all_by_tag("enemy")) {

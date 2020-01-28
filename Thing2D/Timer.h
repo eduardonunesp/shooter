@@ -10,7 +10,7 @@ namespace Thing2D {
 			left_time(time_limit),
 			time_limit(time_limit) {}
 
-		void update(int delta_time) {
+		void update(float delta_time) {
 			left_time -= delta_time;
 		}
 
