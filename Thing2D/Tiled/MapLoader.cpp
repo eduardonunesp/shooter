@@ -91,14 +91,14 @@ namespace Thing2D {
 			tileset_root->Attribute("margin", &new_tile_set->margin);
 			new_tile_set->texture_id = tileset_root->Attribute("name");
 
-			int rows = floor(new_tile_set->width / new_tile_set->tile_width);
-			int cols = floor(new_tile_set->height / new_tile_set->tile_height);
+			int rows = static_cast<int>(floor(new_tile_set->width / new_tile_set->tile_width));
+			int cols = static_cast<int>(floor(new_tile_set->height / new_tile_set->tile_height));
 
 			LOG("Slicing tileset " << new_tile_set->texture_id << " with Rows " << rows << " cols " << cols);
 
 			for (int y = 0; y < cols; y++) {
 				for (int x = 0; x < rows; x++) {
-					Tile* tile = new Tile(curr_map->tiles.size(), x, y);
+					Tile* tile = new Tile(static_cast<int>(curr_map->tiles.size()), x, y);
 					curr_map->tiles.push_back(tile);
 				}
 			}
@@ -156,7 +156,7 @@ namespace Thing2D {
 				// uncompress zlib compression
 				uLongf size_of_ids = curr_map->cols * curr_map->rows * sizeof(int);
 				std::vector<int> ids(curr_map->cols * curr_map->rows);
-				uncompress((Bytef*)&ids[0], &size_of_ids, (const Bytef*)decoded_ids.c_str(), decoded_ids.size());
+				uncompress((Bytef*)&ids[0], &size_of_ids, (const Bytef*)decoded_ids.c_str(), static_cast<unsigned long>(decoded_ids.size()));
 
 				std::vector<int> layer_row(curr_map->cols);
 

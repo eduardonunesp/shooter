@@ -2,14 +2,14 @@
 
 #include "Thing2D.h"
 
-#ifdef WIN && _DEBUG
+#if WIN && _DEBUG
 #define _CRT_SECURE_NO_WARNINGS
 #include <windows.h>
 #endif
 
 
 int main(int argc, char** argv) {
-#ifdef WIN && _DEBUG
+#if WIN && _DEBUG
 	AllocConsole();
 	freopen("conin$", "r", stdin);
 	freopen("conout$", "w", stdout);

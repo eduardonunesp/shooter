@@ -75,16 +75,20 @@ namespace Thing2D {
 		remove(game_objects_map[game_object_id]);
 	}
 
-	int Group::count_visible() {
-		return  std::count_if(game_objects.begin(), game_objects.end(), [](auto game_object) {
+	unsigned int Group::count_visible() {
+		auto ret = std::count_if(game_objects.begin(), game_objects.end(), [](auto game_object) {
 			return game_object->is_visible();
 		});
+
+		return static_cast<unsigned int>(ret);
 	}
 
-	int Group::count_dead() {
-		return  std::count_if(game_objects.begin(), game_objects.end(), [](auto game_object) {
+	unsigned int Group::count_dead() {
+		auto ret = std::count_if(game_objects.begin(), game_objects.end(), [](auto game_object) {
 			return game_object->is_dead();
 		});
+
+		return static_cast<unsigned int>(ret);
 	}
 
 	std::vector<GameObject*> Group::all_by_tag(const std::string& tag) {

@@ -16,7 +16,7 @@ namespace Shooter {
 
 			life = 3;
 			add_animations("fly", 12, true, 3, 0, 1, 2);
-			position.x = ((int)game->get_screen_width() / 2) - width;
+			position.x = static_cast<float>((game->get_screen_width() / 2) - width);
 			r = 255;
 			g = 0;
 			b = 0;

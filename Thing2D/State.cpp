@@ -27,7 +27,7 @@ namespace Thing2D {
 		layer->game = game;
 
 		if (layers.size() > 0) {
-			layer->order = layers.size();
+			layer->order = static_cast<int>(layers.size());
 		}
 
 		layer->init();
@@ -47,10 +47,10 @@ namespace Thing2D {
 		}
 
 		if (order == 0 && layers.size() > 0) {
-			new_layer->order = layers.size();
+			new_layer->order = static_cast<int>(layers.size());
 		}
 
-		new_layer->order = layers.size();
+		new_layer->order = static_cast<int>(layers.size());
 		new_layer->video_manager = video_manager;
 		new_layer->input_manager = input_manager;
 		new_layer->audio_manager = audio_manager;

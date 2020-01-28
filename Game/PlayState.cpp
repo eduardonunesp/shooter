@@ -12,7 +12,7 @@ namespace Shooter {
 
 	void PlayState::init() {
 		State::init();
-		Tiled::TiledLayer* tlayer = new Tiled::TiledLayer(0, -(map->height - 600), map);
+		Tiled::TiledLayer* tlayer = new Tiled::TiledLayer(0, static_cast<float>(-(map->height - 600)), map);
 		LOG(" MAP HEIGHT " << map->height);
 		tlayer->set_label("tiled layer");
 		tlayer->set_order(-1);
@@ -75,7 +75,7 @@ namespace Shooter {
 		if (input_manager->is_key_up(SDL_SCANCODE_SPACE) && get_timer("shot_timer")->ended()) {
 			Shot* shot = new Shot(0, 0);
 			const Vector& player_pos = player->get_position();
-			shot->move(player_pos.x + 35, player_pos.y);
+			shot->move(static_cast<int>(player_pos.x + 35), static_cast<int>(player_pos.y));
 			shot->set_velocity(Vector::up() * 20.0f);
 			add(shot);
 			audio_manager->play_sound("boom");

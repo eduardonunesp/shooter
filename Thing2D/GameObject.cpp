@@ -116,7 +116,7 @@ namespace Thing2D {
 		curr_texture_spacing = spacing;
 	}
 
-	void GameObject::set_position(int x, int y) {
+	void GameObject::set_position(float x, float y) {
 		position.x = x;
 		position.y = y;
 	}

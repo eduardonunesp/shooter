@@ -55,9 +55,9 @@ namespace Thing2D {
 		void remove(const std::string& game_object_id);
 
 		// Queries
-		unsigned int count() { return game_objects.size(); }
-		int count_visible();
-		int count_dead();
+		unsigned int count() { return static_cast<unsigned int>(game_objects.size()); }
+		unsigned int count_visible();
+		unsigned int count_dead();
 		std::vector<GameObject*> all_by_tag(const std::string& tag);
 
 	protected:

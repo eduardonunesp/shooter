@@ -36,7 +36,7 @@ namespace Thing2D {
 		void move(int x, int y);
 		void set_texture_row_col(int row, int col);
 		void set_texture_margin_space(int margin, int spacing);
-		void set_position(int x, int y);
+		void set_position(float x, float y);
 		void set_position(const Vector& new_position);
 
 		// Identification

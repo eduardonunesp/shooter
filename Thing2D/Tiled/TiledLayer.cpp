@@ -13,7 +13,7 @@ namespace Thing2D {
 		TiledLayer::TiledLayer(Map *map) :
 			TiledLayer(0, 0, map) {}
 
-		TiledLayer::TiledLayer(int x, int y, Map* map) :
+		TiledLayer::TiledLayer(float x, float y, Map* map) :
 			Layer(x, y), map(map) {}
 
 		void TiledLayer::init() {}
@@ -50,8 +50,8 @@ namespace Thing2D {
 
 							video_manager->render(
 								tile_set->texture_id,
-								(layer_col * map->tile_width) + position.x,
-								(layer_row * map->tile_height) + position.y,
+								static_cast<int>((layer_col * map->tile_width) + position.x),
+								static_cast<int> ((layer_row * map->tile_height) + position.y),
 								tile_set->margin,
 								tile_set->spacing,
 								map->tile_width, map->tile_width,
